@@ -1,0 +1,3 @@
+generated-reduction actions
+reduceActionFor__PragmaDirective_ImportDirective_ContractDefinition__1: nodes
+	^ OrderedCollection new
