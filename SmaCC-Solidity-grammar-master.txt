@@ -1,0 +1,396 @@
+## This is the grammar used for Pharo SmaCC to generate the Parser, Scanner, AST and etc. 
+
+<byte>: byte(s ([1-9]|[1-2][0-9]|[3][0-2])? )? ;
+<int>: int ([8] | [1][6] | [2][4] | [3][2] | [4][0] | [4][8] | [5][6] | [6][4] | [7][2] | [8][0] | [8][8] | [9][6] | [1][0][4] | [1][1][2] | [1][2][0] | [1][2][8] | [1][3][6] | [1][4][4] | [1][5][2] | [1][6][0] | [1][6][8] | [1][7][6] | [1][8][4] | [1][9][2] | [2][0][0] | [2][0][8] | [2][1][6] | [2][2][4] | [2][3][2] | [2][4][0] | [2][4][8] | [2][5][6] )? ;
+<uint>: u <int> ;
+<stringLiteral>: ( ["] ( [^"\r\n]  | ([ \\ ] . ) )* ["] ) 
+               | ( ['] ( [^'\r\n]  | ([ \\ ] . ) )* ['] ) ;
+<decimalnumber>: [0-9]+ ;
+<hexnumber>: 0[xX][0-9a-fA-F]+ ;
+<hexliteral>: hex ( ["] ( [0-9a-fA-F][0-9a-fA-F] )* ["] |  ['] ( [0-9a-fA-F][0-9a-fA-F] )* [']  );
+<booleanliteral> : true | false ;
+<reservedkeywords>: abstract| case| catch| default| final| in| inline| interface| match| null| of| pure| relocatable| static| switch| try| type| typeof| view;
+
+<identifier>: [a-zA-Z_$] [a-zA-Z_$0-9]* ;
+# magic <idlist>
+<idlist> : <identifier> ( [\.]  <identifier> )+ ;
+# magic <keypairid>
+<keypairid> : [,] \s* <identifier> \s* [:] ;
+# magic for fallback
+<fallback> : function \s* \( \s* \) ;
+
+<fixed> : fixed ( <decimalnumber> [xX] <decimalnumber> )? ;
+<ufixed> : u <fixed> ;
+
+<whitespace>: \s+ ;
+<comment>
+	: \/\/ [^\r\n]* 
+	| /\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/
+ 	;
+
+%root RootSourceSol;
+%annotate_tokens;
+%prefix Sol;
+%suffix Node;
+%start RootSourceSol Expression ContractPart;
+#%glr;
+
+%left "internal" "external" "constant" "payable";
+%right "else";
+
+%left ",";
+%right "=" "|=" "^=" "&=" "<<=" ">>=" "+=" "-=" "*=" "/=" "%=";
+%right ":";
+%left "?";
+%left "||";
+%left "&&";
+%left "==" "!=";
+%left "<" "<=" ">" ">=";
+%left "|";
+%left "^";
+%left "&";
+%left "<<" ">>";
+%left "+" "-";
+%left "*" "/" "%";
+%right "**";
+%left "++" "--"; 
+%right "delete" "!" "~";
+%right "[" "(";
+%left "." ;
+
+
+RootSourceSol 
+	: ( SourceUnit 'source_unit')* {{}}
+	;
+SourceUnit
+	: PragmaDirective
+	| ImportDirective 
+	| ContractDefinition 
+	;
+#// Pragma actually parses anything up to the trailing ';' to be fully forward-compatible.
+#PragmaDirective = 'pragma' <identifier> ([^;]+) ';'	
+PragmaDirective 
+	: "pragma" <identifier> 'id' (Version 'version')* ";" {{}}
+	;
+Version
+	: (("^" | ">=" | ">" | "<" | "<=" ) 'version_op')? <decimalnumber> 'number' ("." <decimalnumber> 'number')*  {{}}
+	;
+ImportDirective 
+	: "import" <stringLiteral> 'str_source' ("as" <identifier> 'alias')? ";" {{}}
+  	| "import" ("*" 'all' | <identifier> 'component_id') ("as" <identifier> 'alias')? "from" <stringLiteral> 'str_source' ";" {{}}
+	| "import" "{" <identifier> 'component_id' ("as" <identifier> 'alias')? ( "," <identifier> 'component_id' ("as" <identifier> 'alias')? )* "}" "from" <stringLiteral> 'str_source' ";" {{}}
+	;
+ContractDefinition 
+	: ( "contract" | "library" ) 'contract_or_lib_type' <identifier> 'contract_id' ( "is" InheritanceSpecifier 'inheritance' ("," InheritanceSpecifier 'inheritance' )* )?   "{" (ContractPart 'contract_source')* "}" {{}}
+	;
+ContractPart 
+	: StateVariableDeclaration 
+	| UsingForDeclaration
+	| StructDefinition 
+	| ModifierDefinition 
+	| FunctionDefinition 
+	| EventDefinition 
+	| EnumDefinition
+	;
+InheritanceSpecifier 
+	: UserDefinedTypeName 'user_defined_type' ( "(" ExpressionList 'exp_list' ")" )? {{}}
+	;
+# Minor Change -- documentation page 42 (enum example) and 44 (function type example) allow "constant" as a modifier. Created a new rule because constant must have an assigned expression.
+StateVariableDeclaration 
+	: TypeName 'type' ( StateVariableDeclarationMod 'modifier'  )? <identifier> ("=" Expression 'exp')? ";" {{}}
+	| TypeName 'type' "constant" <identifier> "=" Expression 'exp' ";" {{ConstantDeclaration}}
+	;
+# Minor Change - new rule just to group the modifiers
+StateVariableDeclarationMod
+	: "public" 
+	| "internal" 
+	| "private"
+	;
+UsingForDeclaration 
+	: "using" <identifier> "for" ("*" 'all' | TypeName 'type') ";" {{}}
+	;
+StructDefinition 
+	: "struct" <identifier> "{"  ( VariableDeclaration 'struct_var_dec' ";" (VariableDeclaration 'struct_var_dec' ";")* )? "}" {{}}
+	;
+ModifierDefinition 
+	: "modifier" <identifier> (ParameterList 'param_list')? Block 'block' {{}}
+	;
+# Major Change: grammar change to handle the fallback function (page 68-69 in the solidity documentation 0.4.12).
+# Minor Change: we just place all function modifiers into their own rule
+FunctionDefinition 
+	: "function" <identifier> ParameterList 'param_list' 
+                     ( FunctionDefinitionMod 'modifier' )*
+                     ( "returns" ParameterList 'returned_types' )? (";" | Block 'block' ) {{}}
+    | <fallback> ( FunctionDefinitionMod 'modifier' )* (";" | Block 'block' ) {{FallbackFunctionDefinition}} 
+	;
+#FunctionDefinition 
+#	: "function" <identifier>? ParameterList 'param_list'
+#                     ( FunctionDefinitionMod 'modifier' )*
+#                     ( "returns" ParameterList 'returnedtypes' )? (";" | Block 'block' ) {{}}
+#	;
+# New rule - just placing all function modifiers into a rule
+FunctionDefinitionMod
+	:  "constant" | "payable" | "external" | "public" | "internal" | "private" | <identifier> | FunctionCall 
+	;
+EventDefinition 
+	: "event" <identifier> 'event_id' IndexedParameterList 'indexed_param_list' "anonymous"? ";" {{}}
+	;
+EnumValue 
+	: <identifier>
+	;
+EnumDefinition
+	:"enum" <identifier> "{" (EnumValue 'enum_value_id')? ("," EnumValue 'enum_value_id')* "}" {{}}
+	;
+IndexedParameterList 
+	: "(" ( TypeName 'type' "indexed"? <identifier>? ("," TypeName 'type' "indexed"? <identifier>?)* )? ")" {{}}
+	;
+## Minor Change: The example in page 43 of the solidity documentation allows for an optional StorageLocation before the identifier. Still not sure which one is the most correct (doc or grammar) 
+ParameterList 
+#	: "(" ( TypeName 'type' <identifier>? ("," TypeName 'type' <identifier>?)* )? ")" {{}}
+	: "(" ( TypeName 'type' (StorageLocation 'storage_loc')? <identifier>? ("," TypeName 'type' (StorageLocation 'storage_loc')? <identifier>?)* )? ")" {{}}
+	;
+# Minor Change: The example in page 43 of the solidity doc allows for an optional StorageLocation and Identifier on FunctionTypeName (making it identical to ParameterList).
+TypeNameList 
+#	: "(" ( TypeName 'type' ("," TypeName 'type' )* )? ")" {{}}
+	: "(" ( TypeName 'type' (StorageLocation 'storage_loc')? <identifier>? ("," TypeName 'type' (StorageLocation 'storage_loc')? <identifier>?)* )? ")" {{}}
+	;
+	
+#// semantic restriction: mappings and structs (recursively) containing mappings
+#// are not allowed in argument lists
+VariableDeclaration 
+	: TypeName 'type' (StorageLocation 'storage_loc')? <identifier> {{}}
+	;
+TypeName 
+	: ElementaryTypeName 'elementary_type' {{ElementaryTypeName}}
+    | Mapping 'mapping_type' {{MappingTypeName}}
+    | TypeName 'type' "[" (Expression 'exp')? "]" {{ArrayTypeName}}
+    | FunctionTypeName 'function_type' {{FunctionTypeName}}
+    | UserDefinedTypeName 'user_defined_type' {{UserDefinedTypeName}}
+	;
+# Major Change: Because of many conflicts, we 'pushed' the userdefinedTypeName to the scanner as an non-empty id list 
+UserDefinedTypeName 
+	: <idlist>
+	| <identifier>
+	;
+#UserDefinedTypeName 
+#	: <identifier> ( "." <identifier> )*
+#	;
+Mapping 
+	: "mapping" "(" ElementaryTypeName 'elementary_type' "=>" TypeName 'mapped_type' ")" {{}}
+	;
+FunctionTypeName 
+	: "function" TypeNameList 'type_list' ( FunctionTypeNameMod 'modifier' )* ("returns" TypeNameList 'returned_types' )? {{}}
+	;
+FunctionTypeNameMod
+	: "internal" | "external" | "constant" | "payable"
+	;		
+StorageLocation 
+	: "memory" 
+	| "storage"
+	;
+Block 
+	: "{" (Statement 'statement')* "}" {{}}
+	;
+Statement 
+	: IfStatement 
+	| WhileStatement 
+	| ForStatement 
+	| Block 
+	| InlineAssemblyStatement  
+	|  ( DoWhileStatement | PlaceholderStatement | Continue | Break | Return | Throw | SimpleStatement ) 'semicomma_statement'  ";" {{}} 
+	;
+# Removed to improve the AST
+#ExpressionStatement 
+#	: Expression
+#	;
+IfStatement 
+	: "if" "(" Expression 'exp_test' ")" Statement 'then_statement' ("else" Statement 'else_statement')? {{}}
+	;
+WhileStatement 
+	: "while" "(" Expression 'exp_test' ")" Statement 'statement' {{}}
+	;
+PlaceholderStatement 
+	: "_" {{PlaceholderStatement}}
+	;
+SimpleStatement
+	: VariableDefinition
+	| Expression
+	#| ExpressionStatement
+	;
+ForStatement 
+	: "for" "(" (SimpleStatement 'initialization')? ";" (Expression 'exp_test')? ";" (Expression 'increment')? ")" Statement 'statement' {{}}
+	;
+InlineAssemblyStatement 
+	: "assembly" InlineAssemblyBlock 'asm_block' {{}}
+	;
+DoWhileStatement 
+	: "do" Statement 'statement' "while" "(" Expression 'exp_test' ")" {{}}
+	;
+Continue 
+	: "continue" {{}}
+	;
+Break 
+	: "break" {{}}
+	;
+Return 
+	: "return" (Expression 'returned_exp')? {{}}
+	;
+Throw 
+	: "throw" {{}}
+	;
+# VariableDeclaration was moved to Expression to avoid conflict with lots of rules starting with "TypeName".
+VariableDefinition 
+#	: ("var" IdentifierList | VariableDeclaration) ( "=" Expression )?
+	: ("var" IdentifierList 'var_id_list' ) ( "=" Expression 'assign_exp' )? {{}}
+	;	
+IdentifierList 
+	: "(" ( <identifier>? "," )* <identifier>? ")" {{}}
+	;
+
+#Expression generates SO MANY conflicts
+#// Precedence by order (see github.com/ethereum/solidity/pull/732)
+Expression 
+	:  Expression 'exp' ("++" | "--") 'postfix_op' {{}}
+	#| FunctionCall 
+	#| IndexAccess 
+	#| MemberAccess 
+	| "("  ( Expression 'exp' | (  Expression 'tuple_exp' ("," (Expression 'tuple_exp')? )+ )  |  ("," (Expression 'tuple_exp')?)+ )   ")" {{}} 
+	| ("!" | "~" | "delete" | "++" | "--" | "+" | "-") 'prefix_op' Expression 'exp' {{}}
+	| Expression 'lhs_exp' "**" 'exponent_op' Expression 'rhs_exp' {{}}
+	| Expression 'lhs_exp' ("*" | "/" | "%") 'mult_op' Expression 'rhs_exp' {{}}
+	| Expression 'lhs_exp' ("+" | "-") 'add_op' Expression 'rhs_exp' {{}}
+	| Expression 'lhs_exp' ("<<" | ">>") 'shift_op' Expression 'rhs_exp' {{}}
+	| Expression 'lhs_exp' "&" 'bit_and_op' Expression 'rhs_exp' {{}}
+	| Expression 'lhs_exp' "^" 'bit_xor_op' Expression 'rhs_exp' {{}}
+	| Expression 'lhs_exp' "|" 'bit_or_op' Expression 'rhs_exp' {{}}
+	| Expression 'lhs_exp' ("<" | ">" | "<=" | ">=") 'comparison_op' Expression 'rhs_exp' {{}}
+	| Expression 'lhs_exp' ("==" | "!=") 'equality_op' Expression 'rhs_exp' {{}}
+	| Expression 'lhs_exp' "&&" 'and_op' Expression 'rhs_exp' {{}}
+	| Expression 'lhs_exp' "||" 'or_op' Expression 'rhs_exp' {{}}
+	| Expression 'test_exp' "?" 'ternary_op' Expression 'if_true_exp' ":" 'two_points_separator' Expression 'if_false_exp' {{}}
+	| Expression 'lhs_exp' ("=" | "|=" | "^=" | "&=" | "<<=" | ">>=" | "+=" | "-=" | "*=" | "/=" | "%=") 'assign_op' Expression 'rhs_exp' {{}} 
+	#| Expression? ("," Expression)
+	#| PrimaryExpression
+	#| Factor OptionalMemberArrayAccess ( OptionalFunctionCall | OptionalVariableDeclaration)? {{}}
+	| TermExpression 'term' {{}}
+	;
+# New Rule to resolve conflicts with several rules starting with the same tokens. This groups all the possible combinations between member access, array access, and function calls (and nested calls, arrays and member access).
+TermExpression
+	: Factor 'factor' OptionalMemberArrayAccess 'opt_access' ( OptionalFunctionCall 'opt_func_call' | OptionalVariableDeclaration 'opt_var_dec')? ("." TermExpression 'nested_term')? {{}}
+	;
+# New Rule to resolve conflicts with several rules starting with the same tokens
+Factor
+	: <identifier>
+	| <idlist>
+	| <booleanliteral>
+	| NumberLiteral 
+	| <hexliteral>
+	| <stringLiteral>
+	| ElementaryTypeName 'elementary_type' {{ElementaryTypeName}}
+	| "new" Factor 'factor' {{NewExpression}}
+    | Mapping
+    | FunctionTypeName 
+	;
+# New Rule to allow member access, the optionality is to allow simple expressions
+OptionalMemberArrayAccess
+	: ( ( "." <idlist> 'id_list_member_access' ) | ("." <identifier> 'id_member_access') | ( "[" (Expression 'array_access_exp' )? "]" ) )* {{}}	
+	;
+OptionalFunctionCall
+	: ( "(" FunctionCallArguments 'func_args' ")" ) {{}}
+	;
+OptionalVariableDeclaration
+	: ( (StorageLocation 'storage_loc')? <identifier> ) {{}}
+	;
+# Unused rule -- this rule was fused into the new Factor rule
+#PrimaryExpression 
+#	: <identifier>
+#	| <booleanliteral>
+#	| NumberLiteral
+#	| <hexliteral>
+#	| <stringLiteral>
+#	| ElementaryTypeName
+#	;
+ExpressionList
+	: Expression 'exp' ( "," Expression 'exp' )* {{}}
+	;
+NameValueList 
+#	: <identifier> ":" Expression ( "," <identifier> ":" Expression )*
+	: <identifier> 'id' ":" Expression 'exp' ( <keypairid> 'comma_id_twopoints' Expression 'star_exp' )* {{}}
+	;
+
+# Original FunctionCall is giving too many problems, we are changing the grammar to be more easily parseable.
+#FunctionCall 
+#	: ( PrimaryExpression | NewExpression | TypeName ) ( ( "." <identifier> ) | ( "[" Expression "]" ) )* "(" FunctionCallArguments ")"
+#	;
+# Change #1: create the FunctionCallName rule that adapted the grammar but (hopefully) resulted in a similar one.
+# Change #2: <Expression> changed to optional because it is substituting the TypeName one. 
+FunctionCall 
+	: ( FunctionCallName 'function_name' ) OptionalMemberArrayAccess 'opt_access' "(" FunctionCallArguments 'arguments' ")" {{}}
+	;
+#New Rule that pulled all the rules from PrimaryExpression,NewExpression and TypeName, where I removed the rules that was ambigous with the FunctionCall "."<id> or "[" <exp> "]". The sintatic result is the same.
+FunctionCallName
+	: Factor
+	;
+FunctionCallArguments 
+	: "{" (NameValueList 'name_value_list')? "}" {{}} 
+	| (ExpressionList 'exp_list') ? {{}} 
+	;
+# This rule was incorporated to the FunctionCallName 
+#NewExpression 
+#	: "new" TypeName
+#	;
+# Fused into Expression -- OptionalMemberArrayAccess
+#MemberAccess 
+#	: Expression "." <identifier>
+#	;
+# Fused into Expression -- OptionalMemberArrayAccess
+#IndexAccess 
+#	: Expression "[" Expression? "]"
+#	;
+
+#Moved to the scanner for better performance and AST generation
+#BooleanLiteral 
+#	: "true" 
+#	| "false"
+#	;
+NumberLiteral 
+	: ( <hexnumber> | <decimalnumber> ) 'number' (NumberUnit 'unit')? {{}}
+	;
+NumberUnit 
+	: "wei" 
+	| "szabo"
+	| "finney" 
+	| "ether"
+	| "seconds" 
+	| "minutes" 
+	| "hours" 
+	| "days" 
+	| "weeks" 
+	| "years"
+	;
+# Removed this rule because it served no purpose. Also the AST is better without it.
+#ElementaryTypeNameExpression
+#	: ElementaryTypeName
+#	;
+ElementaryTypeName 
+	: "address" | "bool" | "string" | "var"
+	| <int> | <uint> | <byte> | <fixed> | <ufixed>
+	;
+
+InlineAssemblyBlock 
+	: "{" (AssemblyItem 'asm_item')* "}" {{}}
+	;
+AssemblyItem 
+	: <identifier> | FunctionalAssemblyExpression | InlineAssemblyBlock | AssemblyLocalBinding | AssemblyAssignment | NumberLiteral | <stringLiteral> | <hexliteral>
+	;
+AssemblyLocalBinding 
+	: "let" <identifier> ":=" FunctionalAssemblyExpression 'functional_asm_exp' {{}}
+	;
+AssemblyAssignment 
+	: <identifier> ":=" FunctionalAssemblyExpression 'functional_asm_exp' {{}} 
+	| "=:" <identifier> {{}}
+	;
+FunctionalAssemblyExpression
+	: <identifier> "(" (AssemblyItem 'asm_item')? ( "," AssemblyItem 'asm_item' )* ")" {{}}
+	;
+	
