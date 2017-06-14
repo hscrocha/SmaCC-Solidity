@@ -1,0 +1,22 @@
+{
+	"instance" : {
+		"nodeVariables" : "Henrique 6/12/2017 15:32",
+		"rightParenToken:" : "Henrique 6/9/2017 18:06",
+		"leftParenToken:" : "Henrique 6/9/2017 18:06",
+		"then_statement:" : "Henrique 6/12/2017 15:32",
+		"else_statement:" : "Henrique 6/12/2017 15:32",
+		"elseToken:" : "Henrique 6/9/2017 18:06",
+		"leftParenToken" : "Henrique 6/9/2017 18:06",
+		"elseToken" : "Henrique 6/9/2017 18:06",
+		"then_statement" : "Henrique 6/12/2017 15:32",
+		"exp_test" : "Henrique 6/12/2017 15:32",
+		"ifToken:" : "Henrique 6/9/2017 18:06",
+		"acceptVisitor:" : "Henrique 6/12/2017 15:32",
+		"tokenVariables" : "Henrique 6/9/2017 18:06",
+		"ifToken" : "Henrique 6/9/2017 18:06",
+		"rightParenToken" : "Henrique 6/9/2017 18:06",
+		"else_statement" : "Henrique 6/12/2017 15:32",
+		"exp_test:" : "Henrique 6/12/2017 15:32"
+	},
+	"class" : { }
+}

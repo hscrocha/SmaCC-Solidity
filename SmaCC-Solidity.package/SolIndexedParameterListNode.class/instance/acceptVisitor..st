@@ -1,0 +1,3 @@
+generated
+acceptVisitor: aRootSourceSolVisitor
+	^ aRootSourceSolVisitor visitIndexedParameterList: self

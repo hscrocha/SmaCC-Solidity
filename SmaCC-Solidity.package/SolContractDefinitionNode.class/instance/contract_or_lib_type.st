@@ -1,0 +1,3 @@
+generated
+contract_or_lib_type
+	^ contract_or_lib_type

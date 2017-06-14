@@ -1,0 +1,3 @@
+generated
+visitFunctionalAssemblyExpression: aFunctionalAssemblyExpression
+	^ self visitRootSourceSol: aFunctionalAssemblyExpression

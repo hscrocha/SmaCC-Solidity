@@ -1,0 +1,19 @@
+{
+	"commentStamp" : "",
+	"super" : "SolSourceSolNode",
+	"category" : "SmaCC-Solidity",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"ifToken",
+		"leftParenToken",
+		"rightParenToken",
+		"elseToken",
+		"exp_test",
+		"then_statement",
+		"else_statement"
+	],
+	"name" : "SolIfStatementNode",
+	"type" : "normal"
+}

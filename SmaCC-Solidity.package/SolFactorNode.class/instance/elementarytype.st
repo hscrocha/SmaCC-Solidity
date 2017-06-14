@@ -1,0 +1,3 @@
+generated
+elementarytype
+	^ elementarytype

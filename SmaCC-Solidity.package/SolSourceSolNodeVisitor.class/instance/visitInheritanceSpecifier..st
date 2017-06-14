@@ -1,0 +1,3 @@
+generated
+visitInheritanceSpecifier: anInheritanceSpecifier
+	^ self visitSourceSol: anInheritanceSpecifier

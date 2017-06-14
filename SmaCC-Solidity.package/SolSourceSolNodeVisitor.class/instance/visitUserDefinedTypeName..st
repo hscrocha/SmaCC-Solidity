@@ -1,0 +1,3 @@
+generated
+visitUserDefinedTypeName: anUserDefinedTypeName
+	^ self visitSourceSol: anUserDefinedTypeName

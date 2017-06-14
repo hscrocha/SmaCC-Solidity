@@ -1,0 +1,3 @@
+generated
+visitFunctionCallArguments: aFunctionCallArguments
+	^ self visitRootSourceSol: aFunctionCallArguments

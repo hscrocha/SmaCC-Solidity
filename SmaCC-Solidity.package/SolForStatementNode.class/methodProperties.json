@@ -1,0 +1,25 @@
+{
+	"instance" : {
+		"compositeTokenVariables" : "Henrique 6/9/2017 18:05",
+		"initialization:" : "Henrique 6/12/2017 15:36",
+		"semicolonTokens:" : "Henrique 6/9/2017 18:05",
+		"initialize" : "Henrique 6/12/2017 15:32",
+		"statement" : "Henrique 6/9/2017 18:05",
+		"initialization" : "Henrique 6/9/2017 18:05",
+		"exps" : "Henrique 6/12/2017 15:32",
+		"compositeNodeVariables" : "Henrique 6/12/2017 15:32",
+		"rightParenToken" : "Henrique 6/9/2017 18:05",
+		"leftParenToken" : "Henrique 6/9/2017 18:05",
+		"nodeVariables" : "Henrique 6/12/2017 14:55",
+		"tokenVariables" : "Henrique 6/9/2017 18:05",
+		"exps:" : "Henrique 6/12/2017 15:32",
+		"leftParenToken:" : "Henrique 6/9/2017 18:05",
+		"semicolonTokens" : "Henrique 6/9/2017 18:05",
+		"statement:" : "Henrique 6/12/2017 14:55",
+		"forToken:" : "Henrique 6/9/2017 18:05",
+		"acceptVisitor:" : "Henrique 6/12/2017 15:32",
+		"rightParenToken:" : "Henrique 6/9/2017 18:05",
+		"forToken" : "Henrique 6/9/2017 18:05"
+	},
+	"class" : { }
+}

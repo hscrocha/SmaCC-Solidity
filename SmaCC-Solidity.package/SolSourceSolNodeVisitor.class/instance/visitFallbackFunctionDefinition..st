@@ -1,0 +1,3 @@
+generated
+visitFallbackFunctionDefinition: aFallbackFunctionDefinition
+	^ self visitSourceSol: aFallbackFunctionDefinition

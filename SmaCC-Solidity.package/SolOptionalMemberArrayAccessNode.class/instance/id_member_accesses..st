@@ -1,0 +1,3 @@
+generated
+id_member_accesses: anOrderedCollection
+	id_member_accesses := anOrderedCollection

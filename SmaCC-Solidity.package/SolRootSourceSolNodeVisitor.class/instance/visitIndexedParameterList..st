@@ -1,0 +1,3 @@
+generated
+visitIndexedParameterList: anIndexedParameterList
+	^ self visitRootSourceSol: anIndexedParameterList

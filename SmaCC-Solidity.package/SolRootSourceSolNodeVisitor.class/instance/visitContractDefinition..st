@@ -1,0 +1,3 @@
+generated
+visitContractDefinition: aContractDefinition
+	^ self visitRootSourceSol: aContractDefinition

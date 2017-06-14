@@ -1,0 +1,3 @@
+generated
+boolToken
+	^ boolToken

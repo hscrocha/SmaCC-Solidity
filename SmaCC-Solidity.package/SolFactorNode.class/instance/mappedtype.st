@@ -1,0 +1,3 @@
+generated
+mappedtype
+	^ mappedtype

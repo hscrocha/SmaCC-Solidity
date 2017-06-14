@@ -1,0 +1,3 @@
+generated
+visitVariableDefinition: aVariableDefinition
+	^ self visitRootSourceSol: aVariableDefinition

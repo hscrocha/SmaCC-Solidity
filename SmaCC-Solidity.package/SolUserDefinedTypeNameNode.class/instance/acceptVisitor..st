@@ -1,0 +1,3 @@
+generated
+acceptVisitor: aRootSourceSolVisitor
+	^ aRootSourceSolVisitor visitUserDefinedTypeName: self

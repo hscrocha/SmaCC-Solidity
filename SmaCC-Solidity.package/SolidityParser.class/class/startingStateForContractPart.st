@@ -1,0 +1,3 @@
+generated
+startingStateForContractPart
+	^ 3

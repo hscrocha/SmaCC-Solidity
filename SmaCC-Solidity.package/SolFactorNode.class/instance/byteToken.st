@@ -1,0 +1,3 @@
+generated
+byteToken
+	^ byteToken

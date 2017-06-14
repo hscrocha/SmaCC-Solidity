@@ -1,0 +1,26 @@
+{
+	"instance" : {
+		"compositeTokenVariables" : "Henrique 6/9/2017 11:32",
+		"leftBraceToken:" : "Henrique 6/9/2017 11:23",
+		"contract_id" : "Henrique 6/12/2017 15:32",
+		"initialize" : "Henrique 6/12/2017 15:32",
+		"isToken:" : "Henrique 6/9/2017 11:23",
+		"commaTokens" : "Henrique 6/9/2017 11:23",
+		"commaTokens:" : "Henrique 6/9/2017 11:23",
+		"contract_sources:" : "Henrique 6/12/2017 15:32",
+		"rightBraceToken" : "Henrique 6/9/2017 11:23",
+		"compositeNodeVariables" : "Henrique 6/12/2017 15:32",
+		"leftBraceToken" : "Henrique 6/9/2017 11:23",
+		"rightBraceToken:" : "Henrique 6/9/2017 11:23",
+		"tokenVariables" : "Henrique 6/12/2017 15:32",
+		"contract_or_lib_type:" : "Henrique 6/12/2017 15:32",
+		"contract_id:" : "Henrique 6/12/2017 15:32",
+		"contract_or_lib_type" : "Henrique 6/12/2017 15:32",
+		"inheritances" : "Henrique 6/9/2017 11:23",
+		"contract_sources" : "Henrique 6/12/2017 15:32",
+		"isToken" : "Henrique 6/9/2017 11:23",
+		"acceptVisitor:" : "Henrique 6/12/2017 15:32",
+		"inheritances:" : "Henrique 6/9/2017 11:32"
+	},
+	"class" : { }
+}

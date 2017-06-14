@@ -1,0 +1,3 @@
+generated
+semicomma_statement
+	^ semicomma_statement

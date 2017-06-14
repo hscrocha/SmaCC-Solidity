@@ -1,0 +1,3 @@
+generated
+visitAssemblyLocalBinding: anAssemblyLocalBinding
+	^ self visitRootSourceSol: anAssemblyLocalBinding

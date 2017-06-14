@@ -1,0 +1,3 @@
+generated
+stringLiteralTokens: anOrderedCollection
+	stringLiteralTokens := anOrderedCollection

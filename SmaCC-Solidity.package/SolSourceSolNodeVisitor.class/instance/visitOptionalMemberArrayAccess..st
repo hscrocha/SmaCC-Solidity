@@ -1,0 +1,3 @@
+generated
+visitOptionalMemberArrayAccess: anOptionalMemberArrayAccess
+	^ self visitSourceSol: anOptionalMemberArrayAccess

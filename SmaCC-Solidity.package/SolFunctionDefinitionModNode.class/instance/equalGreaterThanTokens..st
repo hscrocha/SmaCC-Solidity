@@ -1,0 +1,3 @@
+generated
+equalGreaterThanTokens: anOrderedCollection
+	equalGreaterThanTokens := anOrderedCollection

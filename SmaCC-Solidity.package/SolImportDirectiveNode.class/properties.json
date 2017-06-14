@@ -1,0 +1,23 @@
+{
+	"commentStamp" : "",
+	"super" : "SolSourceSolNode",
+	"category" : "SmaCC-Solidity",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"importToken",
+		"asTokens",
+		"aliases",
+		"semicolonToken",
+		"all",
+		"fromToken",
+		"leftBraceToken",
+		"commaTokens",
+		"rightBraceToken",
+		"str_source",
+		"component_ids"
+	],
+	"name" : "SolImportDirectiveNode",
+	"type" : "normal"
+}

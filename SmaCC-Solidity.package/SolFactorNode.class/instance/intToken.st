@@ -1,0 +1,3 @@
+generated
+intToken
+	^ intToken

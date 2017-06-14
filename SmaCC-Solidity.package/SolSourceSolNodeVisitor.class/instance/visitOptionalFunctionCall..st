@@ -1,0 +1,3 @@
+generated
+visitOptionalFunctionCall: anOptionalFunctionCall
+	^ self visitSourceSol: anOptionalFunctionCall

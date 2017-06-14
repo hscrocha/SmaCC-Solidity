@@ -1,0 +1,3 @@
+generated
+visitAssemblyAssignment: anAssemblyAssignment
+	^ self visitRootSourceSol: anAssemblyAssignment

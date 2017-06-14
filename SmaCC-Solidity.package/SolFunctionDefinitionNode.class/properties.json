@@ -1,0 +1,20 @@
+{
+	"commentStamp" : "",
+	"super" : "SolSourceSolNode",
+	"category" : "SmaCC-Solidity",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"functionToken",
+		"identifierToken",
+		"returnsToken",
+		"semicolonToken",
+		"block",
+		"modifiers",
+		"param_list",
+		"returned_types"
+	],
+	"name" : "SolFunctionDefinitionNode",
+	"type" : "normal"
+}

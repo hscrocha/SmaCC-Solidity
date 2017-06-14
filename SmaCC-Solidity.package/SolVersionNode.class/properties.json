@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "SolSourceSolNode",
+	"category" : "SmaCC-Solidity",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"numbers",
+		"periodTokens",
+		"version_op"
+	],
+	"name" : "SolVersionNode",
+	"type" : "normal"
+}

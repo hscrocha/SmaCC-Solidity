@@ -1,0 +1,3 @@
+generated
+visitUsingForDeclaration: anUsingForDeclaration
+	^ self visitRootSourceSol: anUsingForDeclaration

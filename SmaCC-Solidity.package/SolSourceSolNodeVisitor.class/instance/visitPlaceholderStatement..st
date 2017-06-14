@@ -1,0 +1,3 @@
+generated
+visitPlaceholderStatement: aPlaceholderStatement
+	^ self visitSourceSol: aPlaceholderStatement

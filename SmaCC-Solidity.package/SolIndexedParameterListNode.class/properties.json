@@ -1,0 +1,18 @@
+{
+	"commentStamp" : "",
+	"super" : "SolSourceSolNode",
+	"category" : "SmaCC-Solidity",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"leftParenToken",
+		"types",
+		"indexedTokens",
+		"identifierTokens",
+		"commaTokens",
+		"rightParenToken"
+	],
+	"name" : "SolIndexedParameterListNode",
+	"type" : "normal"
+}
