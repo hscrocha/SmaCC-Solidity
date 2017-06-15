@@ -1,4 +1,4 @@
-tests
+tests - contract part
 testModifierDefinition
 	self startingOn: SolidityParser startingStateForContractPart  parseTest: 
 'modifier id1 {}'.

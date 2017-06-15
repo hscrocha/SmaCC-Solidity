@@ -1,3 +1,3 @@
 generated
 startingStateForContractPart
-	^ 3
+	^ 2

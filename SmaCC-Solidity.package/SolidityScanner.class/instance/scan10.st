@@ -1,14 +1,16 @@
 generated
 scan10
+	self recordMatch: #(113).
 	self step.
-	currentCharacter == $"
-		ifTrue: [ ^ self recordAndReportMatch: #(111) ].
-	(currentCharacter isDigit
-		or: [ (currentCharacter between: $A and: $F)
-				or: [ currentCharacter between: $a and: $f ] ])
-		ifTrue: [ self step.
-			(currentCharacter isDigit
-				or: [ (currentCharacter between: $A and: $F)
-						or: [ currentCharacter between: $a and: $f ] ])
-				ifTrue: [ ^ self scan10 ] ].
+	currentCharacter == $.
+		ifTrue: [ ^ self scan4 ].
+	currentCharacter == $x
+		ifTrue: [ ^ self scan11 ].
+	(currentCharacter == $$
+		or: [ (currentCharacter between: $0 and: $9)
+				or: [ (currentCharacter between: $A and: $Z)
+						or: [ currentCharacter == $_
+								or: [ (currentCharacter between: $a and: $w)
+										or: [ currentCharacter between: $y and: $z ] ] ] ] ])
+		ifTrue: [ ^ self scan3 ].
 	^ self reportLastMatch

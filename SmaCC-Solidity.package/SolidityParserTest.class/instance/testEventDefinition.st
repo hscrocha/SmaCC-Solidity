@@ -1,4 +1,4 @@
-tests
+tests - contract part
 testEventDefinition
 	self startingOn: SolidityParser startingStateForContractPart  parseTest: 
 'event id1 ();'.

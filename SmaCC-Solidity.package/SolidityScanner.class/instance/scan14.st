@@ -1,16 +1,21 @@
 generated
 scan14
-	self recordMatch: #(112).
+	self recordMatch: #(113).
 	self step.
 	currentCharacter == $.
 		ifTrue: [ ^ self scan4 ].
-	currentCharacter == $x
+	currentCharacter == $2
+		ifTrue: [ ^ self scan18 ].
+	currentCharacter == $6
+		ifTrue: [ ^ self scan20 ].
+	('37' includes: currentCharacter)
+		ifTrue: [ ^ self scan19 ].
+	('048' includes: currentCharacter)
 		ifTrue: [ ^ self scan15 ].
+	currentCharacter isDigit
+		ifTrue: [ ^ self scan17 ].
 	(currentCharacter == $$
-		or: [ (currentCharacter between: $0 and: $9)
-				or: [ (currentCharacter between: $A and: $Z)
-						or: [ currentCharacter == $_
-								or: [ (currentCharacter between: $a and: $w)
-										or: [ currentCharacter between: $y and: $z ] ] ] ] ])
+		or: [ (currentCharacter between: $A and: $Z)
+				or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ])
 		ifTrue: [ ^ self scan3 ].
 	^ self reportLastMatch

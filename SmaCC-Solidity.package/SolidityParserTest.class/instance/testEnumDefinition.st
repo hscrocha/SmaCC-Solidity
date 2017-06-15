@@ -1,4 +1,4 @@
-tests
+tests - contract part
 testEnumDefinition
 	self startingOn: SolidityParser startingStateForContractPart  parseTest: 
 'enum id1 {}'.

@@ -1,26 +1,26 @@
 generated
 scan9X1X1X1X1
-	self recordMatch: #(110).
+	self recordMatch: #(113).
 	self step.
 	currentCharacter == $.
 		ifTrue: [ ^ self scan4 ].
 	currentCharacter == $o
-		ifTrue: [ self recordMatch: #(110).
+		ifTrue: [ self recordMatch: #(113).
 			self step.
 			currentCharacter == $.
 				ifTrue: [ ^ self scan4 ].
 			currentCharacter == $n
-				ifTrue: [ self recordMatch: #(110).
+				ifTrue: [ self recordMatch: #(113).
 					self step.
 					currentCharacter == $(
-						ifTrue: [ ^ self scan12 ].
+						ifTrue: [ ^ self scan29 ].
 					currentCharacter == $.
 						ifTrue: [ ^ self scan4 ].
 					(currentCharacter isSeparator
 						or: [ currentCharacter == Character pageUp ])
 						ifTrue: [ [ self step.
 							currentCharacter == $(
-								ifTrue: [ ^ self scan12 ].
+								ifTrue: [ ^ self scan29 ].
 							currentCharacter isSeparator
 								or: [ currentCharacter == Character pageUp ] ] whileTrue.
 							^ self reportLastMatch ].

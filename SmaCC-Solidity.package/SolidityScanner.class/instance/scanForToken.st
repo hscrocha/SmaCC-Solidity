@@ -12,10 +12,12 @@ scanForToken
 	currentCharacter == $&
 		ifTrue:
 			[ ^ self scanForTokenX13 ].
+	currentCharacter == $'
+		ifTrue: [ ^ self scan5 ].
 	currentCharacter == $(
-		ifTrue: [ ^ self recordAndReportMatch: #(52) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(19) ].
 	currentCharacter == $)
-		ifTrue: [ ^ self recordAndReportMatch: #(91) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(83) ].
 	currentCharacter == $*
 		ifTrue:
 			[ ^ self scanForTokenX12 ].

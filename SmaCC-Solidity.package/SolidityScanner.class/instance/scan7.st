@@ -1,16 +1,19 @@
 generated
 scan7
-	self recordMatch: #(112).
-	self step.
-	currentCharacter == $.
-		ifTrue: [ ^ self scan4 ].
-	currentCharacter == $i
-		ifTrue: [ ^ self scan8 ].
-	(currentCharacter == $$
+	[ self step.
+	currentCharacter == $:
+		ifTrue: [ ^ self recordAndReportMatch: #(115) ].
+	(currentCharacter isSeparator
+		or: [ currentCharacter == Character pageUp ])
+		ifTrue: [ [ self step.
+			currentCharacter == $:
+				ifTrue: [ ^ self recordAndReportMatch: #(115) ].
+			currentCharacter isSeparator
+				or: [ currentCharacter == Character pageUp ] ] whileTrue.
+			^ self reportLastMatch ].
+	currentCharacter == $$
 		or: [ (currentCharacter between: $0 and: $9)
 				or: [ (currentCharacter between: $A and: $Z)
-						or: [ currentCharacter == $_
-								or: [ (currentCharacter between: $a and: $h)
-										or: [ currentCharacter between: $j and: $z ] ] ] ] ])
-		ifTrue: [ ^ self scan3 ].
+						or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ] ] ]
+		whileTrue.
 	^ self reportLastMatch

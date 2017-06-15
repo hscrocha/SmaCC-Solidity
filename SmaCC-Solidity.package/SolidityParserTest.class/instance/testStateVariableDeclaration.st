@@ -1,4 +1,4 @@
-tests
+tests - contract part
 testStateVariableDeclaration
 	self startingOn: SolidityParser startingStateForContractPart  parseTest: 
 'int private key;'.

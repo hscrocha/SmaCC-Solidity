@@ -1,21 +1,21 @@
 generated
 scanForTokenX1
-	self recordMatch: #(112).
+	self recordMatch: #(113).
 	self step.
 	currentCharacter == $.
 		ifTrue: [ ^ self scan4 ].
 	currentCharacter == $e
-		ifTrue: [ self recordMatch: #(112).
+		ifTrue: [ self recordMatch: #(113).
 			self step.
 			currentCharacter == $.
 				ifTrue: [ ^ self scan4 ].
 			currentCharacter == $x
-				ifTrue: [ self recordMatch: #(112).
+				ifTrue: [ self recordMatch: #(113).
 					self step.
 					currentCharacter == $"
-						ifTrue: [ ^ self scan10 ].
+						ifTrue: [ ^ self scan30 ].
 					currentCharacter == $'
-						ifTrue: [ ^ self scan11 ].
+						ifTrue: [ ^ self scan31 ].
 					currentCharacter == $.
 						ifTrue: [ ^ self scan4 ].
 					(currentCharacter == $$

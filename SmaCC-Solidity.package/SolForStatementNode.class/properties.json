@@ -12,7 +12,8 @@
 		"semicolonTokens",
 		"rightParenToken",
 		"statement",
-		"exps"
+		"exp",
+		"increment_list"
 	],
 	"name" : "SolForStatementNode",
 	"type" : "normal"

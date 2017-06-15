@@ -1,4 +1,4 @@
-tests
+tests - contract part
 testStateVariableDeclarationConstant
 	self startingOn: SolidityParser startingStateForContractPart  parseTest: 
 'int constant ZERO = 0;'.

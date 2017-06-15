@@ -1,6 +1,6 @@
 generated
 scanForTokenX4
-	self recordMatch: #(31).
+	self recordMatch: #(32).
 	self step.
 	(currentCharacter isSeparator
 		or: [ currentCharacter == Character pageUp ])
@@ -10,5 +10,5 @@ scanForTokenX4
 	(currentCharacter == $$
 		or: [ (currentCharacter between: $A and: $Z)
 				or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ])
-		ifTrue: [ ^ self scan5 ].
+		ifTrue: [ ^ self scan7 ].
 	^ self reportLastMatch

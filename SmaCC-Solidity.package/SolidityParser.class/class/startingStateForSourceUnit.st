@@ -1,3 +1,0 @@
-generated
-startingStateForSourceUnit
-	^ 1

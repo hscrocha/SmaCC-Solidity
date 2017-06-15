@@ -1,4 +1,4 @@
-tests
+tests - contract part
 testStructDefinition
 	self startingOn: SolidityParser startingStateForContractPart  parseTest: 
 'struct PlayerCharacter{
