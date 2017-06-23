@@ -2,7 +2,7 @@ generated-reduction actions
 reduceActionForContractDefinition1: nodes
 	| result |
 	result := SolContractDefinitionNode new.
-	result contract_or_lib_type: (nodes at: 1).
+	result definition_type: (nodes at: 1).
 	result contract_id: (nodes at: 2).
 	result isToken: ((nodes at: 3) at: 1).
 	result addNodes: ((nodes at: 3) at: 2) to: result inheritances.

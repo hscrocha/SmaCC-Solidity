@@ -1,13 +1,13 @@
 generated
 scan9
-	self recordMatch: #(113).
+	self recordMatch: #(114).
 	self step.
 	currentCharacter == $.
 		ifTrue: [ ^ self scan4 ].
 	currentCharacter == $i
 		ifTrue: [ ^ self scan10 ].
 	currentCharacter == $u
-		ifTrue: [ self recordMatch: #(113).
+		ifTrue: [ self recordMatch: #(114).
 			self step.
 			currentCharacter == $.
 				ifTrue: [ ^ self scan4 ].

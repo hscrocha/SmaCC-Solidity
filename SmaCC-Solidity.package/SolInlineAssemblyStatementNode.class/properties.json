@@ -7,7 +7,8 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"assemblyToken",
-		"asm_block"
+		"asm_block",
+		"stringliteralToken"
 	],
 	"name" : "SolInlineAssemblyStatementNode",
 	"type" : "normal"

@@ -45,14 +45,15 @@
 		"visitInlineAssemblyStatement:" : "Henrique 6/12/2017 15:32",
 		"visitReturn:" : "Henrique 6/12/2017 15:32",
 		"visitElementaryTypeName:" : "Henrique 6/12/2017 15:32",
+		"visitAssemblyLabel:" : "Henrique 6/19/2017 17:27",
 		"visitIdentifierList:" : "Henrique 6/12/2017 15:32",
 		"visitOptionalMemberArrayAccess:" : "Henrique 6/12/2017 15:32",
 		"visitMappingTypeName:" : "Henrique 6/12/2017 15:32",
 		"visitUsingForDeclaration:" : "Henrique 6/12/2017 15:32",
 		"visitVersion:" : "Henrique 6/12/2017 15:32",
+		"visitConstantDeclaration:" : "Henrique 6/12/2017 15:32",
 		"visitFunctionCallArguments:" : "Henrique 6/12/2017 15:38",
 		"visitArrayTypeName:" : "Henrique 6/12/2017 15:32",
-		"visitConstantDeclaration:" : "Henrique 6/12/2017 15:32",
 		"visitPlaceholderStatement:" : "Henrique 6/12/2017 15:32"
 	},
 	"class" : { }

@@ -1,6 +1,6 @@
 generated
 scanForTokenX4
-	self recordMatch: #(32).
+	self recordMatch: #(36).
 	self step.
 	(currentCharacter isSeparator
 		or: [ currentCharacter == Character pageUp ])

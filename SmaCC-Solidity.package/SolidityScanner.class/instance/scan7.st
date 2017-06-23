@@ -2,12 +2,12 @@ generated
 scan7
 	[ self step.
 	currentCharacter == $:
-		ifTrue: [ ^ self recordAndReportMatch: #(115) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(116) ].
 	(currentCharacter isSeparator
 		or: [ currentCharacter == Character pageUp ])
 		ifTrue: [ [ self step.
 			currentCharacter == $:
-				ifTrue: [ ^ self recordAndReportMatch: #(115) ].
+				ifTrue: [ ^ self recordAndReportMatch: #(116) ].
 			currentCharacter isSeparator
 				or: [ currentCharacter == Character pageUp ] ] whileTrue.
 			^ self reportLastMatch ].

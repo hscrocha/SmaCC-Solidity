@@ -11,9 +11,9 @@
 		"commaTokens",
 		"leftBraceToken",
 		"rightBraceToken",
-		"contract_or_lib_type",
 		"contract_id",
-		"contract_sources"
+		"contract_sources",
+		"definition_type"
 	],
 	"name" : "SolContractDefinitionNode",
 	"type" : "normal"
