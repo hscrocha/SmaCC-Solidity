@@ -1,0 +1,3 @@
+generated
+startingStateForFactor
+	^ 5
