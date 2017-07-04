@@ -11,12 +11,12 @@
 		"aliases",
 		"semicolonToken",
 		"all",
-		"fromToken",
 		"leftBraceToken",
 		"commaTokens",
 		"rightBraceToken",
 		"str_source",
-		"component_ids"
+		"component_ids",
+		"fromToken"
 	],
 	"name" : "SolImportDirectiveNode",
 	"type" : "normal"

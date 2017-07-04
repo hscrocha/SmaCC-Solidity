@@ -1,5 +1,5 @@
 parsing
 parseExpressionTest: str
-	((SolidityParser on: (ReadStream on: str)) setStartingState: SolidityParser startingStateForExpression) parse.
-
+	self startingOn: (SolidityParser startingStateForExpression) parseTest: str. 
+	"((SolidityParser on: (ReadStream on: str)) setStartingState: SolidityParser startingStateForExpression) parse."
 	
