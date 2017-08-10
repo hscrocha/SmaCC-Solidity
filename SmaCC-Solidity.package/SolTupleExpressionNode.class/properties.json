@@ -1,0 +1,18 @@
+{
+	"commentStamp" : "",
+	"super" : "SolRootSourceSolNode",
+	"category" : "SmaCC-Solidity",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"leftBracketToken",
+		"exps",
+		"commaTokens",
+		"rightBracketToken",
+		"leftParenToken",
+		"rightParenToken"
+	],
+	"name" : "SolTupleExpressionNode",
+	"type" : "normal"
+}

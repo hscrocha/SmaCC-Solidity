@@ -1,5 +1,7 @@
 generated-initialize-release
 initialize
 	super initialize.
-	comma_id_twopointses := OrderedCollection new: 2.
-	star_exps := OrderedCollection new: 2.
+	ids := OrderedCollection new: 2.
+	colonTokens := OrderedCollection new: 2.
+	exps := OrderedCollection new: 2.
+	commaTokens := OrderedCollection new: 2.

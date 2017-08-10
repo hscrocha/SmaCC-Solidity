@@ -1,3 +1,3 @@
 generated
 tokenVariables
-	^ #(#fallbackToken #semicolonToken)
+	^ #(#functionToken #leftParenToken #rightParenToken #semicolonToken)

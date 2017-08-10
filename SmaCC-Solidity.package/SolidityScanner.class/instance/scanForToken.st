@@ -3,31 +3,30 @@ scanForToken
 	self step.
 	currentCharacter == $!
 		ifTrue:
-			[ ^ self scanForTokenX18 ].
+			[ ^ self scanForTokenX17 ].
 	currentCharacter == $"
 		ifTrue: [ ^ self scan1 ].
 	currentCharacter == $%
 		ifTrue:
-			[ ^ self scanForTokenX17 ].
+			[ ^ self scanForTokenX16 ].
 	currentCharacter == $&
 		ifTrue:
-			[ ^ self scanForTokenX13 ].
+			[ ^ self scanForTokenX12 ].
 	currentCharacter == $'
 		ifTrue: [ ^ self scan5 ].
 	currentCharacter == $(
-		ifTrue: [ ^ self recordAndReportMatch: #(23) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(18) ].
 	currentCharacter == $)
-		ifTrue: [ ^ self recordAndReportMatch: #(88) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(33) ].
 	currentCharacter == $*
 		ifTrue:
-			[ ^ self scanForTokenX12 ].
+			[ ^ self scanForTokenX11 ].
 	currentCharacter == $+
 		ifTrue:
-			[ ^ self scanForTokenX11 ].
+			[ ^ self scanForTokenX10 ].
 	currentCharacter == $,
-		ifTrue:
-			[ ^ self scanForTokenX4 ].
+		ifTrue: [ ^ self recordAndReportMatch: #(31) ].
 	currentCharacter == $-
 		ifTrue:
-			[ ^ self scanForTokenX10 ].
-	^ self scanForTokenX21
+			[ ^ self scanForTokenX9 ].
+	^ self scanForTokenX20

@@ -7,12 +7,7 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"term",
-		"exps",
 		"postfix_op",
-		"leftParenToken",
-		"tuple_exp",
-		"commaTokens",
-		"rightParenToken",
 		"prefix_op",
 		"lhs_exp",
 		"exponent_op",
@@ -32,7 +27,11 @@
 		"if_true_exp",
 		"two_points_separator",
 		"if_false_exp",
-		"assign_op"
+		"assign_op",
+		"exp",
+		"leftParenToken",
+		"rightParenToken",
+		"follow_exp"
 	],
 	"name" : "SolExpressionNode",
 	"type" : "normal"

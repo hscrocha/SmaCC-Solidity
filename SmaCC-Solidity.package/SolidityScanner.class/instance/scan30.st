@@ -2,7 +2,7 @@ generated
 scan30
 	self step.
 	currentCharacter == $"
-		ifTrue: [ ^ self recordAndReportMatch: #(109) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(110) ].
 	(currentCharacter isDigit
 		or: [ (currentCharacter between: $A and: $F)
 				or: [ currentCharacter between: $a and: $f ] ])

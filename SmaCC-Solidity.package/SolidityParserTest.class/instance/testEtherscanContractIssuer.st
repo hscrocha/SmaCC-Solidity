@@ -1,4 +1,4 @@
-tests - contracts
+tests - etherscan contracts
 testEtherscanContractIssuer
 	"Example contracts found in the Etherscan <https://etherscan.io/contractsVerified>. 
 	Contract name: Issuer.

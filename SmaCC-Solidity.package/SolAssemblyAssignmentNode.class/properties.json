@@ -7,9 +7,10 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"equalColonToken",
-		"identifierToken",
 		"colonEqualToken",
-		"functional_asm_exp"
+		"functional_asm_exp",
+		"identifierTokens",
+		"asm_value"
 	],
 	"name" : "SolAssemblyAssignmentNode",
 	"type" : "normal"

@@ -4,11 +4,11 @@ scan18
 	self step.
 	currentCharacter == $.
 		ifTrue: [ ^ self scan4 ].
-	('08' includes: currentCharacter)
-		ifTrue: [ ^ self scan16 ].
+	currentCharacter == $2
+		ifTrue: [ ^ self scan17 ].
 	(currentCharacter == $$
-		or: [ (currentCharacter between: $1 and: $7)
-				or: [ currentCharacter == $9
+		or: [ (currentCharacter between: $0 and: $1)
+				or: [ (currentCharacter between: $3 and: $9)
 						or: [ (currentCharacter between: $A and: $Z)
 								or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ] ] ])
 		ifTrue: [ ^ self scan3 ].

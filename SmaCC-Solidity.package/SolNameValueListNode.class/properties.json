@@ -6,11 +6,10 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"id",
-		"colonToken",
-		"exp",
-		"comma_id_twopointses",
-		"star_exps"
+		"ids",
+		"colonTokens",
+		"exps",
+		"commaTokens"
 	],
 	"name" : "SolNameValueListNode",
 	"type" : "normal"

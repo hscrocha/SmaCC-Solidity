@@ -1,3 +1,3 @@
 generated
 compositeNodeVariables
-	^ #(#star_exps #source_units)
+	^ #(#exps #source_units)
