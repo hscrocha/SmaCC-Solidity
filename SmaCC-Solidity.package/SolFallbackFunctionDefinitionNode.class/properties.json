@@ -6,10 +6,12 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"fallbackToken",
 		"modifiers",
 		"semicolonToken",
-		"block"
+		"block",
+		"functionToken",
+		"leftParenToken",
+		"rightParenToken"
 	],
 	"name" : "SolFallbackFunctionDefinitionNode",
 	"type" : "normal"

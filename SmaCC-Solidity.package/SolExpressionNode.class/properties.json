@@ -32,7 +32,9 @@
 		"if_true_exp",
 		"two_points_separator",
 		"if_false_exp",
-		"assign_op"
+		"assign_op",
+		"periodToken",
+		"nested_term"
 	],
 	"name" : "SolExpressionNode",
 	"type" : "normal"

@@ -1,6 +1,6 @@
 generated
 scanForTokenX3
-	self recordMatch: #(65 114).
+	self recordMatch: #(65 113).
 	self step.
 	currentCharacter == $.
 		ifTrue: [ ^ self scan4 ].

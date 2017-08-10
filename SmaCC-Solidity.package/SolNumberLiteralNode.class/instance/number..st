@@ -1,3 +1,3 @@
 generated
-number: aSmaCCToken
-	number := aSmaCCToken
+number: anObject
+	number := anObject
