@@ -1,0 +1,20 @@
+{
+	"commentStamp" : "",
+	"super" : "SolRootSourceSolNode",
+	"category" : "SmaCC-Solidity",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"leftBracketToken",
+		"array_access_exp",
+		"rightBracketToken",
+		"periodToken",
+		"nested_term",
+		"leftParenToken",
+		"exp",
+		"rightParenToken"
+	],
+	"name" : "SolParenthesisExpressionFollowupNode",
+	"type" : "normal"
+}

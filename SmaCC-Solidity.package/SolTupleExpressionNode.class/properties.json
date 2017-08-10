@@ -9,7 +9,9 @@
 		"leftBracketToken",
 		"exps",
 		"commaTokens",
-		"rightBracketToken"
+		"rightBracketToken",
+		"leftParenToken",
+		"rightParenToken"
 	],
 	"name" : "SolTupleExpressionNode",
 	"type" : "normal"

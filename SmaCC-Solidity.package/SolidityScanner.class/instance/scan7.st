@@ -5,6 +5,6 @@ scan7
 		ifTrue: [ [ self step.
 			currentCharacter == $* ] whileTrue.
 			currentCharacter == $/
-				ifTrue: [ ^ self recordAndReportMatch: #(116) ].
+				ifTrue: [ ^ self recordAndReportMatch: #(117) ].
 			^ self scan7 ].
 	true ] whileTrue

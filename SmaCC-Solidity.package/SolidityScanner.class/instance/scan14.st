@@ -1,15 +1,12 @@
 generated
 scan14
-	self recordMatch: #(113).
+	self recordMatch: #(112 114).
 	self step.
 	currentCharacter == $.
 		ifTrue: [ ^ self scan4 ].
-	currentCharacter == $4
-		ifTrue: [ ^ self scan15 ].
-	(currentCharacter == $$
-		or: [ (currentCharacter between: $0 and: $3)
-				or: [ (currentCharacter between: $5 and: $9)
-						or: [ (currentCharacter between: $A and: $Z)
-								or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ] ] ])
-		ifTrue: [ ^ self scan3 ].
-	^ self reportLastMatch
+	currentCharacter == $0
+		ifTrue:
+			[ ^ self scan14X5 ].
+	currentCharacter == $1
+		ifTrue: [ ^ self scan22 ].
+	^ self scan14X7

@@ -1,22 +1,24 @@
 generated
 scan46X1X1
-	self recordMatch: #(113).
+	self recordMatch: #(114).
 	self step.
 	currentCharacter == $.
 		ifTrue: [ ^ self scan4 ].
-	currentCharacter == $0
-		ifTrue: [ ^ self scan40 ].
 	currentCharacter == $1
-		ifTrue: [ ^ self scan41 ].
-	currentCharacter == $2
-		ifTrue: [ ^ self scan37 ].
-	currentCharacter == $3
-		ifTrue: [ ^ self scan39 ].
+		ifTrue:
+			[ ^ self scan46X1X1X1 ].
 	currentCharacter == $4
-		ifTrue: [ ^ self scan47 ].
-	(currentCharacter == $$
-		or: [ (currentCharacter between: $5 and: $9)
-				or: [ (currentCharacter between: $A and: $Z)
-						or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ] ])
+		ifTrue: [ ^ self scan42 ].
+	currentCharacter == $8
+		ifTrue: [ ^ self scan44 ].
+	('26' includes: currentCharacter)
+		ifTrue: [ ^ self scan39 ].
+	('37' includes: currentCharacter)
+		ifTrue: [ ^ self scan41 ].
+	('59' includes: currentCharacter)
+		ifTrue: [ ^ self scan43 ].
+	(('$0' includes: currentCharacter)
+		or: [ (currentCharacter between: $A and: $Z)
+				or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ])
 		ifTrue: [ ^ self scan3 ].
 	^ self reportLastMatch

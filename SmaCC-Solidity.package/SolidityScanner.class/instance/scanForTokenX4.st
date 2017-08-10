@@ -2,6 +2,8 @@ generated
 scanForTokenX4
 	self recordMatch: #(107).
 	self step.
+	currentCharacter == $.
+		ifTrue: [ ^ self scan8 ].
 	currentCharacter == $x
 		ifTrue: [ self step.
 			(currentCharacter isDigit
@@ -14,7 +16,5 @@ scanForTokenX4
 								or: [ currentCharacter between: $a and: $f ] ] ] whileTrue ].
 			^ self reportLastMatch ].
 	currentCharacter isDigit
-		ifTrue: [ [ self recordMatch: #(107).
-			self step.
-			currentCharacter isDigit ] whileTrue ].
+		ifTrue: [ ^ self scan9 ].
 	^ self reportLastMatch

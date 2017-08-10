@@ -1,3 +1,3 @@
 generated
 tokenVariables
-	^ #(#unit)
+	^ #(#number #unit)

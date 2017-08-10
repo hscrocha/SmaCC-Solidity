@@ -10,6 +10,7 @@ definitionComment
                | ( ['] ( [^'\r\n]  | ([ \\ ] . ) )* ['] ) ;
 <decimalnumber>: [0-9]+ ;
 <hexnumber>: 0x[0-9a-fA-F]+ ;
+<realnumber>: <decimalnumber>? [\.] <decimalnumber> ; #  added to support real numbers (not in the grammar but apear in the contracts)	
 <hexliteral>: hex ( [""] ( [0-9a-fA-F][0-9a-fA-F] )* [""] |  ['] ( [0-9a-fA-F][0-9a-fA-F] )* [']  );
 <booleanliteral> : true | false ;
 <reservedkeywords>: abstract| case| catch| default| final| in| inline| match| null| of| pure| relocatable| static| switch| try| type| typeof| view;
@@ -75,7 +76,7 @@ PragmaDirective
 	: ""pragma"" <identifier> 'id' (Version 'version')* "";"" {{}}
 	;
 Version
-	: ((""^"" | "">="" | "">"" | ""<"" | ""<="" ) 'version_op')? <decimalnumber> 'number' (""."" <decimalnumber> 'number')*  {{}}
+	: ((""^"" | "">="" | "">"" | ""<"" | ""<="" | ""~"" ) 'version_op')?  (<decimalnumber> | <realnumber>) 'number' (""."" (<decimalnumber>|<realnumber>) 'number')*  {{}}
 	;
 ImportDirective 
 	: ""import"" <stringLiteral> 'str_source' (""as"" <identifier> 'alias')? "";"" {{}}
@@ -261,8 +262,9 @@ Expression
 	:  Expression 'exp' (""++"" | ""--"") 'postfix_op' {{}}
 	#| FunctionCall 
 	#| IndexAccess 
-	#| MemberAccess 
-	| ""(""  ( Expression 'exp' | (  Expression 'tuple_exp' ("","" (Expression 'tuple_exp')? )+ )  |  ("","" (Expression 'tuple_exp')?)+ )   "")""  (""."" TermExpression 'nested_term' )? {{}} 
+	#| MemberAccess
+	| ""("" Expression 'exp' "")"" (ParenthesisExpressionFollowup 'follow_exp')?  {{}}
+	#| ""(""  ( Expression 'exp' | (  Expression 'tuple_exp' ("","" (Expression 'tuple_exp')? )+ )  |  ("","" (Expression 'tuple_exp')?)+ )   "")""  (""."" TermExpression 'nested_term' )? {{}} 
 	| (""!"" | ""~"" | ""delete"" | ""++"" | ""--"" | ""+"" | ""-"") 'prefix_op' Expression 'exp' {{}}
 	| Expression 'lhs_exp' ""**"" 'exponent_op' Expression 'rhs_exp' {{}}
 	| Expression 'lhs_exp' (""*"" | ""/"" | ""%"") 'mult_op' Expression 'rhs_exp' {{}}
@@ -278,15 +280,19 @@ Expression
 	| Expression 'test_exp' ""?"" 'ternary_op' Expression 'if_true_exp' "":"" 'two_points_separator' Expression 'if_false_exp' {{}}
 	| Expression 'lhs_exp' (""="" | ""|="" | ""^="" | ""&="" | ""<<="" | "">>="" | ""+="" | ""-="" | ""*="" | ""/="" | ""%="") 'assign_op' Expression 'rhs_exp' {{}} 
 	| TupleExpression
-	#| Expression? ("","" Expression)
-	#| PrimaryExpression
-	#| Factor OptionalMemberArrayAccess ( OptionalFunctionCall | OptionalVariableDeclaration)? {{}}
+	#| PrimaryExpression # PrimaryExpression was converted into the Factor rule which is called by the TermExpression rule bellow
 	| TermExpression 'term' {{}}
 	;
 # New Rule to resolve conflicts with several rules starting with the same tokens. This groups all the possible combinations between member access, array access, and function calls (and nested calls, arrays and member access).
 TermExpression
 	: Factor 'factor' OptionalMemberArrayAccess 'opt_access' ( OptionalFunctionCall 'opt_func_call' | OptionalVariableDeclaration 'opt_var_dec')? (  (""."" TermExpression 'nested_term') | ( OptionalFunctionCall 'nested_func_call' (TermExpression 'nested_term')? )  |  (  ""["" Expression 'array_access_exp' ""]"" (TermExpression 'nested_term')? )  )? {{}}
 	;
+# New rule to handle casting (exp) (exp) -- and nesting on expressions e.g.: (exp).func(exp); (exp)[index]
+ParenthesisExpressionFollowup
+	: ""["" Expression 'array_access_exp' ""]""  {{}}
+	| ""."" TermExpression 'nested_term' {{}}
+	| ""("" Expression 'exp' "")"" {{}} 
+	; 	
 # New Rule to resolve conflicts with several rules starting with the same tokens
 Factor
 	: <identifier>
@@ -362,12 +368,8 @@ FunctionCallArguments
 #	: ""true"" 
 #	| ""false""
 #	;
-# New rule added to support real numbers (not in the grammar but apear in the contracts)	
-RealNumberLiteral
-	:  <decimalnumber> ""."" <decimalnumber> {{}}
-	;
 NumberLiteral 
-	: ( RealNumberLiteral | <hexnumber> | <decimalnumber> ) 'number' (NumberUnit 'unit')? {{}}
+	: ( <realnumber> | <hexnumber> | <decimalnumber> ) 'number' (NumberUnit 'unit')? {{}}
 	;
 NumberUnit 
 	: ""wei"" 
@@ -383,9 +385,11 @@ NumberUnit
 	;
 	
 TupleExpression 
-	: ""["" ( Expression 'exp' ( "","" Expression 'exp' )*  )? ""]"" {{}}	
- 	# |'(' ( Expression ( ',' Expression )*  )? ')' #Fused with expression
-          ; 
+	: ""["" ( Expression 'exp' ( "","" (Expression 'exp')?  )*  )? ""]"" {{}}	
+ 	| ""("" ( Expression 'exp' ( "","" (Expression 'exp')?  )*  )? "")"" {{}} 
+	| ""["" ("","" (Expression 'exp')? )+ ""]"" {{}}
+	| ""("" ("","" (Expression 'exp')? )+ "")"" {{}}
+         ; 
 	
 # Removed this rule because it served no purpose. Also the AST is better without it.
 #ElementaryTypeNameExpression

@@ -4,12 +4,12 @@ scanForTokenX19
 		ifTrue:
 			[ ^ self scanForTokenX3 ].
 	currentCharacter == $f
-		ifTrue: [ ^ self scan8 ].
+		ifTrue: [ ^ self scan10 ].
 	currentCharacter == $h
 		ifTrue:
 			[ ^ self scanForTokenX1 ].
 	currentCharacter == $u
-		ifTrue: [ ^ self scan30 ].
+		ifTrue: [ ^ self scan32 ].
 	currentCharacter == ${
 		ifTrue: [ ^ self recordAndReportMatch: #(52) ].
 	currentCharacter == $|
@@ -20,8 +20,7 @@ scanForTokenX19
 	currentCharacter == $~
 		ifTrue: [ ^ self recordAndReportMatch: #(22) ].
 	currentCharacter isDigit
-		ifTrue:
-			[ ^ self scanForTokenX18 ].
+		ifTrue: [ ^ self scan9 ].
 	(currentCharacter isSeparator
 		or: [ currentCharacter == Character pageUp ])
 		ifTrue:

@@ -8,10 +8,10 @@
 	"instvars" : [
 		"factor",
 		"periodToken",
+		"nested_term",
+		"opt_var_dec",
 		"opt_access",
 		"opt_func_call",
-		"opt_var_dec",
-		"nested_term",
 		"nested_func_call",
 		"leftBracketToken",
 		"array_access_exp",

@@ -1,7 +1,8 @@
 generated
 scanForTokenX20
 	currentCharacter == $.
-		ifTrue: [ ^ self recordAndReportMatch: #(39) ].
+		ifTrue:
+			[ ^ self scanForTokenX18 ].
 	currentCharacter == $/
 		ifTrue:
 			[ ^ self scanForTokenX2 ].

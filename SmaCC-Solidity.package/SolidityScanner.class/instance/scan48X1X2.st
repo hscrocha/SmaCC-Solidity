@@ -1,30 +1,24 @@
 generated
 scan48X1X2
-	self recordMatch: #(113).
-	self step.
 	currentCharacter == $.
 		ifTrue: [ ^ self scan4 ].
-	currentCharacter == $x
-		ifTrue: [ self recordMatch: #(113).
-			self step.
-			currentCharacter == $.
-				ifTrue: [ ^ self scan4 ].
-			currentCharacter == $1
-				ifTrue: [ ^ self scan41 ].
-			currentCharacter == $8
-				ifTrue: [ ^ self scan38 ].
-			(('$0' includes: currentCharacter)
-				or: [ (currentCharacter between: $2 and: $7)
-						or: [ currentCharacter == $9
-								or: [ (currentCharacter between: $A and: $Z)
-										or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ] ] ])
-				ifTrue: [ ^ self scan3 ].
-			^ self reportLastMatch ].
-	(currentCharacter == $$
-		or: [ (currentCharacter between: $0 and: $9)
-				or: [ (currentCharacter between: $A and: $Z)
-						or: [ currentCharacter == $_
-								or: [ (currentCharacter between: $a and: $w)
-										or: [ currentCharacter between: $y and: $z ] ] ] ] ])
+	currentCharacter == $1
+		ifTrue: [ ^ self scan38 ].
+	currentCharacter == $2
+		ifTrue:
+			[ ^ self scan48X1X1 ].
+	currentCharacter == $4
+		ifTrue: [ ^ self scan42 ].
+	currentCharacter == $6
+		ifTrue: [ ^ self scan39 ].
+	currentCharacter == $8
+		ifTrue: [ ^ self scan44 ].
+	('37' includes: currentCharacter)
+		ifTrue: [ ^ self scan41 ].
+	('59' includes: currentCharacter)
+		ifTrue: [ ^ self scan43 ].
+	(('$0' includes: currentCharacter)
+		or: [ (currentCharacter between: $A and: $Z)
+				or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ])
 		ifTrue: [ ^ self scan3 ].
 	^ self reportLastMatch
