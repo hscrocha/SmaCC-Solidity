@@ -1,3 +1,3 @@
 generated
 compositeNodeVariables
-	^ #(#inheritances #contract_sources #source_units)
+	^ #(#inheritances #contract_sources #sourceunits)

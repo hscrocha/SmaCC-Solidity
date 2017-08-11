@@ -63,7 +63,7 @@ definitionComment
 
 ### Parser & AST Definition
 RootSourceSol 
-	: ( SourceUnit 'source_unit')* {{}}
+	: ( SourceUnit 'sourceunit')* {{}}
 	;
 SourceUnit
 	: PragmaDirective
@@ -125,7 +125,6 @@ FunctionDefinition
 	: ""function"" <identifier> ParameterList 'param_list' 
                      ( FunctionDefinitionMod 'modifier' )*
                      ( ""returns"" ParameterList 'returned_types' )? ("";"" | Block 'block' ) {{}}
-         #| <fallback> ( FunctionDefinitionMod 'modifier' )* ("";"" | Block 'block' ) {{FallbackFunctionDefinition}} 
 	| ""function"" ""("" "")""  ( FunctionDefinitionMod 'modifier' )* ("";"" | Block 'block' ) {{FallbackFunctionDefinition}} 
 	;
 #FunctionDefinition 

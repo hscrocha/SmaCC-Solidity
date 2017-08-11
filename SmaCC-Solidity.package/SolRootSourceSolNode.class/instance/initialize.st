@@ -1,4 +1,4 @@
 generated-initialize-release
 initialize
 	super initialize.
-	source_units := OrderedCollection new: 2.
+	sourceunits := OrderedCollection new: 2.
