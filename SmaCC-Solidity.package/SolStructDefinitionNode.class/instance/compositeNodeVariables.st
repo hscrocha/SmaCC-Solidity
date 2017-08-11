@@ -1,3 +1,3 @@
 generated
 compositeNodeVariables
-	^ #(#struct_var_decs #source_units)
+	^ #(#struct_var_decs #sourceunits)

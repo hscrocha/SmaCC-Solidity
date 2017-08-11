@@ -1,3 +1,3 @@
 generated
 compositeNodeVariables
-	^ #(#types #source_units)
+	^ #(#types #sourceunits)
