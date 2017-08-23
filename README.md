@@ -1,7 +1,7 @@
 # SmaCC-Solidity
 Pharo SmaCC generated parser for the Solidity grammar.
 
-Not working for now but should be loaded using something like the following: 
+~~Not working for now but should be loaded using something like~~ Load SmaCC-Solidity parser using the following: 
 
 ```
 Metacello new

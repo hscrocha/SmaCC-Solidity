@@ -1,0 +1,3 @@
+generated
+visitModifierInvocation: aModifierInvocation
+	^ self visitRootSourceSol: aModifierInvocation

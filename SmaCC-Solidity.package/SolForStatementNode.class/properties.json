@@ -13,7 +13,7 @@
 		"rightParenToken",
 		"statement",
 		"exp",
-		"increment_list"
+		"exp_list"
 	],
 	"name" : "SolForStatementNode",
 	"type" : "normal"
