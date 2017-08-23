@@ -15,9 +15,9 @@ scanForToken
 	currentCharacter == $'
 		ifTrue: [ ^ self scan5 ].
 	currentCharacter == $(
-		ifTrue: [ ^ self recordAndReportMatch: #(18) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(25) ].
 	currentCharacter == $)
-		ifTrue: [ ^ self recordAndReportMatch: #(33) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(34) ].
 	currentCharacter == $*
 		ifTrue:
 			[ ^ self scanForTokenX11 ].
@@ -25,7 +25,7 @@ scanForToken
 		ifTrue:
 			[ ^ self scanForTokenX10 ].
 	currentCharacter == $,
-		ifTrue: [ ^ self recordAndReportMatch: #(31) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(38) ].
 	currentCharacter == $-
 		ifTrue:
 			[ ^ self scanForTokenX9 ].
