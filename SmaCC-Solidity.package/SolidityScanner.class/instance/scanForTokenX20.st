@@ -28,7 +28,7 @@ scanForTokenX20
 	currentCharacter == $[
 		ifTrue: [ ^ self recordAndReportMatch: #(24) ].
 	currentCharacter == $]
-		ifTrue: [ ^ self recordAndReportMatch: #(99) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(103) ].
 	currentCharacter == $^
 		ifTrue:
 			[ ^ self scanForTokenX14 ].
