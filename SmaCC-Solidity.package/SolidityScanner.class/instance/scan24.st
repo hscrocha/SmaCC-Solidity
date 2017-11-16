@@ -5,10 +5,9 @@ scan24
 	currentCharacter == $.
 		ifTrue: [ ^ self scan4 ].
 	currentCharacter == $0
-		ifTrue: [ ^ self scan17 ].
-	(currentCharacter == $$
-		or: [ (currentCharacter between: $1 and: $9)
-				or: [ (currentCharacter between: $A and: $Z)
-						or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ] ])
-		ifTrue: [ ^ self scan3 ].
-	^ self reportLastMatch
+		ifTrue:
+			[ ^ self scan24X1 ].
+	currentCharacter == $1
+		ifTrue:
+			[ ^ self scan24X10 ].
+	^ self scan24X11

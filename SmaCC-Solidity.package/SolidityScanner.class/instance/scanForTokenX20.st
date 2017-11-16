@@ -8,7 +8,7 @@ scanForTokenX20
 			[ ^ self scanForTokenX2 ].
 	currentCharacter == $0
 		ifTrue:
-			[ ^ self scanForTokenX4 ].
+			[ ^ self scanForTokenX3 ].
 	currentCharacter == $:
 		ifTrue:
 			[ ^ self scanForTokenX15 ].

@@ -4,14 +4,18 @@ scan27X3X1
 	self step.
 	currentCharacter == $.
 		ifTrue: [ ^ self scan4 ].
-	currentCharacter == $x
-		ifTrue:
-			[ ^ self scan27X3X1X1 ].
-	(currentCharacter == $$
-		or: [ (currentCharacter between: $0 and: $9)
-				or: [ (currentCharacter between: $A and: $Z)
-						or: [ currentCharacter == $_
-								or: [ (currentCharacter between: $a and: $w)
-										or: [ currentCharacter between: $y and: $z ] ] ] ] ])
+	currentCharacter == $4
+		ifTrue: [ ^ self scan21 ].
+	currentCharacter == $8
+		ifTrue: [ ^ self scan23 ].
+	('26' includes: currentCharacter)
+		ifTrue: [ ^ self scan18 ].
+	('37' includes: currentCharacter)
+		ifTrue: [ ^ self scan20 ].
+	('159' includes: currentCharacter)
+		ifTrue: [ ^ self scan22 ].
+	(('$0' includes: currentCharacter)
+		or: [ (currentCharacter between: $A and: $Z)
+				or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ])
 		ifTrue: [ ^ self scan3 ].
 	^ self reportLastMatch

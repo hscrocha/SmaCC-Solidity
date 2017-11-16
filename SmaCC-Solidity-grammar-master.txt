@@ -6,9 +6,9 @@
 <uint>: u <int> ;
 <stringLiteral>: ( ["] ( [^"\r\n]  | ([ \\ ] . ) )* ["] ) 
                | ( ['] ( [^'\r\n]  | ([ \\ ] . ) )* ['] ) ;
-<decimalnumber>: [0-9]+ ;
+<decimalnumber>: [0-9]+ ([eE] [0-9]+)?;
 <hexnumber>: 0x[0-9a-fA-F]+ ;
-<realnumber>: <decimalnumber>? [\.] <decimalnumber> ; #  added to support real numbers (not in the grammar but apear in the contracts)	
+<realnumber>: [0-9]* [\.] <decimalnumber> ; #  added to support real numbers (not in the grammar but apear in the contracts)	
 <hexliteral>: hex ( ["] ( [0-9a-fA-F][0-9a-fA-F] )* ["] |  ['] ( [0-9a-fA-F][0-9a-fA-F] )* [']  );
 <booleanliteral> : true | false ;
 <reservedkeywords>: abstract| case| catch| default| final| in| inline| match| null| of| relocatable| static| switch| try| type| typeof;
@@ -162,7 +162,7 @@ VariableDeclaration
 	: TypeName 'type' (StorageLocation 'storage_loc')? <identifier> {{}}
 	;
 TypeName 
-	: ElementaryTypeName 'elementary_type' {{ElementaryTypeName}}
+    : ElementaryTypeName 'elementary_type' {{ElementaryTypeName}}
     | Mapping 'mapping_type' {{MappingTypeName}}
     | TypeName 'type' "[" (Expression 'exp')? "]" {{ArrayTypeName}}
     | FunctionTypeName 'function_type' {{FunctionTypeName}}
@@ -203,7 +203,7 @@ Statement
 	| Block 
 	| InlineAssemblyStatement  
 #	|  ( DoWhileStatement | PlaceholderStatement | Continue | Break | Return | Throw | SimpleStatement ) 'semicomma_statement'  ";" {{}} 
-	|  ( DoWhileStatement | PlaceholderStatement | Continue | Break | Return | Throw | VariableDefinition | Expression ) 'semicomma_statement'  ";" {{}} 
+	|  ( DoWhileStatement | PlaceholderStatement | Continue | Break | Return | Throw | VariableDefinition | Expression )  ";"  {'1' }  #returns the first node (leaving the semicollon behind and not creating another superfluous ast node)
 	;
 # Removed to improve the AST
 #ExpressionStatement 

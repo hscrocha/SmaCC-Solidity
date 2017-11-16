@@ -1,11 +1,11 @@
 generated
 scan44
-	self recordMatch: #(115 116).
+	self recordMatch: #(116).
 	self step.
 	currentCharacter == $.
 		ifTrue: [ ^ self scan4 ].
 	('08' includes: currentCharacter)
-		ifTrue: [ ^ self scan40 ].
+		ifTrue: [ ^ self scan42 ].
 	(currentCharacter == $$
 		or: [ (currentCharacter between: $1 and: $7)
 				or: [ currentCharacter == $9

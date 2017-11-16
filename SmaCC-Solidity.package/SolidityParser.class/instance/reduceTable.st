@@ -51,7 +51,7 @@ reduceTable
 	#(205 1 #reduceActionForElementaryTypeName4:) 
 	#(201 0 #reduceActionFor__TypeName___StorageLocation____identifier_________TypeName___StorageLocation____identifier______1:) 
 	#(232 0 #nil) 
-	#(297 2 #reduceActionForStatement6:) 
+	#(297 2 #reduceActionForElementaryTypeName4:) 
 	#(226 2 #reduceActionForVariableDefinition1:) 
 	#(159 1 #reduceActionFor__Expression_________Expression______2:) 
 	#(296 2 #reduceActionForExpression3:) 

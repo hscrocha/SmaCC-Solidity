@@ -1,7 +1,7 @@
 generated
-then_statement: aSolSourceSolNode
+then_statement: aSmaCCParseNode
 	self then_statement notNil
 		ifTrue: [ self then_statement parent: nil ].
-	then_statement := aSolSourceSolNode.
+	then_statement := aSmaCCParseNode.
 	self then_statement notNil
 		ifTrue: [ self then_statement parent: self ]
