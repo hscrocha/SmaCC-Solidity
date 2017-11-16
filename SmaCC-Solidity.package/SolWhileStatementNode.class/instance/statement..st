@@ -1,7 +1,7 @@
 generated
-statement: aSolSourceSolNode
+statement: aSmaCCParseNode
 	self statement notNil
 		ifTrue: [ self statement parent: nil ].
-	statement := aSolSourceSolNode.
+	statement := aSmaCCParseNode.
 	self statement notNil
 		ifTrue: [ self statement parent: self ]

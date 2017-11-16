@@ -164,7 +164,7 @@ VariableDeclaration
 	: TypeName 'type' (StorageLocation 'storage_loc')? <identifier> {{}}
 	;
 TypeName 
-	: ElementaryTypeName 'elementary_type' {{ElementaryTypeName}}
+    : ElementaryTypeName 'elementary_type' {{ElementaryTypeName}}
     | Mapping 'mapping_type' {{MappingTypeName}}
     | TypeName 'type' ""["" (Expression 'exp')? ""]"" {{ArrayTypeName}}
     | FunctionTypeName 'function_type' {{FunctionTypeName}}
@@ -205,7 +205,7 @@ Statement
 	| Block 
 	| InlineAssemblyStatement  
 #	|  ( DoWhileStatement | PlaceholderStatement | Continue | Break | Return | Throw | SimpleStatement ) 'semicomma_statement'  "";"" {{}} 
-	|  ( DoWhileStatement | PlaceholderStatement | Continue | Break | Return | Throw | VariableDefinition | Expression ) 'semicomma_statement'  "";"" {{}} 
+	|  ( DoWhileStatement | PlaceholderStatement | Continue | Break | Return | Throw | VariableDefinition | Expression )  "";""  {'1' }  #returns the first node (leaving the semicollon behind and not creating another superfluous ast node)
 	;
 # Removed to improve the AST
 #ExpressionStatement 
