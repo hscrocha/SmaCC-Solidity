@@ -13,9 +13,9 @@ scanForTokenX1
 				ifTrue: [ self recordMatch: #(116).
 					self step.
 					currentCharacter == $"
-						ifTrue: [ ^ self scan30 ].
+						ifTrue: [ ^ self scan32 ].
 					currentCharacter == $'
-						ifTrue: [ ^ self scan31 ].
+						ifTrue: [ ^ self scan33 ].
 					currentCharacter == $.
 						ifTrue: [ ^ self scan4 ].
 					(currentCharacter == $$

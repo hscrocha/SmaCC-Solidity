@@ -3,7 +3,7 @@ scanForTokenX2
 	self recordMatch: #(2).
 	self step.
 	currentCharacter == $*
-		ifTrue: [ ^ self scan7 ].
+		ifTrue: [ ^ self scan8 ].
 	currentCharacter == $/
 		ifTrue: [ [ self recordMatch: #(119).
 			self step.

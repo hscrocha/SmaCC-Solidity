@@ -8,9 +8,9 @@ definitionComment
 <uint>: u <int> ;
 <stringLiteral>: ( [""] ( [^""\r\n]  | ([ \\ ] . ) )* [""] ) 
                | ( ['] ( [^'\r\n]  | ([ \\ ] . ) )* ['] ) ;
-<decimalnumber>: [0-9]+ ;
+<decimalnumber>: [0-9]+ ([eE] [0-9]+)?;
 <hexnumber>: 0x[0-9a-fA-F]+ ;
-<realnumber>: <decimalnumber>? [\.] <decimalnumber> ; #  added to support real numbers (not in the grammar but apear in the contracts)	
+<realnumber>: [0-9]* [\.] <decimalnumber> ; #  added to support real numbers (not in the grammar but apear in the contracts)	
 <hexliteral>: hex ( [""] ( [0-9a-fA-F][0-9a-fA-F] )* [""] |  ['] ( [0-9a-fA-F][0-9a-fA-F] )* [']  );
 <booleanliteral> : true | false ;
 <reservedkeywords>: abstract| case| catch| default| final| in| inline| match| null| of| relocatable| static| switch| try| type| typeof;
