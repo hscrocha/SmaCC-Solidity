@@ -1,0 +1,3 @@
+generated
+visitExpressionParenthesis: anExpressionParenthesis
+	^ self visitRootSourceSol: anExpressionParenthesis

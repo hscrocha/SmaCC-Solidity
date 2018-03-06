@@ -1,16 +1,16 @@
 {
 	"commentStamp" : "",
-	"super" : "SolSourceSolNode",
+	"super" : "SolRootSourceSolNode",
 	"category" : "SmaCC-Solidity",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
 		"eventToken",
-		"anonymousToken",
-		"semicolonToken",
 		"event_id",
-		"indexed_param_list"
+		"indexed_param_list",
+		"anonymousToken",
+		"semicolonToken"
 	],
 	"name" : "SolEventDefinitionNode",
 	"type" : "normal"

@@ -1,3 +1,0 @@
-generated
-decimalnumberTokens: anOrderedCollection
-	decimalnumberTokens := anOrderedCollection

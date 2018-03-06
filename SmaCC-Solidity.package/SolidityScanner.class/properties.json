@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "SmaCCScanner",
-	"category" : "SmaCC-Solidity",
+	"category" : "SmaCC-Solidity-ParserAndScanner",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

@@ -1,3 +1,3 @@
 generated
 tokenVariables
-	^ #(#enumToken #identifierToken #leftBraceToken #rightBraceToken)
+	^ #(#enumToken #leftBraceToken #rightBraceToken)

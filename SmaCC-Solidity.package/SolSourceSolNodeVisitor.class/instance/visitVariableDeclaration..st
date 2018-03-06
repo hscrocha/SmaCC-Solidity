@@ -1,3 +1,0 @@
-generated
-visitVariableDeclaration: aVariableDeclaration
-	^ self visitSourceSol: aVariableDeclaration

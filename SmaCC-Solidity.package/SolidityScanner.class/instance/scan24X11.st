@@ -19,7 +19,7 @@ scan24X11
 	currentCharacter == $8
 		ifTrue:
 			[ ^ self scan24X8 ].
-	currentCharacter isDigit
+	currentCharacter == $9
 		ifTrue:
 			[ ^ self scan24X7 ].
 	(currentCharacter == $$

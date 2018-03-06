@@ -1,3 +1,3 @@
 generated
 compositeTokenVariables
-	^ #(#indexedTokens #identifierTokens #commaTokens)
+	^ #(#indexedTokens #commaTokens)

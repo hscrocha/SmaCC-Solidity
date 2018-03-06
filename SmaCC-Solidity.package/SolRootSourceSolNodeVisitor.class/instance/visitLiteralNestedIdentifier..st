@@ -1,0 +1,3 @@
+generated
+visitLiteralNestedIdentifier: aLiteralNestedIdentifier
+	^ self visitRootSourceSol: aLiteralNestedIdentifier

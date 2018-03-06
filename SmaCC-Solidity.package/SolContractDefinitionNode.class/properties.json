@@ -1,19 +1,19 @@
 {
 	"commentStamp" : "",
-	"super" : "SolSourceSolNode",
+	"super" : "SolRootSourceSolNode",
 	"category" : "SmaCC-Solidity",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
+		"definition_type",
+		"contract_id",
 		"isToken",
 		"inheritances",
 		"commaTokens",
 		"leftBraceToken",
-		"rightBraceToken",
-		"contract_id",
 		"contract_sources",
-		"definition_type"
+		"rightBraceToken"
 	],
 	"name" : "SolContractDefinitionNode",
 	"type" : "normal"

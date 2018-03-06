@@ -1,17 +1,17 @@
 {
 	"commentStamp" : "",
-	"super" : "SolSourceSolNode",
+	"super" : "SolRootSourceSolNode",
 	"category" : "SmaCC-Solidity",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
 		"periodTokens",
-		"leftBracketTokens",
-		"rightBracketTokens",
 		"id_list_member_accesses",
 		"id_member_accesses",
-		"exps"
+		"leftBracketTokens",
+		"exps",
+		"rightBracketTokens"
 	],
 	"name" : "SolOptionalMemberArrayAccessNode",
 	"type" : "normal"

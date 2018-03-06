@@ -3,12 +3,12 @@ scanForToken
 	self step.
 	currentCharacter == $!
 		ifTrue:
-			[ ^ self scanForTokenX17 ].
+			[ ^ self scanForTokenX18 ].
 	currentCharacter == $"
 		ifTrue: [ ^ self scan1 ].
 	currentCharacter == $%
 		ifTrue:
-			[ ^ self scanForTokenX16 ].
+			[ ^ self scanForTokenX17 ].
 	currentCharacter == $&
 		ifTrue:
 			[ ^ self scanForTokenX12 ].
@@ -29,4 +29,7 @@ scanForToken
 	currentCharacter == $-
 		ifTrue:
 			[ ^ self scanForTokenX9 ].
+	currentCharacter == $.
+		ifTrue:
+			[ ^ self scanForTokenX16 ].
 	^ self scanForTokenX20

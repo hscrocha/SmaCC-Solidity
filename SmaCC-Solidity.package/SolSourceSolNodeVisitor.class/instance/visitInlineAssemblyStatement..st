@@ -1,3 +1,0 @@
-generated
-visitInlineAssemblyStatement: anInlineAssemblyStatement
-	^ self visitSourceSol: anInlineAssemblyStatement

@@ -1,0 +1,3 @@
+generated
+visitLiteralRealNumber: aLiteralRealNumber
+	^ self visitRootSourceSol: aLiteralRealNumber

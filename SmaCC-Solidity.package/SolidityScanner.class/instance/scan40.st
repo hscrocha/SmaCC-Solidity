@@ -12,7 +12,7 @@ scan40
 		ifTrue: [ ^ self scan45 ].
 	('048' includes: currentCharacter)
 		ifTrue: [ ^ self scan41 ].
-	currentCharacter isDigit
+	('159' includes: currentCharacter)
 		ifTrue: [ ^ self scan43 ].
 	(currentCharacter == $$
 		or: [ (currentCharacter between: $A and: $Z)

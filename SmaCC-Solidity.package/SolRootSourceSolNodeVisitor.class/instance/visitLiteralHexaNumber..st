@@ -1,0 +1,3 @@
+generated
+visitLiteralHexaNumber: aLiteralHexaNumber
+	^ self visitRootSourceSol: aLiteralHexaNumber

@@ -10,7 +10,7 @@
 		"colonEqualToken",
 		"functional_asm_exp",
 		"asm_value",
-		"identifierTokens"
+		"identifiers"
 	],
 	"name" : "SolAssemblyLocalBindingNode",
 	"type" : "normal"

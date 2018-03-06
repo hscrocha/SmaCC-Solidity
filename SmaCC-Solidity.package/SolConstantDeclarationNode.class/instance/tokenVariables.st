@@ -1,3 +1,3 @@
 generated
 tokenVariables
-	^ #(#modifier #constantToken #identifierToken #equalToken #semicolonToken)
+	^ #(#constantToken #equalToken #semicolonToken)

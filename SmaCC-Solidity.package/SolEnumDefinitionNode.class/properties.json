@@ -1,17 +1,17 @@
 {
 	"commentStamp" : "",
-	"super" : "SolSourceSolNode",
+	"super" : "SolRootSourceSolNode",
 	"category" : "SmaCC-Solidity",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
 		"enumToken",
-		"identifierToken",
 		"leftBraceToken",
+		"enum_value_ids",
 		"commaTokens",
 		"rightBraceToken",
-		"enum_value_ids"
+		"identifier"
 	],
 	"name" : "SolEnumDefinitionNode",
 	"type" : "normal"

@@ -1,7 +1,7 @@
 generated
-exp: aSmaCCParseNode
+exp: aSolRootSourceSolNode
 	self exp notNil
 		ifTrue: [ self exp parent: nil ].
-	exp := aSmaCCParseNode.
+	exp := aSolRootSourceSolNode.
 	self exp notNil
 		ifTrue: [ self exp parent: self ]
