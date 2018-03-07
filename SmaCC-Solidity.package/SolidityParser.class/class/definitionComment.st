@@ -80,7 +80,7 @@ PragmaDirective
 	
 
 
-########## Literals  #############
+########## Literals  ####################################################################################################################
 
 Literal : LiteralString | LiteralHexa | LiteralNumber | LiteralBoolean ;
 
@@ -88,7 +88,7 @@ Literal : LiteralString | LiteralHexa | LiteralNumber | LiteralBoolean ;
 LiteralIdentifier:  <identifier> 'value' {{}};
 LiteralNestedIdentifier :  <nestedids> 'value' {{}};
 
-### String 
+### String   ####################################################################################################################
 LiteralString : <stringLiteral> 'value' {{}};
 
 ### Hexa
@@ -97,7 +97,7 @@ LiteralHexa : LiteralHexaString | LiteralHexaNumber;
 LiteralHexaString : <hexliteral> 'value' {{}};
 LiteralHexaNumber : <hexnumber> 'value' {{}};
 
-### Numbers
+### Numbers   ####################################################################################################################
 
 LiteralNumber : LiteralDecimalNumber | LiteralRealNumber  | LiteralEtherAmount;   
 
@@ -105,11 +105,11 @@ LiteralDecimalNumber : <decimalnumber> 'value' {{}};
 LiteralRealNumber :  <realnumber> 'value' {{}};
 
 
-### Boolean
+### Boolean   ####################################################################################################################
 LiteralBoolean : <booleanliteral> 'value' {{}};
 
 
-### Ether amounts
+### Ether amounts   ####################################################################################################################
 
 
 LiteralUnit 
@@ -132,19 +132,19 @@ LiteralEtherAmount
 
 
 
-############# Versions ################
+############# Versions  ####################################################################################################################
 Version
 	: ((""^"" | "">="" | "">"" | ""<"" | ""<="" | ""~"" ) 'version_op')?  (<decimalnumber> | <realnumber>) 'number' (""."" (<decimalnumber>|<realnumber>) 'number')*  {{}}
 	;
 
-############# Import ################
+############# Import  ####################################################################################################################
 ImportDirective 
 	: ""import"" LiteralString 'str_source' (""as"" LiteralIdentifier 'alias')? "";"" {{}}
   	| ""import"" (""*"" 'all' | LiteralIdentifier 'component_id') (""as"" LiteralIdentifier 'alias')?  ""from"" LiteralString 'str_source' "";"" {{}}
 	| ""import"" ""{"" LiteralIdentifier'component_id' (""as"" LiteralIdentifier 'alias')? ( "","" LiteralIdentifier 'component_id' (""as"" LiteralIdentifier 'alias')? )* ""}"" ""from"" LiteralString 'str_source' "";"" {{}}
 	;
 
-############# Contract ################
+############# Contract  ####################################################################################################################
 ContractDefinition 
 	: ( ""contract"" | ""library"" | ""interface"" ) 'definition_type' LiteralIdentifier 'contract_id' ( ""is"" InheritanceSpecifier 'inheritance' ("","" InheritanceSpecifier 'inheritance' )* )?   ""{"" (ContractPart 'contract_source')* ""}"" {{}}
 	;
@@ -163,7 +163,7 @@ InheritanceSpecifier
 	;
 
 
-############# Modifiers ################
+############# Modifiers  ####################################################################################################################
 
 
 ModifierFunctionImmuable : ( ""constant""	| ""pure"" | ""view"" ) {{}};
@@ -197,8 +197,8 @@ UserModifierInvocation
 	;
 
 
-############# Types ################
-############# Types Definition ################
+############# Types  ####################################################################################################################
+############# Types Definition  ####################################################################################################################
 
 EventDefinition 
 	: ""event"" LiteralIdentifier 'event_id' IndexedParameterList 'indexed_param_list' ""anonymous""? "";"" {{}}
@@ -222,7 +222,7 @@ Mapping
 
 
 
-############# Types Usage ################
+############# Types Usage  ####################################################################################################################
 
 TypeName 
     : ElementaryTypeName 'elementary_type' {{ElementaryTypeName}}
@@ -242,14 +242,14 @@ ElementaryTypeName
 	;
 
 
-############# Variables ################
+############# Variables  ####################################################################################################################
 VariableDeclaration 
 	: TypeName 'type' (ModifierStorage 'storage_loc')? LiteralIdentifier 'identifier' {{}}
 	;
 VariableDefinition 
 	: (""var"" IdentifierList 'var_id_list' ) ( ""="" Expression 'assign_exp' )? {{}}
 	;	
-############# State Variables ################
+############# State Variables  ####################################################################################################################
 
 
 # Minor Change -- documentation page 42 (enum example) and 44 (function type example) allow ""constant"" as a modifier. Created a new rule because constant must have an assigned expression.
@@ -260,7 +260,7 @@ StateVariableDeclaration
 	;
 
 
-############# Functions Naming  ################
+############# Functions Naming  ####################################################################################################################
 TypeNameList 
 	: ""("" ( TypeName 'type' (ModifierStorage 'storage_loc')? (LiteralIdentifier 'identifier')? ("","" TypeName 'type' (ModifierStorage 'storage_loc')? (LiteralIdentifier 'identifier')?)* )? "")"" {{}}
 	;
@@ -271,7 +271,7 @@ FunctionTypeName
 	;
 
 
-############# Functions Definition ################
+############# Functions Definition ####################################################################################################################
 
 
 FunctionDefinition 
@@ -293,6 +293,8 @@ ParameterList
 Block 
 	: ""{"" (Statement 'statement')* ""}"" {{}}
 	;
+
+############# Statements  ####################################################################################################################
 # Minor Change: Placed original contents for SimpleStatement inside this rule. Now, only the ForStatement uses the SimpleStatement rule (and we can change SimpleStatement for the ""For"").
 Statement 
 	: IfStatement 
@@ -342,20 +344,18 @@ Return
 Throw 
 	: ""throw"" {{}}
 	;
-# VariableDeclaration was moved to Expression to avoid conflict with lots of rules starting with ""TypeName"".
+
 
 IdentifierList 
 	: ""("" ( (LiteralIdentifier 'identifier')? "","" )* (LiteralIdentifier 'identifier')? "")"" {{}}
 	;
 
-#Expression generates SO MANY conflicts
-#// Precedence by order (see github.com/ethereum/solidity/pull/732)
 
 
-
+######## Unary operations  ####################################################################################################################
 OperationsUnary : OperationPostfix
-	| OperationPrefix; 
-
+		| OperationPrefix; 
+ ##########################  ####################################################################################################################
 OperationPostfix : Expression 'exp' (""++"" | ""--"") 'operation' {{}};
 OperationPrefix : (""!"" | ""~"" | ""delete"" | ""++"" | ""--"" | ""+"" | ""-"") 'operation' Expression 'exp' {{}};
 
@@ -365,11 +365,11 @@ ExpressionParenthesis : ""("" Expression 'exp' "")"" (ParenthesisExpressionFollo
 
 
 
-######## Arithmetics operations ################################################
+######## Arithmetics operations  ####################################################################################################################
 OperationArithmetic : OperationPower
 	| OperationMultiplication | OperationDivision | OperationModule
 	| OperationAddition | OperationSubstraction;
-################################################################################
+######################  ####################################################################################################################
 
 OperationPower : Expression 'lhs_exp' ""**"" 'operation' Expression 'rhs_exp' {{}};
 OperationMultiplication : Expression 'lhs_exp' ""*"" 'operation' Expression 'rhs_exp' {{}};
@@ -379,7 +379,7 @@ OperationAddition : Expression 'lhs_exp' ""+"" 'operation' Expression 'rhs_exp' 
 OperationSubstraction : Expression 'lhs_exp' ""-"" 'operation' Expression 'rhs_exp' {{}};
 
 
-######## Bit operations ##########################################################
+######## Bit operations  ####################################################################################################################
 OperationBit : OperationBitShift
 	| OperationBitAnd
 	| OperationBitXor
@@ -391,7 +391,7 @@ OperationBitXor: Expression 'lhs_exp' ""^"" 'operation' Expression 'rhs_exp' {{}
 OperationBitOr : Expression 'lhs_exp'  ""|"" 'operation' Expression 'rhs_exp' {{}};
 
 
-######## Compare and logical operations #########################################
+######## Compare and logical operations  ####################################################################################################################
 
 OperationComparingLogic : OperationCompare
 	| OperationEquals | OperationNotEquals
@@ -408,12 +408,12 @@ OperationOr : Expression 'lhs_exp'  ""||"" 'operation' Expression 'rhs_exp' {{}}
 OperationTernary: Expression 'test_exp' ""?"" Expression 'then_statement' "":"" Expression 'else_statement' {{}};
 
 
-######## Assign operations #########################################
+######## Assign operations  ####################################################################################################################
 OperationAssign : Expression 'lhs_exp' (""="" | ""|="" | ""^="" | ""&="" | ""<<="" | "">>="" | ""+="" | ""-="" | ""*="" | ""/="" | ""%="") 'operation' Expression 'rhs_exp' {{}} ;
 ################################################################################
 
 
-######## Expressions #########################################
+######## Expressions  ####################################################################################################################
 Expression 
 	: OperationsUnary
 	| ExpressionParenthesis
@@ -493,6 +493,9 @@ TupleExpression
 	| ""("" ("","" (Expression 'exp')? )+ "")"" {{}}
          ; 
 
+
+
+########## Assembly  ####################################################################################################################
 
 InlineAssemblyBlock 
 	: ""{"" (AssemblyItem 'asm_item')* ""}"" {{}}
