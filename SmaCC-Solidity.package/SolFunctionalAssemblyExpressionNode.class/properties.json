@@ -6,11 +6,11 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
+		"identifier",
 		"leftParenToken",
 		"asm_items",
 		"commaTokens",
-		"rightParenToken",
-		"identifier"
+		"rightParenToken"
 	],
 	"name" : "SolFunctionalAssemblyExpressionNode",
 	"type" : "normal"

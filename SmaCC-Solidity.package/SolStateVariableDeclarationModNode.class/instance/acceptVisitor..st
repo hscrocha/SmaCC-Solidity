@@ -1,3 +1,0 @@
-generated
-acceptVisitor: aRootSourceSolVisitor
-	^ aRootSourceSolVisitor visitStateVariableDeclarationMod: self

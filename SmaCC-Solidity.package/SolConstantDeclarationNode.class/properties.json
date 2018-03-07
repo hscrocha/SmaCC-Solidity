@@ -9,10 +9,10 @@
 		"type",
 		"modifier",
 		"constantToken",
+		"identifier",
 		"equalToken",
 		"exp",
-		"semicolonToken",
-		"identifier"
+		"semicolonToken"
 	],
 	"name" : "SolConstantDeclarationNode",
 	"type" : "normal"

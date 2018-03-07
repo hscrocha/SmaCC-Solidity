@@ -8,10 +8,10 @@
 	"instvars" : [
 		"type",
 		"modifier",
+		"identifier",
 		"equalToken",
-		"semicolonToken",
 		"assign_exp",
-		"identifier"
+		"semicolonToken"
 	],
 	"name" : "SolStateVariableDeclarationNode",
 	"type" : "normal"

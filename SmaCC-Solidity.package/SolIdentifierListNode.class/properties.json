@@ -7,9 +7,9 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"leftParenToken",
+		"identifiers",
 		"commaTokens",
-		"rightParenToken",
-		"identifiers"
+		"rightParenToken"
 	],
 	"name" : "SolIdentifierListNode",
 	"type" : "normal"

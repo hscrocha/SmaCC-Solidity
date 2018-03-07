@@ -6,8 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"colonToken",
-		"identifier"
+		"identifier",
+		"colonToken"
 	],
 	"name" : "SolAssemblyLabelNode",
 	"type" : "normal"

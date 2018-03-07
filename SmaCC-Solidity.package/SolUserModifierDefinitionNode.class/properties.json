@@ -7,9 +7,9 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"modifierToken",
+		"identifier",
 		"param_list",
-		"block",
-		"identifier"
+		"block"
 	],
 	"name" : "SolUserModifierDefinitionNode",
 	"type" : "normal"

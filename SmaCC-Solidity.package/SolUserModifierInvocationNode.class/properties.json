@@ -6,10 +6,10 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
+		"identifier",
 		"leftParenToken",
 		"exp_list",
-		"rightParenToken",
-		"identifier"
+		"rightParenToken"
 	],
 	"name" : "SolUserModifierInvocationNode",
 	"type" : "normal"

@@ -9,9 +9,9 @@
 		"leftParenToken",
 		"types",
 		"storage_locs",
+		"identifiers",
 		"commaTokens",
-		"rightParenToken",
-		"identifiers"
+		"rightParenToken"
 	],
 	"name" : "SolParameterListNode",
 	"type" : "normal"

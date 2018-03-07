@@ -9,9 +9,9 @@
 		"leftParenToken",
 		"types",
 		"indexedTokens",
+		"identifiers",
 		"commaTokens",
-		"rightParenToken",
-		"identifiers"
+		"rightParenToken"
 	],
 	"name" : "SolIndexedParameterListNode",
 	"type" : "normal"

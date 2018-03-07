@@ -1,3 +1,0 @@
-generated
-modifierToken
-	^ modifierToken
