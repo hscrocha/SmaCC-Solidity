@@ -513,8 +513,8 @@ AssemblyValue
 	| LiteralHexa
 	;
 AssemblyAssignment 
-	: LiteralIdentifier 'identifier' "":="" (FunctionalAssemblyExpression 'functional_asm_exp'  | LiteralIdentifier 'identifier' | AssemblyValue 'asm_value' ) {{}} 
-	| ""=:"" ( LiteralIdentifier 'identifier' | AssemblyValue 'asm_value' ) {{}}
+	: LiteralIdentifier 'identifier' "":="" (FunctionalAssemblyExpression 'functional_asm_exp'  | LiteralIdentifier 'value' | AssemblyValue 'asm_value' ) {{}} 
+	| LiteralIdentifier 'identifier' ""=:"" ( LiteralIdentifier 'value' | AssemblyValue 'asm_value' ) {{}}
 	;
 AssemblyLabel
 	: LiteralIdentifier 'identifier' "":"" {{}}

@@ -10,7 +10,8 @@
 		"colonEqualToken",
 		"functional_asm_exp",
 		"asm_value",
-		"equalColonToken"
+		"equalColonToken",
+		"value"
 	],
 	"name" : "SolAssemblyAssignmentNode",
 	"type" : "normal"
