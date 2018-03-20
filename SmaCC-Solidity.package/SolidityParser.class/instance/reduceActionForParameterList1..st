@@ -3,9 +3,7 @@ reduceActionForParameterList1: nodes
 	| result |
 	result := SolParameterListNode new.
 	result leftParenToken: (nodes at: 1).
-	result addNodes: ((nodes at: 2) at: 1) to: result types.
-	result addNodes: ((nodes at: 2) at: 2) to: result storage_locs.
-	result addNodes: ((nodes at: 2) at: 3) to: result identifiers.
-	result addTokens: ((nodes at: 2) at: 4) to: result commaTokens.
+	result addNodes: ((nodes at: 2) at: 1) to: result parameters.
+	result addTokens: ((nodes at: 2) at: 2) to: result commaTokens.
 	result rightParenToken: (nodes at: 3).
 	^ result

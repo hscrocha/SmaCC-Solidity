@@ -6,11 +6,10 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"leftParenToken",
-		"commaTokens",
-		"rightParenToken",
-		"parameters"
+		"type",
+		"indexedToken",
+		"identifier"
 	],
-	"name" : "SolParameterListNode",
+	"name" : "SolIndexedParameterNode",
 	"type" : "normal"
 }

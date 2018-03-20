@@ -281,11 +281,17 @@ FunctionDefinition
 	| ""function"" ""("" "")""  ( ModifierFunctionDefinition 'modifier' )* ("";"" | Block 'block' ) {{FallbackFunctionDefinition}} 
 	;
 
+IndexedParameter:  TypeName 'type' ""indexed""? (LiteralIdentifier 'identifier')? {{}}; 
 IndexedParameterList 
-	: ""("" ( TypeName 'type' ""indexed""? (LiteralIdentifier 'identifier')? ("","" TypeName 'type' ""indexed""? (LiteralIdentifier 'identifier')?)* )? "")"" {{}}
+	: ""("" (IndexedParameter 'parameter' ("","" IndexedParameter 'parameter' )* )? "")"" {{}}
 	;
+
+
+
+Parameter:  TypeName 'type' (ModifierStorage 'storage_loc')? (LiteralIdentifier 'identifier')? {{}};
 ParameterList 
-	: ""("" ( TypeName 'type' (ModifierStorage 'storage_loc')? (LiteralIdentifier 'identifier')? ("","" TypeName 'type' (ModifierStorage 'storage_loc')? (LiteralIdentifier 'identifier')?)* )? "")"" {{}}
+	: ""("" ( 
+		Parameter 'parameter' ("","" Parameter 'parameter' )* )? "")"" {{}}
 	;
 
 

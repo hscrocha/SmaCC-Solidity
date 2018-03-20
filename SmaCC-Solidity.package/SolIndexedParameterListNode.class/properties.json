@@ -7,11 +7,9 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"leftParenToken",
-		"types",
-		"indexedTokens",
-		"identifiers",
 		"commaTokens",
-		"rightParenToken"
+		"rightParenToken",
+		"parameters"
 	],
 	"name" : "SolIndexedParameterListNode",
 	"type" : "normal"
