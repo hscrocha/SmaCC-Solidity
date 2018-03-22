@@ -7,9 +7,9 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"leftParenToken",
+		"parameters",
 		"commaTokens",
-		"rightParenToken",
-		"parameters"
+		"rightParenToken"
 	],
 	"name" : "SolParameterListNode",
 	"type" : "normal"
