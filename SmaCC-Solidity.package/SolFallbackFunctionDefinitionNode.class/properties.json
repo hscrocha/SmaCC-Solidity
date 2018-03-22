@@ -9,9 +9,9 @@
 		"functionToken",
 		"leftParenToken",
 		"rightParenToken",
-		"modifiers",
 		"semicolonToken",
-		"block"
+		"block",
+		"modifiers"
 	],
 	"name" : "SolFallbackFunctionDefinitionNode",
 	"type" : "normal"

@@ -7,10 +7,10 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"functionToken",
-		"type_list",
-		"modifiers",
 		"returnsToken",
-		"returned_types"
+		"returned_types",
+		"parameters",
+		"modifiers"
 	],
 	"name" : "SolFunctionTypeNameNode",
 	"type" : "normal"

@@ -263,13 +263,11 @@ StateVariableDeclaration
 
 
 ############# Functions Naming  ####################################################################################################################
-TypeNameList 
-	: ""("" ( TypeName 'type' (ModifierStorage 'storage_loc')? (LiteralIdentifier 'identifier')? ("","" TypeName 'type' (ModifierStorage 'storage_loc')? (LiteralIdentifier 'identifier')?)* )? "")"" {{}}
-	;
+
 
 
 FunctionTypeName 
-	: ""function"" TypeNameList 'type_list' ( (ModifierVisibility | ModifierFunctionImmuable | ModifierFunctionPayable) 'modifier' )* (""returns"" TypeNameList 'returned_types' )? {{}}
+	: ""function"" ParameterList 'parameters' ( (ModifierVisibility | ModifierFunctionImmuable | ModifierFunctionPayable) 'modifier' )* (""returns"" ParameterList 'returned_types' )? {{}}
 	;
 
 
@@ -277,7 +275,7 @@ FunctionTypeName
 
 
 FunctionDefinition 
-	: ""function"" LiteralIdentifier 'identifier' ParameterList 'param_list' 
+	: ""function"" LiteralIdentifier 'identifier' ParameterList 'parameters' 
                      ( ModifierFunctionDefinition 'modifier' )*
                      ( ""returns"" ParameterList 'returned_types' )? ("";"" | Block 'block' ) {{}}
 	| ""function"" ""("" "")""  ( ModifierFunctionDefinition 'modifier' )* ("";"" | Block 'block' ) {{FallbackFunctionDefinition}} 

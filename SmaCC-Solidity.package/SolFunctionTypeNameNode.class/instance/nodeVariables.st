@@ -1,3 +1,3 @@
 generated
 nodeVariables
-	^ #(#type_list #returned_types)
+	^ #(#parameters #returned_types)
