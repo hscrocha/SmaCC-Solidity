@@ -6,7 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"function_type",
 		"functionToken",
 		"type_list",
 		"modifiers",

@@ -1,3 +1,3 @@
 generated
-elementary_type: aSmaCCToken
-	elementary_type := aSmaCCToken
+elementary_type: anObject
+	elementary_type := anObject

@@ -7,10 +7,9 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"letToken",
-		"identifiers",
 		"colonEqualToken",
-		"functional_asm_exp",
-		"asm_value"
+		"lhs",
+		"rhs"
 	],
 	"name" : "SolAssemblyLocalBindingNode",
 	"type" : "normal"

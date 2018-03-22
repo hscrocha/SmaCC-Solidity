@@ -216,7 +216,7 @@ StructDefinition
 UsingForDeclaration 
 	: ""using"" LiteralIdentifier 'identifier' ""for"" (""*"" 'all' | TypeName 'type') "";"" {{}}
 	;
-Mapping 
+MappingTypeName 
 	: ""mapping"" ""("" ElementaryTypeName 'elementary_type' ""=>"" TypeName 'mapped_type' "")"" {{}}
 	;
 
@@ -225,20 +225,22 @@ Mapping
 ############# Types Usage  ####################################################################################################################
 
 TypeName 
-    : ElementaryTypeName 'elementary_type' {{ElementaryTypeName}}
-    | Mapping 'mapping_type' {{MappingTypeName}}
-    | TypeName 'type' ""["" (Expression 'exp')? ""]"" {{ArrayTypeName}}
-    | FunctionTypeName 'function_type' {{FunctionTypeName}}
-    | UserDefinedTypeName 'user_defined_type' {{UserDefinedTypeName}}
+    : ElementaryTypeName 
+    | MappingTypeName
+    | ArrayTypeName
+    | FunctionTypeName 
+    | UserDefinedTypeName 
 ;
+
+ArrayTypeName: TypeName 'type' ""["" (Expression 'exp')? ""]"" {{}} ;
+
 # Change: Because of many conflicts, we 'pushed' the userdefinedTypeName to the scanner as an non-empty id list 
 UserDefinedTypeName 
-	: LiteralNestedIdentifier
-	| LiteralIdentifier
+	: (LiteralNestedIdentifier | LiteralIdentifier) 'user_defined_type' {{}}
 	;
 ElementaryTypeName 
-	: ""address"" | ""bool"" | ""string"" | ""var""
-	| <int> | <uint> | <byte> | <fixed> | <ufixed>
+	: (""address"" | ""bool"" | ""string"" | ""var""
+	| <int> | <uint> | <byte> | <fixed> | <ufixed>) 'elementary_type' {{}}
 	;
 
 
@@ -308,7 +310,6 @@ Statement
 	| ForStatement 
 	| Block 
 	| InlineAssemblyStatement  
-#	|  ( DoWhileStatement | PlaceholderStatement | Continue | Break | Return | Throw | SimpleStatement ) 'semicomma_statement'  "";"" {{}} 
 	|  ( DoWhileStatement | PlaceholderStatement | Continue | Break | Return | Throw | VariableDefinition | Expression )  "";""  {'1' }  #returns the first node (leaving the semicollon behind and not creating another superfluous ast node)
 	;
 
@@ -333,7 +334,7 @@ ForStatement
 #	: ""for"" ""("" (SimpleStatement 'initialization')? "";"" (Expression 'exp_test')? "";"" (Expression 'increment')? "")"" Statement 'statement' {{}}
 	;
 InlineAssemblyStatement 
-	: ""assembly"" (LiteralString 'value')?  InlineAssemblyBlock 'asm_block' {{}}
+	: ""assembly"" (LiteralString 'value')?  AssemblyBlock 'asm_block' {{}}
 	;
 DoWhileStatement 
 	: ""do"" Statement 'statement' ""while"" ""("" Expression 'exp_test' "")"" {{}}
@@ -458,7 +459,7 @@ Factor
 	| Literal
 	| ElementaryTypeName 'elementary_type' {{ElementaryTypeName}}
 	| NewExpression
-  	| Mapping
+  	| MappingTypeName
 	| FunctionTypeName 
 	;
 # New Rule to allow member access, the optionality is to allow simple expressions
@@ -503,28 +504,67 @@ TupleExpression
 
 ########## Assembly  ####################################################################################################################
 
-InlineAssemblyBlock 
-	: ""{"" (AssemblyItem 'asm_item')* ""}"" {{}}
+AssemblyBlock 
+	: ""{"" (AssemblyStatement 'asm_item')* ""}"" {{}}
 	;
-AssemblyItem 
-	: LiteralIdentifier | FunctionalAssemblyExpression | InlineAssemblyBlock | AssemblyLocalBinding | AssemblyAssignment | AssemblyLabel | LiteralNumber | LiteralString | LiteralHexa
-	;
-AssemblyLocalBinding 
-	: ""let"" LiteralIdentifier 'identifier' "":="" ( FunctionalAssemblyExpression 'functional_asm_exp' | LiteralIdentifier 'identifier' |  AssemblyValue 'asm_value') {{}}
-	;
-#New Rule
+
+
+AssemblyStatement
+      : AssemblyIf 
+      | AssemblyFor
+      | AssemblySwitch
+      | AssemblyExpression ;
+
+
 AssemblyValue
 	: LiteralNumber 
 	| LiteralString 
-	| LiteralHexa
+	| LiteralHexa 
 	;
+
+
+AssemblyExpression 
+	: LiteralIdentifier 
+	| FunctionalAssemblyExpression 
+	| AssemblyBlock 
+	| AssemblyLocalBinding 
+	| AssemblyAssignment 
+	| AssemblyLabel 
+	| AssemblyValue
+	;
+
+AssemblyExpressionList
+	: AssemblyExpression 'exp' ( "","" AssemblyExpression 'exp' )* {{}};
+
+
+AssemblyIf: ""if"" AssemblyExpression 'condition' AssemblyBlock 'block' {{}};
+
+AssemblyFor: ""for"" AssemblyBlock 'initialize' AssemblyExpression 'condition' AssemblyBlock 'update' AssemblyBlock 'body' {{}};
+
+AssemblyCase: ""case"" AssemblyValue 'value' AssemblyBlock 'body' {{}} 
+	    | ""default"" AssemblyBlock 'body' {{}};
+AssemblySwitch: ""switch"" AssemblyExpression 'expression' (AssemblyCase 'cases')+ {{}};
+
+
+
+AssemblyLocalBinding 
+	: ""let"" LiteralIdentifier 'lhs' "":="" AssemblyAssignable 'rhs' {{}}
+	;
+#New Rule
+
+	
+AssemblyAssignable
+         : FunctionalAssemblyExpression 
+        | LiteralIdentifier 
+        | AssemblyValue 
+;
 AssemblyAssignment 
-	: LiteralIdentifier 'identifier' "":="" (FunctionalAssemblyExpression 'functional_asm_exp'  | LiteralIdentifier 'value' | AssemblyValue 'asm_value' ) {{}} 
-	| LiteralIdentifier 'identifier' ""=:"" ( LiteralIdentifier 'value' | AssemblyValue 'asm_value' ) {{}}
+	: LiteralIdentifier 'lhs' "":=""  AssemblyAssignable 'rhs' {{}} 
+	| AssemblyAssignable 'rhs' ""=:""  LiteralIdentifier 'lhs' {{}}
 	;
 AssemblyLabel
 	: LiteralIdentifier 'identifier' "":"" {{}}
 	;
 FunctionalAssemblyExpression
-	: LiteralIdentifier 'identifier' ""("" (AssemblyItem 'asm_item')? ( "","" AssemblyItem 'asm_item' )* "")"" {{}}
+	: LiteralIdentifier 'identifier' ""("" (AssemblyExpressionList 'arguments')? "")"" {{}}
 	;"
