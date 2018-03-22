@@ -6,8 +6,9 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
+		"newToken",
 		"type"
 	],
-	"name" : "SolElementaryTypeNameNode",
+	"name" : "SolNewExpressionNode",
 	"type" : "normal"
 }

@@ -217,7 +217,7 @@ UsingForDeclaration
 	: ""using"" LiteralIdentifier 'identifier' ""for"" (""*"" 'all' | TypeName 'type') "";"" {{}}
 	;
 MappingTypeName 
-	: ""mapping"" ""("" ElementaryTypeName 'elementary_type' ""=>"" TypeName 'mapped_type' "")"" {{}}
+	: ""mapping"" ""("" ElementaryTypeName 'key_type' ""=>"" TypeName 'value_type' "")"" {{}}
 	;
 
 
@@ -240,7 +240,7 @@ UserDefinedTypeName
 	;
 ElementaryTypeName 
 	: (""address"" | ""bool"" | ""string"" | ""var""
-	| <int> | <uint> | <byte> | <fixed> | <ufixed>) 'elementary_type' {{}}
+	| <int> | <uint> | <byte> | <fixed> | <ufixed>) 'type' {{}}
 	;
 
 
@@ -451,13 +451,13 @@ ParenthesisExpressionFollowup
 	; 	
 # New Rule to resolve conflicts with several rules starting with the same tokens
 
-NewExpression : ""new"" UserDefinedTypeName 'type';
+NewExpression : ""new"" TypeName 'type' {{}};
 
 Factor
 	: LiteralIdentifier
 	| LiteralNestedIdentifier
 	| Literal
-	| ElementaryTypeName 'elementary_type' {{ElementaryTypeName}}
+	| ElementaryTypeName 
 	| NewExpression
   	| MappingTypeName
 	| FunctionTypeName 

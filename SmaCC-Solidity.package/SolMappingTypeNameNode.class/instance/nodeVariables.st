@@ -1,3 +1,3 @@
 generated
 nodeVariables
-	^ #(#elementary_type #mapped_type)
+	^ #(#key_type #value_type)

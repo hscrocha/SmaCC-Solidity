@@ -8,10 +8,10 @@
 	"instvars" : [
 		"mappingToken",
 		"leftParenToken",
-		"elementary_type",
 		"equalGreaterThanToken",
-		"mapped_type",
-		"rightParenToken"
+		"rightParenToken",
+		"key_type",
+		"value_type"
 	],
 	"name" : "SolMappingTypeNameNode",
 	"type" : "normal"
