@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "SolRootSourceSolNode",
+	"category" : "SmaCC-Solidity",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"value"
+	],
+	"name" : "SolLiteralHexaStringNode",
+	"type" : "normal"
+}

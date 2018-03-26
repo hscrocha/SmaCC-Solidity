@@ -1,3 +1,3 @@
 generated
 nodeVariables
-	^ #(#exp_list)
+	^ #(#user_defined_type #exp_list)

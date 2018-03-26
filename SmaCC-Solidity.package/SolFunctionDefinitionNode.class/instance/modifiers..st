@@ -1,3 +1,5 @@
 generated
 modifiers: anOrderedCollection
-	modifiers := anOrderedCollection
+	self setParents: self modifiers to: nil.
+	modifiers := anOrderedCollection.
+	self setParents: self modifiers to: self

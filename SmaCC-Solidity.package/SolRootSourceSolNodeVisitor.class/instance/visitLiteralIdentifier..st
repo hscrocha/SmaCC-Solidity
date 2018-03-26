@@ -1,0 +1,3 @@
+generated
+visitLiteralIdentifier: aLiteralIdentifier
+	^ self visitRootSourceSol: aLiteralIdentifier

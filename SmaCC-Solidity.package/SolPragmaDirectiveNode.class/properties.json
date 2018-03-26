@@ -1,15 +1,15 @@
 {
 	"commentStamp" : "",
-	"super" : "SolSourceSolNode",
+	"super" : "SolRootSourceSolNode",
 	"category" : "SmaCC-Solidity",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
 		"pragmaToken",
-		"semicolonToken",
+		"id",
 		"versions",
-		"id"
+		"semicolonToken"
 	],
 	"name" : "SolPragmaDirectiveNode",
 	"type" : "normal"

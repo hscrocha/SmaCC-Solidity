@@ -1,3 +1,3 @@
 generated
 tokenVariables
-	^ #(#functionToken #identifierToken #returnsToken #semicolonToken)
+	^ #(#functionToken #returnsToken #semicolonToken)

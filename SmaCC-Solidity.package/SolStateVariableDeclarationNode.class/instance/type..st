@@ -1,7 +1,7 @@
 generated
-type: aSolSourceSolNode
+type: aSolRootSourceSolNode
 	self type notNil
 		ifTrue: [ self type parent: nil ].
-	type := aSolSourceSolNode.
+	type := aSolRootSourceSolNode.
 	self type notNil
 		ifTrue: [ self type parent: self ]

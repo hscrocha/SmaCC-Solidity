@@ -2,12 +2,12 @@ generated
 scan32
 	self step.
 	currentCharacter == $"
-		ifTrue: [ ^ self recordAndReportMatch: #(112) ].
-	(currentCharacter isDigit
+		ifTrue: [ ^ self recordAndReportMatch: #(115) ].
+	((currentCharacter between: $0 and: $9)
 		or: [ (currentCharacter between: $A and: $F)
 				or: [ currentCharacter between: $a and: $f ] ])
 		ifTrue: [ self step.
-			(currentCharacter isDigit
+			((currentCharacter between: $0 and: $9)
 				or: [ (currentCharacter between: $A and: $F)
 						or: [ currentCharacter between: $a and: $f ] ])
 				ifTrue: [ ^ self scan32 ] ].

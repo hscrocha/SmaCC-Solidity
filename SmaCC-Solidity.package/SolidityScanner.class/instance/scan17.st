@@ -1,6 +1,6 @@
 generated
 scan17
-	self recordMatch: #(116).
+	self recordMatch: #(119).
 	self step.
 	currentCharacter == $.
 		ifTrue: [ ^ self scan4 ].
@@ -12,7 +12,7 @@ scan17
 		ifTrue: [ ^ self scan22 ].
 	('048' includes: currentCharacter)
 		ifTrue: [ ^ self scan18 ].
-	currentCharacter isDigit
+	('159' includes: currentCharacter)
 		ifTrue: [ ^ self scan20 ].
 	(currentCharacter == $$
 		or: [ (currentCharacter between: $A and: $Z)

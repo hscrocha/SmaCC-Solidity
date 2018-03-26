@@ -1,0 +1,17 @@
+{
+	"commentStamp" : "",
+	"super" : "SolRootSourceSolNode",
+	"category" : "SmaCC-Solidity",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"test_exp",
+		"questionMarkToken",
+		"then_statement",
+		"colonToken",
+		"else_statement"
+	],
+	"name" : "SolOperationTernaryNode",
+	"type" : "normal"
+}

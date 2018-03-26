@@ -1,18 +1,18 @@
 {
 	"commentStamp" : "",
-	"super" : "SolSourceSolNode",
+	"super" : "SolRootSourceSolNode",
 	"category" : "SmaCC-Solidity",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
 		"type",
+		"modifier",
 		"constantToken",
-		"identifierToken",
+		"identifier",
 		"equalToken",
 		"exp",
-		"semicolonToken",
-		"modifier"
+		"semicolonToken"
 	],
 	"name" : "SolConstantDeclarationNode",
 	"type" : "normal"

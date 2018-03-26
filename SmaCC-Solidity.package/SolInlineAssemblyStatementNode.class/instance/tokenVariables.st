@@ -1,3 +1,3 @@
 generated
 tokenVariables
-	^ #(#assemblyToken #stringliteralToken)
+	^ #(#assemblyToken)

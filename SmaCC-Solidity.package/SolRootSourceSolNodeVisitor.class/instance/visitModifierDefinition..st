@@ -1,3 +1,0 @@
-generated
-visitModifierDefinition: aModifierDefinition
-	^ self visitRootSourceSol: aModifierDefinition

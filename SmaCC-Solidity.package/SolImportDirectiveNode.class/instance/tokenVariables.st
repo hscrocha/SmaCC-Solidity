@@ -1,3 +1,3 @@
 generated
 tokenVariables
-	^ #(#importToken #str_source #semicolonToken #all #fromToken #leftBraceToken #rightBraceToken)
+	^ #(#importToken #semicolonToken #all #fromToken #leftBraceToken #rightBraceToken)

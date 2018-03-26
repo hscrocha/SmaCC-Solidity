@@ -1,3 +1,3 @@
 generated
 tokenVariables
-	^ #(#structToken #identifierToken #leftBraceToken #rightBraceToken)
+	^ #(#structToken #leftBraceToken #rightBraceToken)

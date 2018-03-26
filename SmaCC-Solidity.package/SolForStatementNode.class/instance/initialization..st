@@ -1,7 +1,7 @@
 generated
-initialization: aSolSourceSolNode
+initialization: aSolRootSourceSolNode
 	self initialization notNil
 		ifTrue: [ self initialization parent: nil ].
-	initialization := aSolSourceSolNode.
+	initialization := aSolRootSourceSolNode.
 	self initialization notNil
 		ifTrue: [ self initialization parent: self ]

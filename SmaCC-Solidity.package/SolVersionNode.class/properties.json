@@ -1,14 +1,14 @@
 {
 	"commentStamp" : "",
-	"super" : "SolSourceSolNode",
+	"super" : "SolRootSourceSolNode",
 	"category" : "SmaCC-Solidity",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
+		"version_op",
 		"numbers",
-		"periodTokens",
-		"version_op"
+		"periodTokens"
 	],
 	"name" : "SolVersionNode",
 	"type" : "normal"

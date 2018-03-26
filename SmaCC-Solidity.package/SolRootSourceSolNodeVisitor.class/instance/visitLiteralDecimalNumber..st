@@ -1,0 +1,3 @@
+generated
+visitLiteralDecimalNumber: aLiteralDecimalNumber
+	^ self visitRootSourceSol: aLiteralDecimalNumber

@@ -1,0 +1,14 @@
+SmalltalkCISpec {
+  #loading : [
+    SCIMetacelloLoadSpec {
+      #baseline : 'SmaccSolidity',
+      #directory : '',
+      #platforms : [ #pharo ]
+    }
+  ],
+  #testing : {
+   #include : {
+      #packages : [ 'Smacc-Solidity.*' ]
+    }
+  }
+}

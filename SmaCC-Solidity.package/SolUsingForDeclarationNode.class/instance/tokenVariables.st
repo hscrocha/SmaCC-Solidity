@@ -1,3 +1,3 @@
 generated
 tokenVariables
-	^ #(#usingToken #identifierToken #forToken #all #semicolonToken)
+	^ #(#usingToken #forToken #all #semicolonToken)

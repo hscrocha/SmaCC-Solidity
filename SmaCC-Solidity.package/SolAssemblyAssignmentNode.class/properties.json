@@ -6,11 +6,10 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"equalColonToken",
+		"lhs",
 		"colonEqualToken",
-		"functional_asm_exp",
-		"identifierTokens",
-		"asm_value"
+		"rhs",
+		"equalColonToken"
 	],
 	"name" : "SolAssemblyAssignmentNode",
 	"type" : "normal"

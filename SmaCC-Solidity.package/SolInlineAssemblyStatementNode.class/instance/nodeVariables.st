@@ -1,3 +1,3 @@
 generated
 nodeVariables
-	^ #(#asm_block)
+	^ #(#value #asm_block)

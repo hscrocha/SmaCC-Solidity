@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "SolRootSourceSolNode",
+	"category" : "SmaCC-Solidity",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"lhs_exp",
+		"operation",
+		"rhs_exp"
+	],
+	"name" : "SolOperationAndNode",
+	"type" : "normal"
+}

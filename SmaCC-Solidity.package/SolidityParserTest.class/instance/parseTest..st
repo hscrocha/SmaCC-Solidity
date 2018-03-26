@@ -1,5 +1,4 @@
 parsing
 parseTest: str
-	SolidityParser parseStream: str readStream.
-
+	(SolidityParser parseStream: str readStream) .
 	

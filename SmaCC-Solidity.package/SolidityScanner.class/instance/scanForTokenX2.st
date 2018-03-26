@@ -1,16 +1,22 @@
 generated
 scanForTokenX2
-	self recordMatch: #(2).
+	self recordMatch: #(112).
 	self step.
-	currentCharacter == $*
-		ifTrue: [ ^ self scan8 ].
-	currentCharacter == $/
-		ifTrue: [ [ self recordMatch: #(119).
-			self step.
-			currentCharacter <= Character tab
-				or: [ (currentCharacter between: Character pageUp and: Character newPage)
-						or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue.
+	currentCharacter == $.
+		ifTrue: [ ^ self scan9 ].
+	currentCharacter == $x
+		ifTrue: [ self step.
+			((currentCharacter between: $0 and: $9)
+				or: [ (currentCharacter between: $A and: $F)
+						or: [ currentCharacter between: $a and: $f ] ])
+				ifTrue: [ [ self recordMatch: #(113).
+					self step.
+					(currentCharacter between: $0 and: $9)
+						or: [ (currentCharacter between: $A and: $F)
+								or: [ currentCharacter between: $a and: $f ] ] ] whileTrue ].
 			^ self reportLastMatch ].
-	currentCharacter == $=
-		ifTrue: [ ^ self recordAndReportMatch: #(48) ].
+	(currentCharacter between: $0 and: $9)
+		ifTrue: [ ^ self scan10 ].
+	('Ee' includes: currentCharacter)
+		ifTrue: [ ^ self scan11 ].
 	^ self reportLastMatch

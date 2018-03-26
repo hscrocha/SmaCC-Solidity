@@ -1,3 +1,0 @@
-generated
-visitStateVariableDeclaration: aStateVariableDeclaration
-	^ self visitSourceSol: aStateVariableDeclaration
