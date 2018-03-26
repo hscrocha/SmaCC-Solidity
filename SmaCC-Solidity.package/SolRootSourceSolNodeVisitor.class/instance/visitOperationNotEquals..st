@@ -1,0 +1,3 @@
+generated
+visitOperationNotEquals: anOperationNotEquals
+	^ self visitRootSourceSol: anOperationNotEquals

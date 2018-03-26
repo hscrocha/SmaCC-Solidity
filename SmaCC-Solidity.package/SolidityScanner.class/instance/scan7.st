@@ -1,12 +1,12 @@
 generated
 scan7
-	[ self recordMatch: #(111).
+	[ self recordMatch: #(114).
 	self step.
-	currentCharacter isDigit ] whileTrue.
+	currentCharacter between: $0 and: $9 ] whileTrue.
 	('Ee' includes: currentCharacter)
 		ifTrue: [ self step.
-			currentCharacter isDigit
-				ifTrue: [ [ self recordMatch: #(111).
+			(currentCharacter between: $0 and: $9)
+				ifTrue: [ [ self recordMatch: #(114).
 					self step.
-					currentCharacter isDigit ] whileTrue ] ].
+					currentCharacter between: $0 and: $9 ] whileTrue ] ].
 	^ self reportLastMatch

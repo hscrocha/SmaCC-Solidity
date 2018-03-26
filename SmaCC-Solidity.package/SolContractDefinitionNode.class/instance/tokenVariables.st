@@ -1,3 +1,3 @@
 generated
 tokenVariables
-	^ #(#definition_type #contract_id #isToken #leftBraceToken #rightBraceToken)
+	^ #(#definition_type #isToken #leftBraceToken #rightBraceToken)

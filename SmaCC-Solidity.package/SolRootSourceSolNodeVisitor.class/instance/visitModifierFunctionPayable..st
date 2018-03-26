@@ -1,0 +1,3 @@
+generated
+visitModifierFunctionPayable: aModifierFunctionPayable
+	^ self visitRootSourceSol: aModifierFunctionPayable

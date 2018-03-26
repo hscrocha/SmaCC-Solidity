@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "SolSourceSolNode",
+	"super" : "SolRootSourceSolNode",
 	"category" : "SmaCC-Solidity",
 	"classinstvars" : [ ],
 	"pools" : [ ],
@@ -8,9 +8,9 @@
 	"instvars" : [
 		"whileToken",
 		"leftParenToken",
+		"exp_test",
 		"rightParenToken",
-		"statement",
-		"exp_test"
+		"statement"
 	],
 	"name" : "SolWhileStatementNode",
 	"type" : "normal"

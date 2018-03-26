@@ -1,0 +1,3 @@
+generated
+visitOperationBitShift: anOperationBitShift
+	^ self visitRootSourceSol: anOperationBitShift

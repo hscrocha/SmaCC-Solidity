@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "SolRootSourceSolNode",
+	"category" : "SmaCC-Solidity",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"caseToken",
+		"value",
+		"body",
+		"defaultToken"
+	],
+	"name" : "SolAssemblyCaseNode",
+	"type" : "normal"
+}

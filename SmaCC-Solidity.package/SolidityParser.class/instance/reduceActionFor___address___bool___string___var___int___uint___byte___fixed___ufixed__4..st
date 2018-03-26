@@ -1,0 +1,3 @@
+generated-reduction actions
+reduceActionFor___address___bool___string___var___int___uint___byte___fixed___ufixed__4: nodes
+	^ nodes at: 1

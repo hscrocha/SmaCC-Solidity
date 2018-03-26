@@ -1,0 +1,3 @@
+generated
+visitOperationAddition: anOperationAddition
+	^ self visitRootSourceSol: anOperationAddition

@@ -1,0 +1,3 @@
+generated
+visitModifierStateVariableVisibility: aModifierStateVariableVisibility
+	^ self visitRootSourceSol: aModifierStateVariableVisibility

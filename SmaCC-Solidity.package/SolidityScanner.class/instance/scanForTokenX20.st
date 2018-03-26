@@ -1,19 +1,16 @@
 generated
 scanForTokenX20
-	currentCharacter == $.
-		ifTrue:
-			[ ^ self scanForTokenX18 ].
 	currentCharacter == $/
 		ifTrue:
-			[ ^ self scanForTokenX2 ].
+			[ ^ self scanForTokenX3 ].
 	currentCharacter == $0
 		ifTrue:
-			[ ^ self scanForTokenX3 ].
+			[ ^ self scanForTokenX2 ].
 	currentCharacter == $:
 		ifTrue:
 			[ ^ self scanForTokenX15 ].
 	currentCharacter == $;
-		ifTrue: [ ^ self recordAndReportMatch: #(14) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(41) ].
 	currentCharacter == $<
 		ifTrue:
 			[ ^ self scanForTokenX7 ].
@@ -24,12 +21,15 @@ scanForTokenX20
 		ifTrue:
 			[ ^ self scanForTokenX6 ].
 	currentCharacter == $?
-		ifTrue: [ ^ self recordAndReportMatch: #(51) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(52) ].
 	currentCharacter == $[
-		ifTrue: [ ^ self recordAndReportMatch: #(24) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(23) ].
 	currentCharacter == $]
-		ifTrue: [ ^ self recordAndReportMatch: #(103) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(64) ].
 	currentCharacter == $^
 		ifTrue:
 			[ ^ self scanForTokenX14 ].
+	currentCharacter == $_
+		ifTrue:
+			[ ^ self scanForTokenX4 ].
 	^ self scanForTokenX19

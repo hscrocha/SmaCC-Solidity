@@ -18,7 +18,7 @@ scan16X7
 			[ ^ self scan16X3 ].
 	currentCharacter == $8
 		ifTrue: [ ^ self scan31 ].
-	currentCharacter isDigit
+	currentCharacter == $9
 		ifTrue:
 			[ ^ self scan16X1 ].
 	(currentCharacter == $$
