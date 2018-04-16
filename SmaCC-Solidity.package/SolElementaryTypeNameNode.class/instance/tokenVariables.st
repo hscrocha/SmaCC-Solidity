@@ -1,3 +1,3 @@
 generated
 tokenVariables
-	^ #(#type)
+	^ #(#elementary_type)

@@ -59,7 +59,8 @@ definitionComment
 %right ""**"";
 %left ""++"" ""--""; 
 %right ""delete"" ""!"" ""~"";
-%right ""["" ""("";
+%right ""("";
+%right ""["";
 %left ""."" ;
 
 ### Parser & AST Definition
@@ -75,17 +76,11 @@ SourceUnit
 PragmaDirective 
 	: ""pragma"" <identifier> 'id' (Version 'version')* "";"" {{}}
 	;
-	
-	
-	
 
-
-########## Literals  ####################################################################################################################
-
+########## Literals  ############################################################################################################
 Literal : LiteralString | LiteralHexa | LiteralNumber | LiteralBoolean ;
 
-
-LiteralIdentifier:  <identifier> 'value' {{}};
+LiteralIdentifier:  <identifier> 'value'  {{}};
 LiteralNestedIdentifier :  <nestedids> 'value' {{}};
 
 ### String   ####################################################################################################################
@@ -216,8 +211,8 @@ StructDefinition
 UsingForDeclaration 
 	: ""using"" LiteralIdentifier 'identifier' ""for"" (""*"" 'all' | TypeName 'type') "";"" {{}}
 	;
-MappingTypeName 
-	: ""mapping"" ""("" ElementaryTypeName 'key_type' ""=>"" TypeName 'value_type' "")"" {{}}
+Mapping 
+	: ""mapping"" ""("" ElementaryTypeName 'elementary_type' ""=>"" TypeName 'mapped_type' "")"" {{}}
 	;
 
 
@@ -225,22 +220,20 @@ MappingTypeName
 ############# Types Usage  ####################################################################################################################
 
 TypeName 
-    : ElementaryTypeName 
-    | MappingTypeName
-    | ArrayTypeName
-    | FunctionTypeName 
-    | UserDefinedTypeName 
+    : ElementaryTypeName 'elementary_type' {{ElementaryTypeName}}
+    | Mapping 'mapping_type' {{MappingTypeName}}
+    | TypeName 'type' ""["" (Expression 'exp')? ""]"" {{ArrayTypeName}}
+    | FunctionTypeName 'function_type' {{FunctionTypeName}}
+    | UserDefinedTypeName 'user_defined_type' {{UserDefinedTypeName}}
 ;
-
-ArrayTypeName: TypeName 'type' ""["" (Expression 'exp')? ""]"" {{}} ;
-
 # Change: Because of many conflicts, we 'pushed' the userdefinedTypeName to the scanner as an non-empty id list 
 UserDefinedTypeName 
-	: (LiteralNestedIdentifier | LiteralIdentifier) 'user_defined_type' {{}}
+	: LiteralNestedIdentifier
+	| LiteralIdentifier
 	;
 ElementaryTypeName 
-	: (""address"" | ""bool"" | ""string"" | ""var""
-	| <int> | <uint> | <byte> | <fixed> | <ufixed>) 'type' {{}}
+	: ""address"" | ""bool"" | ""string"" | ""var""
+	| <int> | <uint> | <byte> | <fixed> | <ufixed>
 	;
 
 
@@ -263,11 +256,13 @@ StateVariableDeclaration
 
 
 ############# Functions Naming  ####################################################################################################################
-
+TypeNameList 
+	: ""("" ( TypeName 'type' (ModifierStorage 'storage_loc')? (LiteralIdentifier 'identifier')? ("","" TypeName 'type' (ModifierStorage 'storage_loc')? (LiteralIdentifier 'identifier')?)* )? "")"" {{}}
+	;
 
 
 FunctionTypeName 
-	: ""function"" ParameterList 'parameters' ( (ModifierVisibility | ModifierFunctionImmuable | ModifierFunctionPayable) 'modifier' )* (""returns"" ParameterList 'returned_types' )? {{}}
+	: ""function"" TypeNameList 'type_list' ( (ModifierVisibility | ModifierFunctionImmuable | ModifierFunctionPayable) 'modifier' )* (""returns"" TypeNameList 'returned_types' )? {{}}
 	;
 
 
@@ -275,7 +270,7 @@ FunctionTypeName
 
 
 FunctionDefinition 
-	: ""function"" LiteralIdentifier 'identifier' ParameterList 'parameters' 
+	: ""function"" LiteralIdentifier 'identifier' ParameterList 'param_list' 
                      ( ModifierFunctionDefinition 'modifier' )*
                      ( ""returns"" ParameterList 'returned_types' )? ("";"" | Block 'block' ) {{}}
 	| ""function"" ""("" "")""  ( ModifierFunctionDefinition 'modifier' )* ("";"" | Block 'block' ) {{FallbackFunctionDefinition}} 
@@ -308,7 +303,8 @@ Statement
 	| ForStatement 
 	| Block 
 	| InlineAssemblyStatement  
-	|  ( DoWhileStatement | PlaceholderStatement | Continue | Break | Return | Throw | VariableDefinition | Expression )  "";""  {'1' }  #returns the first node (leaving the semicollon behind and not creating another superfluous ast node)
+#	|  ( DoWhileStatement | PlaceholderStatement | Continue | Break | Return | Throw | SimpleStatement ) 'semicomma_statement'  "";"" {{}} 
+	|  ( DoWhileStatement | PlaceholderStatement | Continue | Break | Return | Throw | SimpleStatement |  Emit )  "";""  {'1' }  #returns the first node (leaving the semicollon behind and not creating another superfluous ast node)
 	;
 
 
@@ -321,18 +317,15 @@ WhileStatement
 PlaceholderStatement 
 	: ""_"" {{PlaceholderStatement}}
 	;
-
 SimpleStatement
-	: VariableDefinition
-	| ExpressionList
-	#| ExpressionStatement
+	: ExpressionList
+	| VariableDefinition 
 	;
 ForStatement 
 	: ""for"" ""("" (SimpleStatement 'initialization')? "";"" (Expression 'exp_test')? "";"" (ExpressionList 'increment_list')? "")"" Statement 'statement' {{}}
-#	: ""for"" ""("" (SimpleStatement 'initialization')? "";"" (Expression 'exp_test')? "";"" (Expression 'increment')? "")"" Statement 'statement' {{}}
 	;
 InlineAssemblyStatement 
-	: ""assembly"" (LiteralString 'value')?  AssemblyBlock 'asm_block' {{}}
+	: ""assembly"" (LiteralString 'value')?  InlineAssemblyBlock 'asm_block' {{}}
 	;
 DoWhileStatement 
 	: ""do"" Statement 'statement' ""while"" ""("" Expression 'exp_test' "")"" {{}}
@@ -349,13 +342,12 @@ Return
 Throw 
 	: ""throw"" {{}}
 	;
-
-
+Emit
+	: ""emit"" FunctionCall 'func_call' {{}}
+	;
 IdentifierList 
 	: ""("" ( (LiteralIdentifier 'identifier')? "","" )* (LiteralIdentifier 'identifier')? "")"" {{}}
 	;
-
-
 
 ######## Unary operations  ####################################################################################################################
 OperationsUnary : OperationPostfix
@@ -365,10 +357,6 @@ OperationPostfix : Expression 'exp' (""++"" | ""--"") 'operation' {{}};
 OperationPrefix : (""!"" | ""~"" | ""delete"" | ""++"" | ""--"" | ""+"" | ""-"") 'operation' Expression 'exp' {{}};
 
 ExpressionParenthesis : ""("" Expression 'exp' "")"" (ParenthesisExpressionFollowup 'follow_exp')?  {{}} ;
-
-
-
-
 
 ######## Arithmetics operations  ####################################################################################################################
 OperationArithmetic : OperationPower
@@ -414,37 +402,56 @@ OperationTernary: Expression 'test_exp' ""?"" Expression 'then_statement' "":"" 
 
 
 ######## Assign operations  ####################################################################################################################
-OperationAssign : Expression 'lhs_exp' (""="" | ""|="" | ""^="" | ""&="" | ""<<="" | "">>="" | ""+="" | ""-="" | ""*="" | ""/="" | ""%="") 'operation' Expression 'rhs_exp' {{}} ;
+OperationAssign 
+	:  Expression 'lhs_exp' (""="" | ""|="" | ""^="" | ""&="" | ""<<="" | "">>="" | ""+="" | ""-="" | ""*="" | ""/="" | ""%="") 'operation' Expression 'rhs_exp' {{}} 
+	;
 ################################################################################
 
 
 ######## Expressions  ####################################################################################################################
 Expression 
 	: OperationsUnary
+	|  NewExpression
+         | IndexAccessExpression
+         | MemberAccess
+         | FunctionCall
 	| ExpressionParenthesis
 	| OperationArithmetic
 	| OperationBit
 	| OperationComparingLogic
 	| OperationAssign
 	| TupleExpression
-	| TermExpression
+#	| TermExpression
+	| Term
+	#| Factor 
 	;
 
+SimpleTerm
+	: Factor 'factor' (IndexAccess 'index')* {{Term}}
+	;
+Term
+	: Factor 'factor' (IndexAccess 'index')* (ModifierStorage 'storage_loc')?  (VariableDec 'variable_dec') {{VariableDeclaration}}
+	| SimpleTerm
+	;
+VariableDec
+	: LiteralIdentifier 
+	;
 
+### Trying to stop using the ""TermExpression"" rule, breaking it into different rules.
 # New Rule to resolve conflicts with several rules starting with the same tokens. This groups all the possible combinations between member access, array access, and function calls (and nested calls, arrays and member access).
-TermExpression
-	:  Factor 'factor' OptionalMemberArrayAccess 'opt_access' ( OptionalFunctionCall 'opt_func_call' | OptionalVariableDeclaration 'opt_var_dec')? (  (""."" TermExpression 'nested_term') | ( OptionalFunctionCall 'nested_func_call' (TermExpression 'nested_term')? )  |  (  ""["" Expression 'array_access_exp' ""]"" (TermExpression 'nested_term')? )  )? {{}};
+#TermExpression
+#	:  Factor 'factor' OptionalMemberArrayAccess 'opt_access' ( OptionalFunctionCall 'opt_func_call' | OptionalVariableDeclaration 'opt_var_dec')? (  (""."" TermExpression 'nested_term') | ( OptionalFunctionCall 'nested_func_call' (TermExpression 'nested_term')? )  |  (  ""["" Expression 'array_access_exp' ""]"" (TermExpression 'nested_term')? )  )? {{}};
 
-
-#	FunctionCall: Factor 'factor' OptionalMemberArrayAccess 'identifier' OptionalFunctionCall 'call';
-#	FunctionCascade: FunctionCall 'parent' ""."" TermExpression 'nested_term';
-#	FunctionCallOnReturn: FunctionCall ( OptionalFunctionCall 'nested_func_call' (TermExpression 'nested_term')? );
-#	FunctionCallArrayAccess : 
+MemberAccess: Expression 'exp' "".""  SimpleTerm 'term' {{}} ;
+#IndexAccess: Expression 'exp' ""["" (Expression 'index' )? ""]"" {{}} ;
+IndexAccess: ""["" (Expression 'index' )? ""]"" {{}} ;
+IndexAccessExpression: Expression 'exp' ""["" Expression 'index' ""]"" {{}} ;
+FunctionCall: Expression 'exp' ""("" FunctionCallArguments 'args' "")"" {{}} ;
 
 # New rule to handle casting (exp) (exp) -- and nesting on expressions e.g.: (exp).func(exp); (exp)[index]
 ParenthesisExpressionFollowup
 	: ""["" Expression 'array_access_exp' ""]""  {{}}
-	| ""."" TermExpression 'nested_term' {{}}
+	| ""."" Expression 'nested_term' {{}}
 	| ""("" Expression 'exp' "")"" {{}} 
 	; 	
 # New Rule to resolve conflicts with several rules starting with the same tokens
@@ -452,30 +459,17 @@ ParenthesisExpressionFollowup
 NewExpression : ""new"" TypeName 'type' {{}};
 
 Factor
-	: LiteralIdentifier
+	: LiteralIdentifier 
 	| LiteralNestedIdentifier
 	| Literal
-	| ElementaryTypeName 
-	| NewExpression
-  	| MappingTypeName
+	| ElementaryTypeName 'elementary_type'  {{ElementaryTypeName}}
+  	| Mapping
 	| FunctionTypeName 
-	;
-# New Rule to allow member access, the optionality is to allow simple expressions
-OptionalMemberArrayAccess
-	: ( ( ""."" LiteralNestedIdentifier 'id_list_member_access' ) | (""."" LiteralIdentifier 'id_member_access') | ( ""["" (Expression 'array_access_exp' )? ""]"" ) )* {{}}	
-	;
-OptionalFunctionCall
-	: ( ""("" FunctionCallArguments 'func_args' "")"" ) {{}}
 	;
 
 FunctionCallArguments 
 	: ""{"" (NameValueList 'name_value_list')? ""}"" {{}} 
 	| (ExpressionList 'exp_list') ? {{}} 
-	;
-
-
-OptionalVariableDeclaration
-	: ( (ModifierStorage 'storage_loc')? LiteralIdentifier 'identifier'  ) {{}}
 	;
 
 ExpressionList
@@ -485,9 +479,6 @@ ExpressionList
 NameValueList 
 	: LiteralIdentifier 'id' "":"" Expression 'exp' ( "","" LiteralIdentifier 'id' "":"" Expression 'exp' )* ("","")? {{}}
 	;
-
-
-
 
 # TupleExpression added to the grammar in 2017-07-19
 # Grammar Change: to handle the optionality of tuple expressions as showed in the documentation example	
@@ -499,70 +490,30 @@ TupleExpression
          ; 
 
 
-
 ########## Assembly  ####################################################################################################################
 
-AssemblyBlock 
-	: ""{"" (AssemblyStatement 'asm_item')* ""}"" {{}}
+InlineAssemblyBlock 
+	: ""{"" (AssemblyItem 'asm_item')* ""}"" {{}}
 	;
-
-
-AssemblyStatement
-      : AssemblyIf 
-      | AssemblyFor
-      | AssemblySwitch
-      | AssemblyExpression ;
-
-
+AssemblyItem 
+	: LiteralIdentifier | FunctionalAssemblyExpression | InlineAssemblyBlock | AssemblyLocalBinding | AssemblyAssignment | AssemblyLabel | LiteralNumber | LiteralString | LiteralHexa
+	;
+AssemblyLocalBinding 
+	: ""let"" LiteralIdentifier 'identifier' "":="" ( FunctionalAssemblyExpression 'functional_asm_exp' | LiteralIdentifier 'identifier' |  AssemblyValue 'asm_value') {{}}
+	;
+#New Rule
 AssemblyValue
 	: LiteralNumber 
 	| LiteralString 
-	| LiteralHexa 
+	| LiteralHexa
 	;
-
-
-AssemblyExpression 
-	: LiteralIdentifier 
-	| FunctionalAssemblyExpression 
-	| AssemblyBlock 
-	| AssemblyLocalBinding 
-	| AssemblyAssignment 
-	| AssemblyLabel 
-	| AssemblyValue
-	;
-
-AssemblyExpressionList
-	: AssemblyExpression 'exp' ( "","" AssemblyExpression 'exp' )* {{}};
-
-
-AssemblyIf: ""if"" AssemblyExpression 'condition' AssemblyBlock 'block' {{}};
-
-AssemblyFor: ""for"" AssemblyBlock 'initialize' AssemblyExpression 'condition' AssemblyBlock 'update' AssemblyBlock 'body' {{}};
-
-AssemblyCase: ""case"" AssemblyValue 'value' AssemblyBlock 'body' {{}} 
-	    | ""default"" AssemblyBlock 'body' {{}};
-AssemblySwitch: ""switch"" AssemblyExpression 'expression' (AssemblyCase 'cases')+ {{}};
-
-
-
-AssemblyLocalBinding 
-	: ""let"" LiteralIdentifier 'lhs' "":="" AssemblyAssignable 'rhs' {{}}
-	;
-#New Rule
-
-	
-AssemblyAssignable
-         : FunctionalAssemblyExpression 
-        | LiteralIdentifier 
-        | AssemblyValue 
-;
 AssemblyAssignment 
-	: LiteralIdentifier 'lhs' "":=""  AssemblyAssignable 'rhs' {{}} 
-	| AssemblyAssignable 'rhs' ""=:""  LiteralIdentifier 'lhs' {{}}
+	: LiteralIdentifier 'identifier' "":="" (FunctionalAssemblyExpression 'functional_asm_exp'  | LiteralIdentifier 'value' | AssemblyValue 'asm_value' ) {{}} 
+	| LiteralIdentifier 'identifier' ""=:"" ( LiteralIdentifier 'value' | AssemblyValue 'asm_value' ) {{}}
 	;
 AssemblyLabel
 	: LiteralIdentifier 'identifier' "":"" {{}}
 	;
 FunctionalAssemblyExpression
-	: LiteralIdentifier 'identifier' ""("" (AssemblyExpressionList 'arguments')? "")"" {{}}
+	: LiteralIdentifier 'identifier' ""("" (AssemblyItem 'asm_item')? ( "","" AssemblyItem 'asm_item' )* "")"" {{}}
 	;"

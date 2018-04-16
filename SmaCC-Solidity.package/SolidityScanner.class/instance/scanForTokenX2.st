@@ -1,6 +1,6 @@
 generated
 scanForTokenX2
-	self recordMatch: #(112).
+	self recordMatch: #(110).
 	self step.
 	currentCharacter == $.
 		ifTrue: [ ^ self scan9 ].
@@ -9,7 +9,7 @@ scanForTokenX2
 			((currentCharacter between: $0 and: $9)
 				or: [ (currentCharacter between: $A and: $F)
 						or: [ currentCharacter between: $a and: $f ] ])
-				ifTrue: [ [ self recordMatch: #(113).
+				ifTrue: [ [ self recordMatch: #(111).
 					self step.
 					(currentCharacter between: $0 and: $9)
 						or: [ (currentCharacter between: $A and: $F)

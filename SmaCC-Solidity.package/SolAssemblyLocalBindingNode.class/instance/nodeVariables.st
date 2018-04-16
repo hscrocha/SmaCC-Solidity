@@ -1,3 +1,3 @@
 generated
 nodeVariables
-	^ #(#lhs #rhs)
+	^ #(#functional_asm_exp #asm_value)

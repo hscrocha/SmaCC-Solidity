@@ -8,7 +8,7 @@ scanForTokenX19
 	currentCharacter == $u
 		ifTrue: [ ^ self scan34 ].
 	currentCharacter == ${
-		ifTrue: [ ^ self recordAndReportMatch: #(94) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(81) ].
 	currentCharacter == $|
 		ifTrue:
 			[ ^ self scanForTokenX8 ].

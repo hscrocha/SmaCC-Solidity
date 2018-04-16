@@ -12,8 +12,8 @@
 		"returned_types",
 		"semicolonToken",
 		"block",
-		"parameters",
-		"modifiers"
+		"modifiers",
+		"param_list"
 	],
 	"name" : "SolFunctionDefinitionNode",
 	"type" : "normal"

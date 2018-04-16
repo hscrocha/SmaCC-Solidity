@@ -8,8 +8,9 @@
 	"instvars" : [
 		"identifier",
 		"leftParenToken",
-		"arguments",
-		"rightParenToken"
+		"rightParenToken",
+		"asm_items",
+		"commaTokens"
 	],
 	"name" : "SolFunctionalAssemblyExpressionNode",
 	"type" : "normal"

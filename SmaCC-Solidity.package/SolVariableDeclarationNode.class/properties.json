@@ -8,7 +8,10 @@
 	"instvars" : [
 		"type",
 		"storage_loc",
-		"identifier"
+		"identifier",
+		"factor",
+		"variable_dec",
+		"indexes"
 	],
 	"name" : "SolVariableDeclarationNode",
 	"type" : "normal"

@@ -6,7 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"type"
+		"elementary_type"
 	],
 	"name" : "SolElementaryTypeNameNode",
 	"type" : "normal"

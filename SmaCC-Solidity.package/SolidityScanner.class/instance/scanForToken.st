@@ -15,7 +15,7 @@ scanForToken
 	currentCharacter == $'
 		ifTrue: [ ^ self scan5 ].
 	currentCharacter == $(
-		ifTrue: [ ^ self recordAndReportMatch: #(24) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(23) ].
 	currentCharacter == $)
 		ifTrue: [ ^ self recordAndReportMatch: #(35) ].
 	currentCharacter == $*

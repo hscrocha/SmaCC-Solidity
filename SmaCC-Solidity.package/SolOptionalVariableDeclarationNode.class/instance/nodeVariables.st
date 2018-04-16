@@ -1,3 +1,3 @@
 generated
 nodeVariables
-	^ #(#storage_loc #identifier)
+	^ #(#array_dec #storage_loc #identifier)
