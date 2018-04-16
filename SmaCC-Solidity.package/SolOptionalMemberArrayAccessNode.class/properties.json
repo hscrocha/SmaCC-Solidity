@@ -6,12 +6,12 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"periodTokens",
-		"id_list_member_accesses",
-		"id_member_accesses",
-		"leftBracketTokens",
-		"exps",
-		"rightBracketTokens"
+		"periodToken",
+		"id_list_member_access",
+		"id_member_access",
+		"leftBracketToken",
+		"exp",
+		"rightBracketToken"
 	],
 	"name" : "SolOptionalMemberArrayAccessNode",
 	"type" : "normal"

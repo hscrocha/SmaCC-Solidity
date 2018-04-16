@@ -4,7 +4,7 @@ reduceActionForFunctionDefinition1: nodes
 	result := SolFunctionDefinitionNode new.
 	result functionToken: (nodes at: 1).
 	result identifier: (nodes at: 2).
-	result parameters: (nodes at: 3).
+	result param_list: (nodes at: 3).
 	result addNodes: (nodes at: 4) to: result modifiers.
 	result returnsToken: ((nodes at: 5) at: 1).
 	result returned_types: ((nodes at: 5) at: 2).

@@ -1,3 +1,0 @@
-generated
-visitOptionalFunctionCall: anOptionalFunctionCall
-	^ self visitRootSourceSol: anOptionalFunctionCall

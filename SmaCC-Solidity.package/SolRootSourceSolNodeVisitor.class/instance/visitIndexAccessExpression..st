@@ -1,0 +1,3 @@
+generated
+visitIndexAccessExpression: anIndexAccessExpression
+	^ self visitRootSourceSol: anIndexAccessExpression

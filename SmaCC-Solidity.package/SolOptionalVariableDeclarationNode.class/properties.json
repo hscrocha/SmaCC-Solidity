@@ -7,7 +7,8 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"storage_loc",
-		"identifier"
+		"identifier",
+		"array_dec"
 	],
 	"name" : "SolOptionalVariableDeclarationNode",
 	"type" : "normal"

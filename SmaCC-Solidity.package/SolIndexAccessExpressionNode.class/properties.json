@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "SolRootSourceSolNode",
+	"category" : "SmaCC-Solidity",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"exp",
+		"leftBracketToken",
+		"index",
+		"rightBracketToken"
+	],
+	"name" : "SolIndexAccessExpressionNode",
+	"type" : "normal"
+}
