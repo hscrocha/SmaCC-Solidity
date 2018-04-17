@@ -2,7 +2,9 @@ generated
 definitionComment
 "## This is the grammar used for Pharo SmaCC to generate the Parser, Scanner, AST and etc. ##
 
+#############################################################################################################################
 ### Scanner part
+#############################################################################################################################
 <byte>: byte(s ([1-9]|[1-2][0-9]|[3][0-2])? )? ;
 <int>: int (8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | 88 | 96 | 104 | 112 | 120 | 128 | 136 | 144 | 152 | 160 | 168 | 176 | 184 | 192 | 200 | 208 | 216 | 224 | 232 | 240 | 248 | 256 )? ;
 <uint>: u <int> ;
@@ -29,6 +31,8 @@ definitionComment
 	: \/\/ [^\r\n]* 
 	| /\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/
  	;
+
+#############################################################################################################################
 
 ### Directives 	
 %root RootSourceSol;
@@ -63,7 +67,9 @@ definitionComment
 %right ""["";
 %left ""."" ;
 
-### Parser & AST Definition
+#############################################################################################################################
+######## Parser & AST Definition
+#############################################################################################################################
 RootSourceSol 
 	: ( SourceUnit 'sourceunit')* {{}}
 	;
@@ -105,8 +111,6 @@ LiteralBoolean : <booleanliteral> 'value' {{}};
 
 
 ### Ether amounts   ####################################################################################################################
-
-
 LiteralUnit 
 	: ""wei"" 
 	| ""szabo""
@@ -123,8 +127,6 @@ LiteralUnit
 LiteralEtherAmount 
 	: (LiteralDecimalNumber | LiteralRealNumber | LiteralRealNumber) 'number' LiteralUnit 'unit' {{}}
 	;
-
-
 
 
 ############# Versions  ####################################################################################################################
@@ -160,7 +162,6 @@ InheritanceSpecifier
 
 ############# Modifiers  ####################################################################################################################
 
-
 ModifierFunctionImmuable : ( ""constant""	| ""pure"" | ""view"" ) {{}};
 ModifierFunctionPayable : ""payable"" {{}};
 
@@ -191,7 +192,6 @@ UserModifierInvocation
 	:  LiteralIdentifier 'identifier' ( ""("" (ExpressionList 'exp_list')? "")""  )?  {{}}
 	;
 
-
 ############# Types  ####################################################################################################################
 ############# Types Definition  ####################################################################################################################
 
@@ -215,10 +215,7 @@ Mapping
 	: ""mapping"" ""("" ElementaryTypeName 'elementary_type' ""=>"" TypeName 'mapped_type' "")"" {{}}
 	;
 
-
-
 ############# Types Usage  ####################################################################################################################
-
 TypeName 
     : ElementaryTypeName 'elementary_type' {{ElementaryTypeName}}
     | Mapping 'mapping_type' {{MappingTypeName}}
@@ -236,7 +233,6 @@ ElementaryTypeName
 	| <int> | <uint> | <byte> | <fixed> | <ufixed>
 	;
 
-
 ############# Variables  ####################################################################################################################
 VariableDeclaration 
 	: TypeName 'type' (ModifierStorage 'storage_loc')? LiteralIdentifier 'identifier' {{}}
@@ -244,9 +240,8 @@ VariableDeclaration
 VariableDefinition 
 	: (""var"" IdentifierList 'var_id_list' ) ( ""="" Expression 'assign_exp' )? {{}}
 	;	
+
 ############# State Variables  ####################################################################################################################
-
-
 # Minor Change -- documentation page 42 (enum example) and 44 (function type example) allow ""constant"" as a modifier. Created a new rule because constant must have an assigned expression.
 StateVariableDeclaration 
 	: TypeName 'type' ( StateVariableDeclarationMod 'modifier'  )? LiteralIdentifier 'identifier' (""="" Expression 'exp')? "";"" {{}}
@@ -254,21 +249,16 @@ StateVariableDeclaration
 	| TypeName 'type' ""constant"" ( StateVariableDeclarationMod 'modifier'  )? LiteralIdentifier 'identifier' ""="" Expression 'exp' "";"" {{ConstantDeclaration}}
 	;
 
-
 ############# Functions Naming  ####################################################################################################################
 TypeNameList 
 	: ""("" ( TypeName 'type' (ModifierStorage 'storage_loc')? (LiteralIdentifier 'identifier')? ("","" TypeName 'type' (ModifierStorage 'storage_loc')? (LiteralIdentifier 'identifier')?)* )? "")"" {{}}
 	;
 
-
 FunctionTypeName 
 	: ""function"" TypeNameList 'type_list' ( (ModifierVisibility | ModifierFunctionImmuable | ModifierFunctionPayable) 'modifier' )* (""returns"" TypeNameList 'returned_types' )? {{}}
 	;
 
-
 ############# Functions Definition ####################################################################################################################
-
-
 FunctionDefinition 
 	: ""function"" LiteralIdentifier 'identifier' ParameterList 'param_list' 
                      ( ModifierFunctionDefinition 'modifier' )*
@@ -281,15 +271,11 @@ IndexedParameterList
 	: ""("" (IndexedParameter 'parameter' ("","" IndexedParameter 'parameter' )* )? "")"" {{}}
 	;
 
-
-
 Parameter:  TypeName 'type' (ModifierStorage 'storage_loc')? (LiteralIdentifier 'identifier')? {{}};
 ParameterList 
 	: ""("" ( 
 		Parameter 'parameter' ("","" Parameter 'parameter' )* )? "")"" {{}}
 	;
-
-
 
 Block 
 	: ""{"" (Statement 'statement')* ""}"" {{}}
@@ -303,11 +289,8 @@ Statement
 	| ForStatement 
 	| Block 
 	| InlineAssemblyStatement  
-#	|  ( DoWhileStatement | PlaceholderStatement | Continue | Break | Return | Throw | SimpleStatement ) 'semicomma_statement'  "";"" {{}} 
 	|  ( DoWhileStatement | PlaceholderStatement | Continue | Break | Return | Throw | SimpleStatement |  Emit )  "";""  {'1' }  #returns the first node (leaving the semicollon behind and not creating another superfluous ast node)
 	;
-
-
 IfStatement 
 	: ""if"" ""("" Expression 'exp_test' "")"" Statement 'then_statement' (""else"" Statement 'else_statement')? {{}}
 	;
@@ -421,32 +404,22 @@ Expression
 	| OperationComparingLogic
 	| OperationAssign
 	| TupleExpression
-#	| TermExpression
 	| Term
-	#| Factor 
 	;
 
 SimpleTerm
 	: Factor 'factor' (IndexAccess 'index')* {{Term}}
 	;
 Term
-	: Factor 'factor' (IndexAccess 'index')* (ModifierStorage 'storage_loc')?  (VariableDec 'variable_dec') {{VariableDeclaration}}
+	: Factor 'factor' (IndexAccess 'index')* (ModifierStorage 'storage_loc')?  (LiteralIdentifier 'variable_dec') {{VariableDeclaration}}
 	| SimpleTerm
 	;
-VariableDec
-	: LiteralIdentifier 
-	;
-
-### Trying to stop using the ""TermExpression"" rule, breaking it into different rules.
-# New Rule to resolve conflicts with several rules starting with the same tokens. This groups all the possible combinations between member access, array access, and function calls (and nested calls, arrays and member access).
-#TermExpression
-#	:  Factor 'factor' OptionalMemberArrayAccess 'opt_access' ( OptionalFunctionCall 'opt_func_call' | OptionalVariableDeclaration 'opt_var_dec')? (  (""."" TermExpression 'nested_term') | ( OptionalFunctionCall 'nested_func_call' (TermExpression 'nested_term')? )  |  (  ""["" Expression 'array_access_exp' ""]"" (TermExpression 'nested_term')? )  )? {{}};
 
 MemberAccess: Expression 'exp' "".""  SimpleTerm 'term' {{}} ;
-#IndexAccess: Expression 'exp' ""["" (Expression 'index' )? ""]"" {{}} ;
 IndexAccess: ""["" (Expression 'index' )? ""]"" {{}} ;
 IndexAccessExpression: Expression 'exp' ""["" Expression 'index' ""]"" {{}} ;
 FunctionCall: Expression 'exp' ""("" FunctionCallArguments 'args' "")"" {{}} ;
+NewExpression : ""new"" TypeName 'type' {{}};
 
 # New rule to handle casting (exp) (exp) -- and nesting on expressions e.g.: (exp).func(exp); (exp)[index]
 ParenthesisExpressionFollowup
@@ -454,15 +427,12 @@ ParenthesisExpressionFollowup
 	| ""."" Expression 'nested_term' {{}}
 	| ""("" Expression 'exp' "")"" {{}} 
 	; 	
-# New Rule to resolve conflicts with several rules starting with the same tokens
-
-NewExpression : ""new"" TypeName 'type' {{}};
 
 Factor
 	: LiteralIdentifier 
 	| LiteralNestedIdentifier
 	| Literal
-	| ElementaryTypeName 'elementary_type'  {{ElementaryTypeName}}
+	| ElementaryTypeName 
   	| Mapping
 	| FunctionTypeName 
 	;
@@ -489,9 +459,7 @@ TupleExpression
 	| ""("" ("","" (Expression 'exp')? )+ "")"" {{}}
          ; 
 
-
 ########## Assembly  ####################################################################################################################
-
 InlineAssemblyBlock 
 	: ""{"" (AssemblyItem 'asm_item')* ""}"" {{}}
 	;
