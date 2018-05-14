@@ -1,3 +1,3 @@
 generated
 nodeVariables
-	^ #(#event_id #indexed_param_list)
+	^ #(#event_id #indexed_parameters)

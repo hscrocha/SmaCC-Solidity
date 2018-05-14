@@ -7,9 +7,9 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"leftParenToken",
-		"exp",
+		"expression",
 		"rightParenToken",
-		"follow_exp"
+		"follow_expression"
 	],
 	"name" : "SolExpressionParenthesisNode",
 	"type" : "normal"

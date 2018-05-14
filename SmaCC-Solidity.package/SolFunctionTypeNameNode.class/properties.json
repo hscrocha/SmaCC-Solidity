@@ -6,12 +6,12 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"functionToken",
-		"returnsToken",
-		"returned_types",
-		"modifiers",
 		"function_type",
-		"type_list"
+		"functionToken",
+		"type_list",
+		"modifiers",
+		"returnsToken",
+		"returned_types"
 	],
 	"name" : "SolFunctionTypeNameNode",
 	"type" : "normal"

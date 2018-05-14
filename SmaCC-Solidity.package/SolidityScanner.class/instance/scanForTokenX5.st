@@ -3,9 +3,9 @@ scanForTokenX5
 	self recordMatch: #(32).
 	self step.
 	currentCharacter == $:
-		ifTrue: [ ^ self recordAndReportMatch: #(18) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(20) ].
 	currentCharacter == $=
-		ifTrue: [ ^ self recordAndReportMatch: #(41) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(47) ].
 	currentCharacter == $>
 		ifTrue: [ ^ self recordAndReportMatch: #(63) ].
 	^ self reportLastMatch

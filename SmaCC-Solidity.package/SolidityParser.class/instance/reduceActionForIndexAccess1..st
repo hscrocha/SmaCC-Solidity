@@ -3,6 +3,6 @@ reduceActionForIndexAccess1: nodes
 	| result |
 	result := SolIndexAccessNode new.
 	result leftBracketToken: (nodes at: 1).
-	result exp: (nodes at: 2).
+	result index: (nodes at: 2).
 	result rightBracketToken: (nodes at: 3).
 	^ result

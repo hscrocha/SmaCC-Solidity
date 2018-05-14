@@ -9,7 +9,7 @@
 		"varToken",
 		"var_id_list",
 		"equalToken",
-		"assign_exp"
+		"assign_expression"
 	],
 	"name" : "SolVariableDefinitionNode",
 	"type" : "normal"

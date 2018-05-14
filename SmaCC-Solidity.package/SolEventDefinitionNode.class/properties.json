@@ -8,7 +8,7 @@
 	"instvars" : [
 		"eventToken",
 		"event_id",
-		"indexed_param_list",
+		"indexed_parameters",
 		"anonymousToken",
 		"semicolonToken"
 	],

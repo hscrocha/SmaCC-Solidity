@@ -1,3 +1,3 @@
 generated
 tokenVariables
-	^ #(#version_op)
+	^ #(#operator)

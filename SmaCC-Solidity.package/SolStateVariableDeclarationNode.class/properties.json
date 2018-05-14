@@ -10,8 +10,8 @@
 		"modifier",
 		"identifier",
 		"equalToken",
-		"semicolonToken",
-		"assign_exp"
+		"expression",
+		"semicolonToken"
 	],
 	"name" : "SolStateVariableDeclarationNode",
 	"type" : "normal"

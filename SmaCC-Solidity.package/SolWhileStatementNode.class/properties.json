@@ -8,7 +8,7 @@
 	"instvars" : [
 		"whileToken",
 		"leftParenToken",
-		"exp_test",
+		"condition",
 		"rightParenToken",
 		"statement"
 	],

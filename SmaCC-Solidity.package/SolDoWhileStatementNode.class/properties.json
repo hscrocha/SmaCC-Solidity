@@ -10,7 +10,7 @@
 		"statement",
 		"whileToken",
 		"leftParenToken",
-		"exp_test",
+		"condition",
 		"rightParenToken"
 	],
 	"name" : "SolDoWhileStatementNode",

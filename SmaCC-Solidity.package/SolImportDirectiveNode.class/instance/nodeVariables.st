@@ -1,3 +1,3 @@
 generated
 nodeVariables
-	^ #(#str_source)
+	^ #(#_source)

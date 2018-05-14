@@ -7,12 +7,12 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"leftBracketToken",
-		"array_access_exp",
+		"array_access_expression",
 		"rightBracketToken",
 		"periodToken",
 		"nested_term",
 		"leftParenToken",
-		"exp",
+		"expression",
 		"rightParenToken"
 	],
 	"name" : "SolParenthesisExpressionFollowupNode",

@@ -8,7 +8,7 @@
 	"instvars" : [
 		"user_defined_type",
 		"leftParenToken",
-		"exp_list",
+		"expressions",
 		"rightParenToken"
 	],
 	"name" : "SolInheritanceSpecifierNode",

@@ -2,7 +2,7 @@ generated-reduction actions
 reduceActionForMemberAccess1: nodes
 	| result |
 	result := SolMemberAccessNode new.
-	result exp: (nodes at: 1).
+	result expression: (nodes at: 1).
 	result periodToken: (nodes at: 2).
 	result term: (nodes at: 3).
 	^ result

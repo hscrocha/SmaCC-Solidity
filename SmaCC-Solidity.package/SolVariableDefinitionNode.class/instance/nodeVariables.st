@@ -1,3 +1,3 @@
 generated
 nodeVariables
-	^ #(#var_id_list #assign_exp)
+	^ #(#var_id_list #assign_expression)

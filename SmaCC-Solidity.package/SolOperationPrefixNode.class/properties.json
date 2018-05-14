@@ -7,7 +7,7 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"operation",
-		"exp"
+		"expression"
 	],
 	"name" : "SolOperationPrefixNode",
 	"type" : "normal"

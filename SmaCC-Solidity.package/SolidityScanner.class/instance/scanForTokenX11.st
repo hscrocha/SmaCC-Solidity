@@ -5,5 +5,5 @@ scanForTokenX11
 	currentCharacter == $*
 		ifTrue: [ ^ self recordAndReportMatch: #(3) ].
 	currentCharacter == $=
-		ifTrue: [ ^ self recordAndReportMatch: #(48) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(54) ].
 	^ self reportLastMatch
