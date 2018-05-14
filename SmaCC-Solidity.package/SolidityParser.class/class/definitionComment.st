@@ -228,11 +228,11 @@ ArrayTypeName: TypeName 'type' ""["" (Expression 'expression')? ""]"" {{}} ;
 # Change: Because of many conflicts, we 'pushed' the userdefinedTypeName to the scanner as an non-empty id list 
 UserDefinedTypeName 
 	: LiteralNestedIdentifier
-	| LiteralIdentifier
+	| LiteralIdentifier 'user_defined_type' {{}}
 	;
 ElementaryTypeName 
 	: ""address"" | ""bool"" | ""string"" | ""var""
-	| <int> | <uint> | <byte> | <fixed> | <ufixed>
+	| <int> | <uint> | <byte> | <fixed> | <ufixed> 'type' {{}}
 	;
 
 ############# Variables  ####################################################################################################################

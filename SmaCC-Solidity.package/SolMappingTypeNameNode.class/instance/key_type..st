@@ -1,3 +1,3 @@
 generated
-key_type: aSmaCCToken
-	key_type := aSmaCCToken
+key_type: anObject
+	key_type := anObject

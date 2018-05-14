@@ -1,3 +1,3 @@
 generated
 tokenVariables
-	^ #(#mappingToken #leftParenToken #key_type #equalGreaterThanToken #rightParenToken)
+	^ #(#mappingToken #leftParenToken #equalGreaterThanToken #rightParenToken)

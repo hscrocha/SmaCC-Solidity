@@ -1,3 +1,3 @@
 generated
 otherVariables
-	^ #(#value_type)
+	^ #(#key_type #value_type)
