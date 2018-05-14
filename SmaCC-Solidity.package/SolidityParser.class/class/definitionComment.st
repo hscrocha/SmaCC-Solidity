@@ -211,18 +211,20 @@ StructDefinition
 UsingForDeclaration 
 	: ""using"" LiteralIdentifier 'identifier' ""for"" (""*"" 'all' | TypeName 'type') "";"" {{}}
 	;
-Mapping 
+MappingTypeName 
 	: ""mapping"" ""("" ElementaryTypeName 'elementary_type' ""=>"" TypeName 'mapped_type' "")"" {{}}
 	;
 
 ############# Types Usage  ####################################################################################################################
 TypeName 
-    : ElementaryTypeName 'elementary_type' {{ElementaryTypeName}}
-    | Mapping 'mapping_type' {{MappingTypeName}}
-    | TypeName 'type' ""["" (Expression 'expression')? ""]"" {{ArrayTypeName}}
-    | FunctionTypeName 'function_type' {{FunctionTypeName}}
-    | UserDefinedTypeName 'user_defined_type' {{UserDefinedTypeName}}
+    : ElementaryTypeName
+    | MappingTypeName
+    | ArrayTypeName
+    | FunctionTypeName
+    | UserDefinedTypeName
 ;
+
+ArrayTypeName: TypeName 'type' ""["" (Expression 'expression')? ""]"" {{}} ;
 # Change: Because of many conflicts, we 'pushed' the userdefinedTypeName to the scanner as an non-empty id list 
 UserDefinedTypeName 
 	: LiteralNestedIdentifier
@@ -433,7 +435,7 @@ Factor
 	| LiteralNestedIdentifier
 	| Literal
 	| ElementaryTypeName 
-  	| Mapping
+  	| MappingTypeName
 	| FunctionTypeName 
 	;
 

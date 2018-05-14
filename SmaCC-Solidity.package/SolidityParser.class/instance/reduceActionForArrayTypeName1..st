@@ -1,5 +1,5 @@
 generated-reduction actions
-reduceActionForTypeName3: nodes
+reduceActionForArrayTypeName1: nodes
 	| result |
 	result := SolArrayTypeNameNode new.
 	result type: (nodes at: 1).

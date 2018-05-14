@@ -1,3 +1,0 @@
-generated
-visitUserDefinedTypeName: anUserDefinedTypeName
-	^ self visitRootSourceSol: anUserDefinedTypeName

@@ -1,3 +1,0 @@
-generated
-visitElementaryTypeName: anElementaryTypeName
-	^ self visitRootSourceSol: anElementaryTypeName

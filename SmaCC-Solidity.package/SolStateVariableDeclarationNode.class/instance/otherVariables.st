@@ -1,3 +1,3 @@
 generated
 otherVariables
-	^ #(#type #factor)
+	^ #(#type)

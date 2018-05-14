@@ -1,7 +1,7 @@
 generated-reduction actions
-reduceActionForMapping1: nodes
+reduceActionForMappingTypeName1: nodes
 	| result |
-	result := SolMappingNode new.
+	result := SolMappingTypeNameNode new.
 	result mappingToken: (nodes at: 1).
 	result leftParenToken: (nodes at: 2).
 	result elementary_type: (nodes at: 3).

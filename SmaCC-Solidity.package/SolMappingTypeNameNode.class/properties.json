@@ -6,7 +6,12 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"mapping_type"
+		"mappingToken",
+		"leftParenToken",
+		"elementary_type",
+		"equalGreaterThanToken",
+		"mapped_type",
+		"rightParenToken"
 	],
 	"name" : "SolMappingTypeNameNode",
 	"type" : "normal"
