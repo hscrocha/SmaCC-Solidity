@@ -4,8 +4,8 @@ reduceActionForMappingTypeName1: nodes
 	result := SolMappingTypeNameNode new.
 	result mappingToken: (nodes at: 1).
 	result leftParenToken: (nodes at: 2).
-	result elementary_type: (nodes at: 3).
+	result key_type: (nodes at: 3).
 	result equalGreaterThanToken: (nodes at: 4).
-	result mapped_type: (nodes at: 5).
+	result value_type: (nodes at: 5).
 	result rightParenToken: (nodes at: 6).
 	^ result

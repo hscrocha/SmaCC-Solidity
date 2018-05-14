@@ -1,3 +1,3 @@
 generated
 otherVariables
-	^ #(#mapped_type)
+	^ #(#value_type)
