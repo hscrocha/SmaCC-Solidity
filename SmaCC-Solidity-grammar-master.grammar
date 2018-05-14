@@ -210,7 +210,7 @@ UsingForDeclaration
 	: "using" LiteralIdentifier 'identifier' "for" ("*" 'all' | TypeName 'type') ";" {{}}
 	;
 MappingTypeName 
-	: "mapping" "(" ElementaryTypeName 'elementary_type' "=>" TypeName 'mapped_type' ")" {{}}
+	: "mapping" "(" ElementaryTypeName 'key_type' "=>" TypeName 'value_type' ")" {{}}
 	;
 
 ############# Types Usage  ####################################################################################################################
