@@ -8,10 +8,10 @@
 	"instvars" : [
 		"leftParenToken",
 		"types",
-		"storage_locs",
 		"identifiers",
 		"commaTokens",
-		"rightParenToken"
+		"rightParenToken",
+		"storage_modifiers"
 	],
 	"name" : "SolTypeNameListNode",
 	"type" : "normal"

@@ -1,5 +1,5 @@
 generated-reduction actions
-reduceActionFor__VariableDeclaration__struct_var_dec________VariableDeclaration__struct_var_dec________1: nodes
+reduceActionFor__VariableDeclaration__fields________VariableDeclaration__fields________1: nodes
 	| result |
 	result := nodes at: 3.
 	self addFirst: (nodes at: 1) to: (result at: 1).

@@ -9,9 +9,9 @@
 		"structToken",
 		"identifier",
 		"leftBraceToken",
-		"struct_var_decs",
 		"semicolonTokens",
-		"rightBraceToken"
+		"rightBraceToken",
+		"fieldses"
 	],
 	"name" : "SolStructDefinitionNode",
 	"type" : "normal"

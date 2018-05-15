@@ -1,5 +1,5 @@
 generated-reduction actions
-reduceActionFor__TypeName__type____ModifierStorage__storage_loc______LiteralIdentifier__identifier__________TypeName__type____ModifierStorage__storage_loc______LiteralIdentifier__identifier_______1: nodes
+reduceActionFor__TypeName__type____ModifierStorage__storage_modifier______LiteralIdentifier__identifier__________TypeName__type____ModifierStorage__storage_modifier______LiteralIdentifier__identifier_______1: nodes
 	| result |
 	result := Array new: 4.
 	result at: 1 put: (OrderedCollection new: 2).

@@ -192,21 +192,21 @@ UserModifierInvocation
 	:  LiteralIdentifier 'identifier' ( ""("" (ExpressionList 'expressions')? "")""  )?  {{}}
 	;
 
-############# Types  ####################################################################################################################
+############# Types  ###############################################################################################################################
 ############# Types Definition  ####################################################################################################################
 
 EventDefinition 
-	: ""event"" LiteralIdentifier 'event_id' IndexedParameterList 'indexed_parameters' ""anonymous""? "";"" {{}}
+	: ""event"" LiteralIdentifier 'identifier' IndexedParameterList 'indexed_parameters' ""anonymous""? "";"" {{}}
 	;
 EnumValue 
 	: LiteralIdentifier 'identifier'
 	;
 EnumDefinition
-	:""enum"" LiteralIdentifier 'identifier' ""{"" (EnumValue 'enum_value_id')? ("","" EnumValue 'enum_value_id')* ""}"" {{}}
+	:""enum"" LiteralIdentifier 'identifier' ""{"" (EnumValue 'values')? ("","" EnumValue 'values')* ""}"" {{}}
 	;
 
 StructDefinition 
-	: ""struct"" LiteralIdentifier 'identifier' ""{""  ( VariableDeclaration 'struct_var_dec' "";"" (VariableDeclaration 'struct_var_dec' "";"")* )? ""}"" {{}}
+	: ""struct"" LiteralIdentifier 'identifier' ""{""  ( VariableDeclaration 'fields' "";"" (VariableDeclaration 'fields' "";"")* )? ""}"" {{}}
 	;
 UsingForDeclaration 
 	: ""using"" LiteralIdentifier 'identifier' ""for"" (""*"" 'all' | TypeName 'type') "";"" {{}}
@@ -252,7 +252,7 @@ StateVariableDeclaration
 
 ############# Functions Naming  ####################################################################################################################
 TypeNameList 
-	: ""("" ( TypeName 'type' (ModifierStorage 'storage_loc')? (LiteralIdentifier 'identifier')? ("","" TypeName 'type' (ModifierStorage 'storage_loc')? (LiteralIdentifier 'identifier')?)* )? "")"" {{}}
+	: ""("" ( TypeName 'type' (ModifierStorage 'storage_modifier')? (LiteralIdentifier 'identifier')? ("","" TypeName 'type' (ModifierStorage 'storage_modifier')? (LiteralIdentifier 'identifier')?)* )? "")"" {{}}
 	;
 
 FunctionTypeName 
@@ -272,7 +272,7 @@ IndexedParameterList
 	: ""("" (IndexedParameter 'parameter' ("","" IndexedParameter 'parameter' )* )? "")"" {{}}
 	;
 
-Parameter:  TypeName 'type' (ModifierStorage 'storage_loc')? (LiteralIdentifier 'identifier')? {{}};
+Parameter:  TypeName 'type' (ModifierStorage 'storage_modifier')? (LiteralIdentifier 'identifier')? {{}};
 ParameterList 
 	: ""("" ( 
 		Parameter 'parameter' ("","" Parameter 'parameter' )* )? "")"" {{}}
