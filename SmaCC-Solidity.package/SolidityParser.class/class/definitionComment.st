@@ -236,7 +236,7 @@ ElementaryTypeName
 
 ############# Variables  ####################################################################################################################
 VariableDeclaration 
-	: TypeName 'type' (ModifierStorage 'storage_loc')? LiteralIdentifier 'identifier' {{}}
+	: TypeName 'type' (ModifierStorage 'storage_modifier')? LiteralIdentifier 'identifier' {{}}
 	;
 VariableDefinition 
 	: (""var"" IdentifierList 'var_id_list' ) ( ""="" Expression 'assign_expression' )? {{}}
@@ -412,7 +412,7 @@ SimpleTerm
 	: Factor 'factor' (IndexAccess 'index')* {{Term}}
 	;
 Term
-	: Factor 'factor' (IndexAccess 'index')* (ModifierStorage 'storage_modifier')?  (LiteralIdentifier 'variable_declaration') {{VariableDeclaration}}
+	: Factor 'factor' (IndexAccess 'index')* (ModifierStorage 'storage_modifier')?  (LiteralIdentifier 'identifier') {{VariableDeclaration}}
 	| SimpleTerm
 	;
 
