@@ -231,8 +231,7 @@ UserDefinedTypeName
 	| LiteralIdentifier 'user_defined_type' {{}}
 	;
 ElementaryTypeName 
-	: ""address"" | ""bool"" | ""string"" | ""var""
-	| <int> | <uint> | <byte> | <fixed> | <ufixed> 'type' {{}}
+	: (""address"" | ""bool"" | ""string"" | ""var"" | <int> | <uint> | <byte> | <fixed> | <ufixed>) 'type' {{}}
 	;
 
 ############# Variables  ####################################################################################################################

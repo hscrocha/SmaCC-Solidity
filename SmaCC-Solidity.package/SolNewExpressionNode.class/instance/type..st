@@ -1,3 +1,7 @@
 generated
-type: anObject
-	type := anObject
+type: aSolRootSourceSolNode
+	self type notNil
+		ifTrue: [ self type parent: nil ].
+	type := aSolRootSourceSolNode.
+	self type notNil
+		ifTrue: [ self type parent: self ]

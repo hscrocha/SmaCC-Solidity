@@ -1,3 +1,3 @@
 generated
-otherVariables
+nodeVariables
 	^ #(#key_type #value_type)

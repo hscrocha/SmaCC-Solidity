@@ -1,3 +1,6 @@
 generated-reduction actions
 reduceActionForElementaryTypeName1: nodes
-	^ nodes at: 1
+	| result |
+	result := SolElementaryTypeNameNode new.
+	result type: (nodes at: 1).
+	^ result
