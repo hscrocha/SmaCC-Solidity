@@ -11,7 +11,7 @@
 		"leftBraceToken",
 		"semicolonTokens",
 		"rightBraceToken",
-		"fieldses"
+		"fields"
 	],
 	"name" : "SolStructDefinitionNode",
 	"type" : "normal"

@@ -202,11 +202,11 @@ EnumValue
 	: LiteralIdentifier 'identifier'
 	;
 EnumDefinition
-	:""enum"" LiteralIdentifier 'identifier' ""{"" (EnumValue 'values')? ("","" EnumValue 'values')* ""}"" {{}}
+	:""enum"" LiteralIdentifier 'identifier' ""{"" (EnumValue 'value')? ("","" EnumValue 'value')* ""}"" {{}}
 	;
 
 StructDefinition 
-	: ""struct"" LiteralIdentifier 'identifier' ""{""  ( VariableDeclaration 'fields' "";"" (VariableDeclaration 'fields' "";"")* )? ""}"" {{}}
+	: ""struct"" LiteralIdentifier 'identifier' ""{""  ( VariableDeclaration 'field' "";"" (VariableDeclaration 'field' "";"")* )? ""}"" {{}}
 	;
 UsingForDeclaration 
 	: ""using"" LiteralIdentifier 'identifier' ""for"" (""*"" 'all' | TypeName 'type') "";"" {{}}

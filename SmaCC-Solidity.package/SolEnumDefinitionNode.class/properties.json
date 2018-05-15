@@ -11,7 +11,7 @@
 		"leftBraceToken",
 		"commaTokens",
 		"rightBraceToken",
-		"valueses"
+		"values"
 	],
 	"name" : "SolEnumDefinitionNode",
 	"type" : "normal"

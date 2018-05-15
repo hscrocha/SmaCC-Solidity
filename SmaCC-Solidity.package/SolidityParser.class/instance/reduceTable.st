@@ -267,7 +267,7 @@ reduceTable
 	#(212 6 #reduceActionForMappingTypeName1:) 
 	#(171 6 #reduceActionForEnumDefinition1:) 
 	#(203 2 #reduceActionFor________Expression__expression_____2:) 
-	#(207 3 #reduceActionFor__VariableDeclaration__fields________VariableDeclaration__fields________1:) 
+	#(207 3 #reduceActionFor__VariableDeclaration__field________VariableDeclaration__field________1:) 
 	#(204 3 #reduceActionForVariableDeclaration1:) 
 	#(252 3 #reduceActionForIndexedParameter1:) 
 	#(254 2 #reduceActionFor________Expression__expression_____2:) 
