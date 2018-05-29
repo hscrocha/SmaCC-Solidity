@@ -6,7 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"user_defined_type"
+		"value"
 	],
 	"name" : "SolUserDefinedTypeNameNode",
 	"type" : "normal"

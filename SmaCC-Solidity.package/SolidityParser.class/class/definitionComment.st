@@ -70,7 +70,8 @@ definitionComment
 #############################################################################################################################
 ######## Parser & AST Definition
 #############################################################################################################################
-RootSourceSol 
+RootSourceSol : RootSource; 
+RootSource 
 	: ( SourceUnit 'sourceunit')* {{}}
 	;
 SourceUnit
@@ -143,7 +144,7 @@ ImportDirective
 
 ############# Contract  ####################################################################################################################
 ContractDefinition 
-	: ( ""contract"" | ""library"" | ""interface"" ) 'definition_type' LiteralIdentifier 'contract_id' ( ""is"" InheritanceSpecifier 'inheritance' ("","" InheritanceSpecifier 'inheritance' )* )?   ""{"" (ContractPart 'contract_source')* ""}"" {{}}
+	: ( ""contract"" | ""library"" | ""interface"" ) 'type' LiteralIdentifier 'identifier' ( ""is"" InheritanceSpecifier 'inheritance' ("","" InheritanceSpecifier 'inheritance' )* )?   ""{"" (ContractPart 'statement')* ""}"" {{}}
 	;
 ContractPart 
 	: StateVariableDeclaration 
@@ -156,18 +157,18 @@ ContractPart
 	;
 
 InheritanceSpecifier 
-	: UserDefinedTypeName 'user_defined_type' ( ""("" ExpressionList 'expressions' "")"" )? {{}}
+	: UserDefinedTypeName 'behaviour' ( ""("" ExpressionList 'arguments' "")"" )? {{}}
 	;
 
 
 ############# Modifiers  ####################################################################################################################
 
-ModifierFunctionImmuable : ( ""constant""	| ""pure"" | ""view"" ) {{}};
-ModifierFunctionPayable : ""payable"" {{}};
+ModifierFunctionImmuable : ( ""constant""	| ""pure"" | ""view"" ) 'value' {{}};
+ModifierFunctionPayable : ""payable"" 'value'{{}};
 
-ModifierPrivacy : (""public"" | ""private"" ) {{}};
-ModifierVisibility : (""internal"" | ""external"") {{}};
-ModifierStateVariableVisibility :  ""internal"" {{}};
+ModifierPrivacy : (""public"" | ""private"" ) 'value'{{}};
+ModifierVisibility : (""internal"" | ""external"") 'value' {{}};
+ModifierStateVariableVisibility :  ""internal"" 'value' {{}};
 
 ModifierFunctionDefinition  :  
 	UserModifierInvocation  | 
@@ -192,11 +193,11 @@ UserModifierInvocation
 	:  LiteralIdentifier 'identifier' ( ""("" (ExpressionList 'expressions')? "")""  )?  {{}}
 	;
 
-############# Types  ###############################################################################################################################
+############# Types  #############################################################################################################################
 ############# Types Definition  ####################################################################################################################
 
 EventDefinition 
-	: ""event"" LiteralIdentifier 'identifier' IndexedParameterList 'indexed_parameters' ""anonymous""? "";"" {{}}
+	: ""event"" LiteralIdentifier 'identifier' IndexedParameterList 'parameters' (""anonymous"" 'modifier' )? "";"" {{}}
 	;
 EnumValue 
 	: LiteralIdentifier 'identifier'
@@ -227,8 +228,8 @@ TypeName
 ArrayTypeName: TypeName 'type' ""["" (Expression 'expression')? ""]"" {{}} ;
 # Change: Because of many conflicts, we 'pushed' the userdefinedTypeName to the scanner as an non-empty id list 
 UserDefinedTypeName 
-	: LiteralNestedIdentifier
-	| LiteralIdentifier 'user_defined_type' {{}}
+	: LiteralNestedIdentifier 'value' {{}}
+	| LiteralIdentifier  'value' {{}}
 	;
 ElementaryTypeName 
 	: (""address"" | ""bool"" | ""string"" | ""var"" | <int> | <uint> | <byte> | <fixed> | <ufixed>) 'type' {{}}

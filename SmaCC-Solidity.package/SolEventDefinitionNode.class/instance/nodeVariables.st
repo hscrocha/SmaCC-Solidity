@@ -1,3 +1,3 @@
 generated
 nodeVariables
-	^ #(#identifier #indexed_parameters)
+	^ #(#identifier #parameters)

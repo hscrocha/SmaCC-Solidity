@@ -1,3 +1,3 @@
 generated
 tokenVariables
-	^ #(#constantToken #pureToken #viewToken)
+	^ #(#value)

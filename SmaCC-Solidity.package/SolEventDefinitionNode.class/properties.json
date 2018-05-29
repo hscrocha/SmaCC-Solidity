@@ -7,10 +7,10 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"eventToken",
-		"indexed_parameters",
-		"anonymousToken",
 		"semicolonToken",
-		"identifier"
+		"identifier",
+		"parameters",
+		"modifier"
 	],
 	"name" : "SolEventDefinitionNode",
 	"type" : "normal"

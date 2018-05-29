@@ -6,14 +6,14 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"definition_type",
-		"contract_id",
 		"isToken",
 		"inheritances",
 		"commaTokens",
 		"leftBraceToken",
-		"contract_sources",
-		"rightBraceToken"
+		"rightBraceToken",
+		"type",
+		"identifier",
+		"statements"
 	],
 	"name" : "SolContractDefinitionNode",
 	"type" : "normal"

@@ -1,3 +1,0 @@
-generated
-internalToken
-	^ internalToken
