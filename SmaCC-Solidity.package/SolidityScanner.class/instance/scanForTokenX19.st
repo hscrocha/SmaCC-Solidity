@@ -8,14 +8,14 @@ scanForTokenX19
 	currentCharacter == $u
 		ifTrue: [ ^ self scan34 ].
 	currentCharacter == ${
-		ifTrue: [ ^ self recordAndReportMatch: #(87) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(88) ].
 	currentCharacter == $|
 		ifTrue:
-			[ ^ self scanForTokenX8 ].
+			[ ^ self scanForTokenX9 ].
 	currentCharacter == $}
-		ifTrue: [ ^ self recordAndReportMatch: #(95) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(96) ].
 	currentCharacter == $~
-		ifTrue: [ ^ self recordAndReportMatch: #(22) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(27) ].
 	(currentCharacter between: $1 and: $9)
 		ifTrue: [ ^ self scan10 ].
 	(currentCharacter isSeparator

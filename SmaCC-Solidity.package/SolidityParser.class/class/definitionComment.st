@@ -39,7 +39,7 @@ definitionComment
 %annotate_tokens;
 %prefix Sol;
 %suffix Node;
-%start RootSourceSol ContractPart Statement Expression Factor;
+%start RootSourceSol ContractPart Statement Expression Factor AssemblyExpression;
 
 %left "")""  ;  #to avoid shift/reduce in FunctionDefinition vs TypeName -- FunctionTypeName, fallback function vs empty functiontype
 %left ""constant"" ""internal"";  #to avoid shift/reduce caused by these keywords
@@ -490,7 +490,11 @@ AssemblyExpression
 	| AssemblyAssignment 
 	| AssemblyLabel 
 	| AssemblyValue
+	| AssemmblyFunctionDefinition 
 	;
+
+
+AssemmblyFunctionDefinition:  ""function"" LiteralIdentifier 'identifier' ""("" (AssemblyExpressionList 'parameters') ?"")""  ""->"" LiteralIdentifier 'return' AssemblyBlock 'body' {{}};
 
 AssemblyExpressionList
 	: AssemblyExpression 'expression' ( "","" AssemblyExpression 'expression' )* {{}};
@@ -498,11 +502,11 @@ AssemblyExpressionList
 
 AssemblyIf: ""if"" AssemblyExpression 'condition' AssemblyBlock 'block' {{}};
 
-AssemblyFor: ""for"" AssemblyBlock 'initialize' AssemblyExpression 'condition' AssemblyBlock 'update' AssemblyBlock 'body' {{}};
+AssemblyFor: ""for"" AssemblyBlock 'initialization' AssemblyExpression 'condition' AssemblyBlock 'increment' AssemblyBlock 'body' {{}};
 
 AssemblyCase: ""case"" AssemblyValue 'value' AssemblyBlock 'body' {{}} 
 	    | ""default"" AssemblyBlock 'body' {{}};
-AssemblySwitch: ""switch"" AssemblyExpression 'expression' (AssemblyCase 'cases')+ {{}};
+AssemblySwitch: ""switch"" AssemblyExpression 'expression' (AssemblyCase 'case')+ {{}};
 
 
 

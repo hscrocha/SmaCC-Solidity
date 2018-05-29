@@ -1,0 +1,3 @@
+generated
+startingStateForAssemblyExpression
+	^ 6

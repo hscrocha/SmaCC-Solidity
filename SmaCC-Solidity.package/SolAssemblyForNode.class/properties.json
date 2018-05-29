@@ -7,10 +7,10 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"forToken",
-		"_initialize",
 		"condition",
-		"_update",
-		"body"
+		"body",
+		"initialization",
+		"increment"
 	],
 	"name" : "SolAssemblyForNode",
 	"type" : "normal"

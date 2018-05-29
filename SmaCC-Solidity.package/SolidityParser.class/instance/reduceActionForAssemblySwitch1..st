@@ -4,5 +4,5 @@ reduceActionForAssemblySwitch1: nodes
 	result := SolAssemblySwitchNode new.
 	result switchToken: (nodes at: 1).
 	result expression: (nodes at: 2).
-	result addNodes: (nodes at: 3) to: result caseses.
+	result addNodes: (nodes at: 3) to: result cases.
 	^ result
