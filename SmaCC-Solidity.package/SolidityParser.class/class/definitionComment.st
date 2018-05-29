@@ -397,7 +397,7 @@ OperationAssign
 Expression 
 	: OperationsUnary
 	|  NewExpression
-        | IndexAccessExpression
+         | IndexAccessExpression
         | MemberAccess
         | FunctionCall
 	| ExpressionParenthesis
