@@ -1,3 +1,3 @@
 tests - statement
 testPlaceholderStatement
-	self startingOn: (SolidityParser startingStateForStatement) parseTest: '_;'. 
+	self startingOn: SolidityParser startingStateForStatement parseTest: '_;'

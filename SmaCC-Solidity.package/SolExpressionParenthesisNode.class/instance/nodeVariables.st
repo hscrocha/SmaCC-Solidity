@@ -1,3 +1,3 @@
 generated
 nodeVariables
-	^ #(#exp #follow_exp)
+	^ #(#expression #follow_expression)

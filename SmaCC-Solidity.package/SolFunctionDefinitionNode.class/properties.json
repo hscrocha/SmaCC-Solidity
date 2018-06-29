@@ -8,12 +8,12 @@
 	"instvars" : [
 		"functionToken",
 		"identifier",
+		"parameters",
+		"modifiers",
 		"returnsToken",
 		"returned_types",
 		"semicolonToken",
-		"block",
-		"modifiers",
-		"param_list"
+		"block"
 	],
 	"name" : "SolFunctionDefinitionNode",
 	"type" : "normal"

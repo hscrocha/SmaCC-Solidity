@@ -7,8 +7,8 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"type",
-		"storage_loc",
-		"identifier"
+		"identifier",
+		"storage_modifier"
 	],
 	"name" : "SolParameterNode",
 	"type" : "normal"

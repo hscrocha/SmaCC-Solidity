@@ -1,5 +1,8 @@
 tests - statement
 testInlineAssemblyStatement
-	self startingOn: (SolidityParser startingStateForStatement) parseTest: 'assembly{
+	self
+		startingOn: SolidityParser startingStateForStatement
+		parseTest:
+			'assembly{
 	
-}'. 
+}'

@@ -1,0 +1,3 @@
+generated
+visitAssemmblyFunctionDefinition: anAssemmblyFunctionDefinition
+	^ self visitRootSourceSol: anAssemmblyFunctionDefinition

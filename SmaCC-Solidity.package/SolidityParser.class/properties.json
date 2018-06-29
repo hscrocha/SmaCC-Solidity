@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "HenriqueRocha 7/4/2017 14:25",
+	"commentStamp" : "",
 	"super" : "SmaCCParser",
 	"category" : "SmaCC-Solidity-ParserAndScanner",
 	"classinstvars" : [ ],

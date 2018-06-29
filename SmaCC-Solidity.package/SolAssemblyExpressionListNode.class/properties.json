@@ -6,7 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"exps",
+		"expressions",
 		"commaTokens"
 	],
 	"name" : "SolAssemblyExpressionListNode",

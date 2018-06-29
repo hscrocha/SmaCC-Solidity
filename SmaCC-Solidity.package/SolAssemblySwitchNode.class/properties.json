@@ -8,7 +8,7 @@
 	"instvars" : [
 		"switchToken",
 		"expression",
-		"caseses"
+		"cases"
 	],
 	"name" : "SolAssemblySwitchNode",
 	"type" : "normal"

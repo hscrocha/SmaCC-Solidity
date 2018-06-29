@@ -1,3 +1,3 @@
 tests - factor
 testElementaryTypeNameBool
-	self startingOn: (SolidityParser startingStateForFactor) parseTest:   'bool'.
+	self startingOn: SolidityParser startingStateForFactor parseTest: 'bool'

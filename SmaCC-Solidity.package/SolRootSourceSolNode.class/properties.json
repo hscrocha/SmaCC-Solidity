@@ -5,9 +5,7 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"sourceunits"
-	],
+	"instvars" : [ ],
 	"name" : "SolRootSourceSolNode",
 	"type" : "normal"
 }

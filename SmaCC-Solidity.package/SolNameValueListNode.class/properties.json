@@ -8,7 +8,7 @@
 	"instvars" : [
 		"ids",
 		"colonTokens",
-		"exps",
+		"expressions",
 		"commaTokens"
 	],
 	"name" : "SolNameValueListNode",

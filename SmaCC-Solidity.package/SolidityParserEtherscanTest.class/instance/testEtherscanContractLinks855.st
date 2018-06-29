@@ -1,5 +1,0 @@
-auto generated tests
-testEtherscanContractLinks855
-	|contract|
-	contract := self class fetchEtherscanContractFrom: 'https://etherscan.io/address/0x607F4C5BB672230e8672085532f7e901544a7375#code'. 
-	SolidityParserTest new parseTest: contract.

@@ -8,7 +8,7 @@
 	"instvars" : [
 		"type",
 		"leftBracketToken",
-		"exp",
+		"expression",
 		"rightBracketToken"
 	],
 	"name" : "SolArrayTypeNameNode",

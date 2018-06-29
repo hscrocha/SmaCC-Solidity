@@ -1,3 +1,0 @@
-generated
-emitToken
-	^ emitToken

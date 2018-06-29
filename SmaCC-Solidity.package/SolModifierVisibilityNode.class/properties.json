@@ -6,8 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"internalToken",
-		"externalToken"
+		"value"
 	],
 	"name" : "SolModifierVisibilityNode",
 	"type" : "normal"

@@ -1,0 +1,4 @@
+generated - test
+test0xA96B24E4987056859411A8f3C7EA4B163395e664
+	^ self assertIsAstNode:  (self parseContract: '0xA96B24E4987056859411A8f3C7EA4B163395e664' ) 
+	

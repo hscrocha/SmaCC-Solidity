@@ -9,9 +9,9 @@
 		"enumToken",
 		"identifier",
 		"leftBraceToken",
-		"enum_value_ids",
 		"commaTokens",
-		"rightBraceToken"
+		"rightBraceToken",
+		"values"
 	],
 	"name" : "SolEnumDefinitionNode",
 	"type" : "normal"

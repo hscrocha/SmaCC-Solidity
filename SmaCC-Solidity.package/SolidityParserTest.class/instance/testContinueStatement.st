@@ -1,3 +1,3 @@
 tests - statement
 testContinueStatement
-	self startingOn: (SolidityParser startingStateForStatement) parseTest: 'continue;'. 
+	self startingOn: SolidityParser startingStateForStatement parseTest: 'continue;'
