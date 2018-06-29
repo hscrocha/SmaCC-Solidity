@@ -1,6 +1,6 @@
 generated
 scan29
-	self recordMatch: #(117).
+	self recordMatch: #(121).
 	self step.
 	currentCharacter == $.
 		ifTrue: [ ^ self scan4 ].
@@ -14,7 +14,7 @@ scan29
 		ifTrue:
 			[ ^ self scan29X4 ].
 	currentCharacter == $3
-		ifTrue: [ self recordMatch: #(117).
+		ifTrue: [ self recordMatch: #(121).
 			self step.
 			currentCharacter == $.
 				ifTrue: [ ^ self scan4 ].

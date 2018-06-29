@@ -1,3 +1,3 @@
 generated
 compositeNodeVariables
-	^ #(#asm_items #sourceunits)
+	^ #(#asm_items)

@@ -1,0 +1,3 @@
+generated
+array_access_expression
+	^ array_access_expression

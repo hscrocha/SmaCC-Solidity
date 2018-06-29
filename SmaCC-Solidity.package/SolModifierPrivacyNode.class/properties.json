@@ -6,8 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"publicToken",
-		"privateToken"
+		"value"
 	],
 	"name" : "SolModifierPrivacyNode",
 	"type" : "normal"

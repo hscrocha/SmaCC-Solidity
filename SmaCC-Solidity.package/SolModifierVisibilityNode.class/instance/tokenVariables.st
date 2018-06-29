@@ -1,3 +1,3 @@
 generated
 tokenVariables
-	^ #(#internalToken #externalToken)
+	^ #(#value)

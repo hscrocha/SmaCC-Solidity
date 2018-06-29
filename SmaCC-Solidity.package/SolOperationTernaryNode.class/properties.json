@@ -6,7 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"test_exp",
+		"condition",
 		"questionMarkToken",
 		"then_statement",
 		"colonToken",

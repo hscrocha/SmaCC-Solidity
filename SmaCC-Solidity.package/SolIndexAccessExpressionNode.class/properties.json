@@ -6,7 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"exp",
+		"expression",
 		"leftBracketToken",
 		"index",
 		"rightBracketToken"

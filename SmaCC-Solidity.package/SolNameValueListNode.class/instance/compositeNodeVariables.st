@@ -1,3 +1,3 @@
 generated
 compositeNodeVariables
-	^ #(#ids #exps #sourceunits)
+	^ #(#ids #expressions)

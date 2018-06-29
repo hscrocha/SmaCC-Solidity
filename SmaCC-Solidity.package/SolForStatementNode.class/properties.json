@@ -10,8 +10,8 @@
 		"leftParenToken",
 		"initialization",
 		"semicolonTokens",
-		"exp",
-		"exp_list",
+		"condition",
+		"increment_list",
 		"rightParenToken",
 		"statement"
 	],

@@ -6,9 +6,9 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"lhs_exp",
+		"lhs",
 		"operation",
-		"rhs_exp"
+		"rhs"
 	],
 	"name" : "SolOperationBitAndNode",
 	"type" : "normal"

@@ -1,3 +1,0 @@
-generated
-indexed_param_list
-	^ indexed_param_list

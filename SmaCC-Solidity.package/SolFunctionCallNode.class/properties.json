@@ -6,9 +6,9 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"exp",
+		"expression",
 		"leftParenToken",
-		"args",
+		"arguments",
 		"rightParenToken"
 	],
 	"name" : "SolFunctionCallNode",

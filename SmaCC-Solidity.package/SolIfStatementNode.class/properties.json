@@ -8,7 +8,7 @@
 	"instvars" : [
 		"ifToken",
 		"leftParenToken",
-		"exp_test",
+		"condition",
 		"rightParenToken",
 		"then_statement",
 		"elseToken",

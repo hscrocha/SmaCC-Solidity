@@ -1,3 +1,3 @@
 generated
 nodeVariables
-	^ #(#identifier #param_list #block)
+	^ #(#identifier #parameters #block)

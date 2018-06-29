@@ -6,9 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"constantToken",
-		"pureToken",
-		"viewToken"
+		"value"
 	],
 	"name" : "SolModifierFunctionImmuableNode",
 	"type" : "normal"

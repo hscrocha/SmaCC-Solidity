@@ -1,3 +1,3 @@
 tests - statement
 testReturnEmptyStatement
-	self startingOn: (SolidityParser startingStateForStatement) parseTest: 'return;'. 
+	self startingOn: SolidityParser startingStateForStatement parseTest: 'return;'

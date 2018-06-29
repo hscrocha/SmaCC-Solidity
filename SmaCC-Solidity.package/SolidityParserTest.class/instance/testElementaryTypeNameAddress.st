@@ -1,3 +1,3 @@
 tests - factor
 testElementaryTypeNameAddress
-	self startingOn: (SolidityParser startingStateForFactor) parseTest:  'address'.
+	self startingOn: SolidityParser startingStateForFactor parseTest: 'address'

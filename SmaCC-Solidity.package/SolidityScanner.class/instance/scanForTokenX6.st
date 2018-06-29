@@ -1,12 +1,11 @@
 generated
 scanForTokenX6
-	self recordMatch: #(47).
+	self recordMatch: #(12).
 	self step.
+	currentCharacter == $-
+		ifTrue: [ ^ self recordAndReportMatch: #(4) ].
 	currentCharacter == $=
-		ifTrue: [ ^ self recordAndReportMatch: #(20) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(41) ].
 	currentCharacter == $>
-		ifTrue: [ self recordMatch: #(11).
-			self step.
-			currentCharacter == $=
-				ifTrue: [ ^ self recordAndReportMatch: #(31) ] ].
+		ifTrue: [ ^ self recordAndReportMatch: #(74) ].
 	^ self reportLastMatch

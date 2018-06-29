@@ -1,3 +1,3 @@
 generated
 nodeVariables
-	^ #(#_initialize #condition #_update #body)
+	^ #(#initialization #condition #increment #body)

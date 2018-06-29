@@ -1,3 +1,3 @@
 generated
 compositeNodeVariables
-	^ #(#types #storage_locs #identifiers #sourceunits)
+	^ #(#types #storage_modifiers #identifiers)

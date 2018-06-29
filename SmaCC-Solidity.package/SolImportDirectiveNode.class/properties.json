@@ -7,7 +7,7 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"importToken",
-		"str_source",
+		"_source",
 		"asTokens",
 		"aliases",
 		"semicolonToken",

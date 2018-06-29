@@ -6,7 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"version_op",
+		"operator",
 		"numbers",
 		"periodTokens"
 	],

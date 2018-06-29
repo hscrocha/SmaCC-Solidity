@@ -1,0 +1,4 @@
+generated - test
+test0x996dc5dfc819408dd98cd92c9a76f64b0738dc3d
+	^ self assertIsAstNode:  (self parseContract: '0x996dc5dfc819408dd98cd92c9a76f64b0738dc3d' ) 
+	

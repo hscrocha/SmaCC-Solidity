@@ -7,10 +7,10 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"type",
-		"storage_loc",
 		"identifier",
 		"factor",
-		"indexes"
+		"indexes",
+		"storage_modifier"
 	],
 	"name" : "SolVariableDeclarationNode",
 	"type" : "normal"

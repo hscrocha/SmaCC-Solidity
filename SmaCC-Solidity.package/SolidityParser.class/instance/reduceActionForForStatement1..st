@@ -6,9 +6,9 @@ reduceActionForForStatement1: nodes
 	result leftParenToken: (nodes at: 2).
 	result initialization: (nodes at: 3).
 	result addToken: (nodes at: 4) to: result semicolonTokens.
-	result exp: (nodes at: 5).
+	result condition: (nodes at: 5).
 	result addToken: (nodes at: 6) to: result semicolonTokens.
-	result exp_list: (nodes at: 7).
+	result increment_list: (nodes at: 7).
 	result rightParenToken: (nodes at: 8).
 	result statement: (nodes at: 9).
 	^ result

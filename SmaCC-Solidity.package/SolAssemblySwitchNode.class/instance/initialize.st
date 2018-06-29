@@ -1,4 +1,4 @@
 generated-initialize-release
 initialize
 	super initialize.
-	caseses := OrderedCollection new: 2.
+	cases := OrderedCollection new: 2.

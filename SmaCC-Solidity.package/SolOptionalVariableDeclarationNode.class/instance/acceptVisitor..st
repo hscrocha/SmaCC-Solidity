@@ -1,3 +1,0 @@
-generated
-acceptVisitor: aRootSourceSolVisitor
-	^ aRootSourceSolVisitor visitOptionalVariableDeclaration: self

@@ -1,0 +1,3 @@
+generated
+visitAssemblyExpressionList: anAssemblyExpressionList
+	^ self visitRootSourceSol: anAssemblyExpressionList

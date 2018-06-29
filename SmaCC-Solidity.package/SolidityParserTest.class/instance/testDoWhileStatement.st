@@ -1,5 +1,6 @@
 tests - statement
 testDoWhileStatement
+
 	self startingOn: (SolidityParser startingStateForStatement) parseTest: 'do {
 	_;
 } while (i++ < 10);'. 
