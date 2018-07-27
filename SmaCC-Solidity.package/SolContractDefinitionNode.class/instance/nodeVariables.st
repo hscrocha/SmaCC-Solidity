@@ -1,3 +1,3 @@
 generated
 nodeVariables
-	^ #(#identifier)
+	^ #(#contract_id)

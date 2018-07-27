@@ -8,8 +8,8 @@
 	"instvars" : [
 		"leftParenToken",
 		"rightParenToken",
-		"behaviour",
-		"arguments"
+		"user_defined_type",
+		"exp_list"
 	],
 	"name" : "SolInheritanceSpecifierNode",
 	"type" : "normal"

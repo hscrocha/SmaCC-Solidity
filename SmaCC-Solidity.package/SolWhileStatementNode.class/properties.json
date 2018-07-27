@@ -8,9 +8,9 @@
 	"instvars" : [
 		"whileToken",
 		"leftParenToken",
-		"condition",
 		"rightParenToken",
-		"statement"
+		"statement",
+		"exp_test"
 	],
 	"name" : "SolWhileStatementNode",
 	"type" : "normal"

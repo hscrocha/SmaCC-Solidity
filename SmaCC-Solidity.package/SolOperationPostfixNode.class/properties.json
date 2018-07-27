@@ -6,8 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"expression",
-		"operation"
+		"operation",
+		"exp"
 	],
 	"name" : "SolOperationPostfixNode",
 	"type" : "normal"

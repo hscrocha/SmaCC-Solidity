@@ -1,3 +1,3 @@
 generated
 nodeVariables
-	^ #(#condition #statement)
+	^ #(#exp_test #statement)

@@ -6,6 +6,6 @@ reduceActionForStateVariableDeclaration1: nodes
 	result modifier: (nodes at: 2).
 	result identifier: (nodes at: 3).
 	result equalToken: ((nodes at: 4) at: 1).
-	result expression: ((nodes at: 4) at: 2).
+	result exp: ((nodes at: 4) at: 2).
 	result semicolonToken: (nodes at: 5).
 	^ result

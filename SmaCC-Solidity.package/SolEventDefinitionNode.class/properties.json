@@ -8,9 +8,9 @@
 	"instvars" : [
 		"eventToken",
 		"semicolonToken",
-		"identifier",
-		"parameters",
-		"modifier"
+		"event_id",
+		"indexed_param_list",
+		"anonymousToken"
 	],
 	"name" : "SolEventDefinitionNode",
 	"type" : "normal"

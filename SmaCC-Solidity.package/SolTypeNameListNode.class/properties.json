@@ -11,7 +11,7 @@
 		"identifiers",
 		"commaTokens",
 		"rightParenToken",
-		"storage_modifiers"
+		"storage_locs"
 	],
 	"name" : "SolTypeNameListNode",
 	"type" : "normal"

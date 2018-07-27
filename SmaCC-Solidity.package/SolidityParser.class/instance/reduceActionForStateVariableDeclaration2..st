@@ -7,6 +7,6 @@ reduceActionForStateVariableDeclaration2: nodes
 	result constantToken: (nodes at: 3).
 	result identifier: (nodes at: 4).
 	result equalToken: (nodes at: 5).
-	result expression: (nodes at: 6).
+	result exp: (nodes at: 6).
 	result semicolonToken: (nodes at: 7).
 	^ result

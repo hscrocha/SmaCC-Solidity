@@ -6,9 +6,9 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"expression",
 		"periodToken",
-		"term"
+		"term",
+		"exp"
 	],
 	"name" : "SolMemberAccessNode",
 	"type" : "normal"

@@ -8,8 +8,8 @@
 	"instvars" : [
 		"identifier",
 		"leftParenToken",
-		"expressions",
-		"rightParenToken"
+		"rightParenToken",
+		"exp_list"
 	],
 	"name" : "SolUserModifierInvocationNode",
 	"type" : "normal"

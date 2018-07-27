@@ -8,8 +8,8 @@
 	"instvars" : [
 		"modifierToken",
 		"identifier",
-		"parameters",
-		"block"
+		"block",
+		"param_list"
 	],
 	"name" : "SolUserModifierDefinitionNode",
 	"type" : "normal"

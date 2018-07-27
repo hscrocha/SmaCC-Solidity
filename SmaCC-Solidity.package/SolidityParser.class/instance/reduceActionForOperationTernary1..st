@@ -2,7 +2,7 @@ generated-reduction actions
 reduceActionForOperationTernary1: nodes
 	| result |
 	result := SolOperationTernaryNode new.
-	result condition: (nodes at: 1).
+	result test_exp: (nodes at: 1).
 	result questionMarkToken: (nodes at: 2).
 	result then_statement: (nodes at: 3).
 	result colonToken: (nodes at: 4).

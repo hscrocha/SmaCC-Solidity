@@ -8,8 +8,8 @@
 	"instvars" : [
 		"type",
 		"leftBracketToken",
-		"expression",
-		"rightBracketToken"
+		"rightBracketToken",
+		"exp"
 	],
 	"name" : "SolArrayTypeNameNode",
 	"type" : "normal"

@@ -1,3 +1,3 @@
 generated
 compositeNodeVariables
-	^ #(#values)
+	^ #(#enum_value_ids #sourceunits)

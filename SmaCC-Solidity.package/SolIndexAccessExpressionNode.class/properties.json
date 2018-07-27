@@ -6,10 +6,10 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"expression",
 		"leftBracketToken",
 		"index",
-		"rightBracketToken"
+		"rightBracketToken",
+		"exp"
 	],
 	"name" : "SolIndexAccessExpressionNode",
 	"type" : "normal"

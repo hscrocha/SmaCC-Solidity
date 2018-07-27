@@ -6,9 +6,9 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"operator",
 		"numbers",
-		"periodTokens"
+		"periodTokens",
+		"version_op"
 	],
 	"name" : "SolVersionNode",
 	"type" : "normal"

@@ -3,7 +3,7 @@ reduceActionForExpressionParenthesis1: nodes
 	| result |
 	result := SolExpressionParenthesisNode new.
 	result leftParenToken: (nodes at: 1).
-	result expression: (nodes at: 2).
+	result exp: (nodes at: 2).
 	result rightParenToken: (nodes at: 3).
-	result follow_expression: (nodes at: 4).
+	result follow_exp: (nodes at: 4).
 	^ result

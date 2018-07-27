@@ -8,7 +8,7 @@
 	"instvars" : [
 		"type",
 		"identifier",
-		"storage_modifier"
+		"storage_loc"
 	],
 	"name" : "SolParameterNode",
 	"type" : "normal"

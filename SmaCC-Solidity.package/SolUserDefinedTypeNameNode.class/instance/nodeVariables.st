@@ -1,3 +1,3 @@
 generated
 nodeVariables
-	^ #(#value)
+	^ #(#user_defined_type)

@@ -10,7 +10,8 @@
 		"identifier",
 		"factor",
 		"indexes",
-		"storage_modifier"
+		"storage_loc",
+		"variable_dec"
 	],
 	"name" : "SolVariableDeclarationNode",
 	"type" : "normal"

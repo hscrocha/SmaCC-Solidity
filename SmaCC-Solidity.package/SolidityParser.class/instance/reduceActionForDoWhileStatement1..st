@@ -6,6 +6,6 @@ reduceActionForDoWhileStatement1: nodes
 	result statement: (nodes at: 2).
 	result whileToken: (nodes at: 3).
 	result leftParenToken: (nodes at: 4).
-	result condition: (nodes at: 5).
+	result exp_test: (nodes at: 5).
 	result rightParenToken: (nodes at: 6).
 	^ result

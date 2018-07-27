@@ -8,11 +8,11 @@
 	"instvars" : [
 		"ifToken",
 		"leftParenToken",
-		"condition",
 		"rightParenToken",
 		"then_statement",
 		"elseToken",
-		"else_statement"
+		"else_statement",
+		"exp_test"
 	],
 	"name" : "SolIfStatementNode",
 	"type" : "normal"

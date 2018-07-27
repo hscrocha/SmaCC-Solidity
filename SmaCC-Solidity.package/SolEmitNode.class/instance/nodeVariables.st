@@ -1,3 +1,3 @@
 generated
 nodeVariables
-	^ #(#event_call)
+	^ #(#func_call)

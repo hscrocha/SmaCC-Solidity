@@ -7,7 +7,7 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"returnToken",
-		"returned_expression"
+		"returned_exp"
 	],
 	"name" : "SolReturnNode",
 	"type" : "normal"

@@ -10,7 +10,8 @@
 		"type_list",
 		"modifiers",
 		"returnsToken",
-		"returned_types"
+		"returned_types",
+		"function_type"
 	],
 	"name" : "SolFunctionTypeNameNode",
 	"type" : "normal"

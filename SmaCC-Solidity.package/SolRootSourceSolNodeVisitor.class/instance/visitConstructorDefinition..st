@@ -1,0 +1,3 @@
+generated
+visitConstructorDefinition: aConstructorDefinition
+	^ self visitRootSourceSol: aConstructorDefinition

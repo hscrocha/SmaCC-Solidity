@@ -5,5 +5,5 @@ reduceActionForVariableDefinition1: nodes
 	result varToken: ((nodes at: 1) at: 1).
 	result var_id_list: ((nodes at: 1) at: 2).
 	result equalToken: ((nodes at: 2) at: 1).
-	result assign_expression: ((nodes at: 2) at: 2).
+	result assign_exp: ((nodes at: 2) at: 2).
 	^ result

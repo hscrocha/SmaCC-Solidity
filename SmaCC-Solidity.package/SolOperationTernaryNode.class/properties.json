@@ -6,11 +6,11 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"condition",
 		"questionMarkToken",
 		"then_statement",
 		"colonToken",
-		"else_statement"
+		"else_statement",
+		"test_exp"
 	],
 	"name" : "SolOperationTernaryNode",
 	"type" : "normal"

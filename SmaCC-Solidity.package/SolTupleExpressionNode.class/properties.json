@@ -7,11 +7,11 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"leftBracketToken",
-		"expressions",
 		"commaTokens",
 		"rightBracketToken",
 		"leftParenToken",
-		"rightParenToken"
+		"rightParenToken",
+		"exps"
 	],
 	"name" : "SolTupleExpressionNode",
 	"type" : "normal"

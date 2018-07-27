@@ -6,9 +6,9 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"lhs",
 		"operation",
-		"rhs"
+		"lhs_exp",
+		"rhs_exp"
 	],
 	"name" : "SolOperationOrNode",
 	"type" : "normal"

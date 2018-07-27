@@ -9,7 +9,7 @@
 		"leftBraceToken",
 		"name_value_list",
 		"rightBraceToken",
-		"expressions"
+		"exp_list"
 	],
 	"name" : "SolFunctionCallArgumentsNode",
 	"type" : "normal"

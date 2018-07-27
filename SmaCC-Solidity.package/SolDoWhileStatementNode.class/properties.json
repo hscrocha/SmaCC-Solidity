@@ -10,8 +10,8 @@
 		"statement",
 		"whileToken",
 		"leftParenToken",
-		"condition",
-		"rightParenToken"
+		"rightParenToken",
+		"exp_test"
 	],
 	"name" : "SolDoWhileStatementNode",
 	"type" : "normal"

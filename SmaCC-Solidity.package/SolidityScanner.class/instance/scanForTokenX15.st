@@ -1,7 +1,7 @@
 generated
 scanForTokenX15
-	self recordMatch: #(52).
+	self recordMatch: #(51).
 	self step.
 	currentCharacter == $=
-		ifTrue: [ ^ self recordAndReportMatch: #(73) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(71) ].
 	^ self reportLastMatch

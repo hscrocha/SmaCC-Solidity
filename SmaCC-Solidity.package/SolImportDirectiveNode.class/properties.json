@@ -7,7 +7,6 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"importToken",
-		"_source",
 		"asTokens",
 		"aliases",
 		"semicolonToken",
@@ -16,7 +15,8 @@
 		"fromToken",
 		"leftBraceToken",
 		"commaTokens",
-		"rightBraceToken"
+		"rightBraceToken",
+		"str_source"
 	],
 	"name" : "SolImportDirectiveNode",
 	"type" : "normal"

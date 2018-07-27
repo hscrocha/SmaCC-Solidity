@@ -11,8 +11,8 @@
 		"constantToken",
 		"identifier",
 		"equalToken",
-		"expression",
-		"semicolonToken"
+		"semicolonToken",
+		"exp"
 	],
 	"name" : "SolConstantDeclarationNode",
 	"type" : "normal"

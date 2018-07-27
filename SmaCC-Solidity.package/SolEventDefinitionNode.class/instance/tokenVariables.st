@@ -1,3 +1,3 @@
 generated
 tokenVariables
-	^ #(#eventToken #modifier #semicolonToken)
+	^ #(#eventToken #anonymousToken #semicolonToken)

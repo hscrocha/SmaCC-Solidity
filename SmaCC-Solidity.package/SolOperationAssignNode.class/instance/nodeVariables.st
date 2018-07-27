@@ -1,3 +1,3 @@
 generated
 nodeVariables
-	^ #(#lhs #rhs)
+	^ #(#lhs_exp #rhs_exp)

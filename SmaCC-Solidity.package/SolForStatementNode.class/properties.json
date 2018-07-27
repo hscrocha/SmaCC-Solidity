@@ -10,10 +10,10 @@
 		"leftParenToken",
 		"initialization",
 		"semicolonTokens",
-		"condition",
 		"increment_list",
 		"rightParenToken",
-		"statement"
+		"statement",
+		"exp_test"
 	],
 	"name" : "SolForStatementNode",
 	"type" : "normal"

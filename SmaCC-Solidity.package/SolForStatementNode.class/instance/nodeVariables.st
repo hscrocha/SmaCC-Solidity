@@ -1,3 +1,3 @@
 generated
 nodeVariables
-	^ #(#initialization #condition #increment_list #statement)
+	^ #(#initialization #exp_test #increment_list #statement)

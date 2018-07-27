@@ -1,0 +1,3 @@
+generated
+visitConstructorVisibilityModifier: aConstructorVisibilityModifier
+	^ self visitRootSourceSol: aConstructorVisibilityModifier

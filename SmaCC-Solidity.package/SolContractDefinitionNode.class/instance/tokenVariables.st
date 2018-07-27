@@ -1,3 +1,3 @@
 generated
 tokenVariables
-	^ #(#type #isToken #leftBraceToken #rightBraceToken)
+	^ #(#definition_type #isToken #leftBraceToken #rightBraceToken)

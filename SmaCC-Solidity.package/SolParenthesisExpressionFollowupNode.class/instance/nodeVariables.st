@@ -1,3 +1,3 @@
 generated
 nodeVariables
-	^ #(#array_access_expression #nested_term #expression)
+	^ #(#array_access_exp #nested_term #exp)

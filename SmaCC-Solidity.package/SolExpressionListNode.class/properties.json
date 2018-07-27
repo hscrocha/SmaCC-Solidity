@@ -6,8 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"expressions",
-		"commaTokens"
+		"commaTokens",
+		"exps"
 	],
 	"name" : "SolExpressionListNode",
 	"type" : "normal"

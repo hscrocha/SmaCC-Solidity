@@ -1,0 +1,3 @@
+generated
+visitInlineAssemblyBlock: anInlineAssemblyBlock
+	^ self visitRootSourceSol: anInlineAssemblyBlock
